@@ -12,7 +12,7 @@ class UserProfileForm(forms.ModelForm):
 
         widgets = {
 
-            'id_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your ID Number'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your phone Number'}),
             'gender': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your Gender'}),
             'age': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your Age'}),
             'image': forms.ClearableFileInput(attrs={'class': 'form-control',

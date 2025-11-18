@@ -35,3 +35,5 @@ def login(request):
             return redirect(' ')
     return render(request, 'login.html')
 
+def dashboard(request):
+    return render(request, 'admin.html')
