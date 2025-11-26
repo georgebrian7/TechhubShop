@@ -58,8 +58,13 @@
                     
                 <div class="card-product-wrapper "  >
                     <a href="product-detail.html" class="product-img">
+                        
+                        {% if product.image1 %}
                         <img class="lazyload img-product" data-src="{{ product.image1.url }}" src="{{ product.image2.url }}" alt="{{ product.name }}">
                         <img class="lazyload img-hover" data-src="{{ product.image2.url }}" src="{{ product.image1.url }}" alt="{{ product.name }}">
+                         {% else %}
+                        <img src="/static/images/placeholder.jpg" alt="No image available">
+                          {% endif %}
                     </a>
 
                     <div class="list-product-btn column-left">
