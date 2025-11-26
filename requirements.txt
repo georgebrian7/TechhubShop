@@ -47,7 +47,7 @@ pycparser==2.23
 pydantic==2.11.7
 pydantic_core==2.33.2
 PyMySQL==1.1.2
-pyOpenSSL==24.2.0
+pyOpenSSL==24.2.1
 python-decouple==3.8
 python-dotenv==1.0.0
 redis==6.2.0
