@@ -21,100 +21,33 @@
 
 </head>
 <body class="preload-wrapper popup-loader">
-    <div class="preload preload-container">
-        <div class="preload-logo">
-            <div class="spinner"></div>
-        </div>
-    </div>
-    <!-- /preload -->
-    <div id="wrapper">
-        <!-- top bar -->
-        <div class="tf-top-bar bg_dark line">
-            <div class="container-full px_15 lg-px_40">
-                <div class="tf-top-bar_wrap grid-3 gap-30 align-items-center">
-                    <div class="tf-top-bar_left">
-                        <div class="d-flex gap-30 text_white fw-5 ">
-                            <span>(+254) 718649419 </span>
-                            <span>keshi limited@gmail.com</span>
-                        </div>
+    
+<section class="flat-spacing-10">
+            <div class="container">
+                <div class="form-register-wrap">
+                    <div class="flat-title align-items-start gap-0 mb_30 px-0">
+                        <h5 class="mb_18">  ADMIN PORTAL</h5>
+                        <p class="text_black-2">Keshi</p>
                     </div>
-                    <div class="text-center overflow-hidden">
-                        <div class="swiper tf-sw-top_bar" data-preview="1" data-space="0" data-loop="true" data-speed="1000" data-delay="2000">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <p class="top-bar-text fw-5 text_white">Electronics On Sale <a href="shop-default.html" title="all collection" class="tf-btn btn-line">Shop now<i class="icon icon-arrow1-top-left"></i></a></p>
-                                </div>
-                                <div class="swiper-slide">
-                                    <p class="top-bar-text fw-5 text_white">Hurry Up while Stocks Last</a></p>
-                                </div>
-                                <div class="swiper-slide">
-                                    <p class="top-bar-text fw-5 text_white">Time to upgrade your devices</a></p>
-                                </div>
+                    <div>
+                        <form class="" id="register-form" action="#" method="post" action="{% url 'login' %}">
+                            {% csrf_token %}
+                            <h1>Edit {{ product.name }}</h1>
+                            {{ form.as_p }}
+
+                           
+                            <div class="mb_20">
+                                <button type="submit" class="btn btn-primary btn-set-task w-sm-100 py-2 px-5 text-uppercase">Save</button>
+                            </div> 
+                            
+                        </form>
+                    </div>
+                    <div class="text-center">
+                                <a href="{% url 'dashboard' %}" class="tf-btn btn-line">Back To the Dashboard<i class="icon icon-arrow1-top-left"></i></a>
                             </div>
-                        </div>
-                    </div>
-                    
                 </div>
             </div>
-            
-           
-        </div> 
-<header id="header" class="header-default">
-            <div class="container-full px_15 lg-px_40">
-                <div class="row wrapper-header align-items-center">
-                    <div class="col-md-4 col-3 tf-lg-hidden">
-                        <a href="#mobileMenu" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" viewBox="0 0 24 16" fill="none">
-                                
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="col-xl-3 col-md-4 col-6">
-                        <a href="index.html" class="logo-header">
-                            <img src="../../static/images/logo/Scree.svg" alt="logo" class="logo">
-                        </a>
-                    </div>
-                    <div class="col-xl-6 tf-md-hidden">
-                        <nav class="box-navigation text-center">
-                            <ul class="box-nav-ul d-flex align-items-center justify-content-center gap-30">
-                                <li class="menu-item">
-                                    <a href="{% url 'index' %}" class="item-link">Home<i class="icon icon-arrow-down"></i></a>
-                                    
-                                <li class="menu-item">
-                                    <a href="{% url 'cart' %}" class="item-link">Cart<i class="icon icon-arrow-down"></i></a>
-                                    
-                                    
-                                </li>
-                                <li class="menu-item">
-                                    <a href="{% url 'index' %}" class="item-link">Checkout<i class="icon icon-arrow-down"></i></a>
-                                </li>
-                                <li class="menu-item position-relative">
-                                    <a href="{% url 'index' %}" class="item-link">Profile<i class="icon icon-arrow-down"></i></a>
-                                   
-                                </li>
-                                <li class="menu-item position-relative">
-                                    <a href="{% url 'login' %}" class="item-link">Login<i class="icon icon-arrow-down"></i></a>
-                                    
-                                </li>
-                               
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="col-xl-3 col-md-4 col-3">
-                        <ul class="nav-icon d-flex justify-content-end align-items-center gap-20">
-                            <li class="nav-search"><a href="#canvasSearch" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="nav-icon-item"><i class="icon icon-search"></i></a></li>
-                            <li class="nav-account"><a href="#login" data-bs-toggle="modal" class="nav-icon-item"><i class="icon icon-account"></i></a></li>
-                            <li class="nav-wishlist"><a href="wishlist.html" class="nav-icon-item"><i class="icon icon-heart"></i><span class="count-box">{{ item_total }}</span></a></li>
-                            <li class="nav-cart"><a href="#shoppingCart" data-bs-toggle="modal" class="nav-icon-item"><i class="icon icon-bag"></i><span class="count-box">0</span></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </header>
-{% block content %}
-
-
-{% endblock %}
+        </section>
 <footer id="footer" class="footer background-gray md-pb-70">
             <div class="footer-wrap">
                 <div class="footer-body">
@@ -132,10 +65,10 @@
                                             <p>Address: 1234 Fashion Street, Suite 567, <br> New York, NY 10001</p>
                                         </li>
                                         <li>
-                                            <p>Email: <a href="#">KeshiLimited@gmail.com</a></p>
+                                            <p>Email: <a href="#">info@fashionshop.com</a></p>
                                         </li>
                                         <li>
-                                            <p>Phone: <a href="#">(+254) 555-1234</a></p>
+                                            <p>Phone: <a href="#">(212) 555-1234</a></p>
                                         </li>
                                     </ul>
                                     <a href="contact-1.html" class="tf-btn btn-line">Get direction<i class="icon icon-arrow1-top-left"></i></a>
@@ -251,7 +184,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="footer-bottom-wrap d-flex gap-20 flex-wrap justify-content-between align-items-center">
-                                    <div class="footer-menu_item">Keshi Limited</div>
+                                    <div class="footer-menu_item">© 2024 Ecomus Store. All Rights Reserved</div>
                                     <div class="tf-payment">
                                         <img src="images/payments/visa.png" alt="">
                                         <img src="images/payments/img-1.png" alt="">

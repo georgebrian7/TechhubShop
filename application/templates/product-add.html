@@ -1,0 +1,197 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+
+<!-- Mirrored from pixelwibes.com/template/ebazar/html/dist/product-add.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 03 Aug 2025 13:37:40 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>::Keshi electronics::  Product Add </title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
+
+    <!--plugin css file -->
+    <link rel="stylesheet" href="static/ad/assets/plugin/multi-select/css/multi-select.css"><!-- Multi Select Css -->
+    <link rel="stylesheet" href="static/ad/assets/plugin/bootstrap-tagsinput/bootstrap-tagsinput.css"><!-- Bootstrap Tagsinput Css -->
+    <link rel="stylesheet" href="static/ad/assets/plugin/cropper/cropper.min.css"><!--Cropperer Css -->   
+    <link rel="stylesheet" href="static/ad/assets/plugin/dropify/dist/css/dropify.min.css"/><!-- Dropify Css -->
+    <link rel="stylesheet" href="static/ad/assets/plugin/datatables/responsive.dataTables.min.css"><!-- Datatable Css -->
+    <link rel="stylesheet" href="static/ad/assets/plugin/datatables/dataTables.bootstrap5.min.css"><!-- Datatable Css -->
+
+    <!-- Project css file  -->
+    <link rel="stylesheet" href="static/ad/assets/css/ebazar.style.min.css">
+</head>
+<body>
+    <div id="ebazar-layout" class="theme-blue">
+        
+        <!-- sidebar -->
+        <div class="sidebar px-4 py-4 py-md-4 me-0">
+            <div class="d-flex flex-column h-100">
+                <a href="{% url 'dashboard' %}" class="mb-0 brand-icon">
+                    <span class="logo-icon">
+                        <i class="bi bi-bag-check-fill fs-4"></i>
+                    </span>
+                    <span class="logo-text">Keshi Dashboard</span>
+                </a>
+                <ul class="menu-list flex-grow-1 mt-3">
+                    <li><a class="m-link active" href="{% url 'dashboard' %}"><i class="icofont-home fs-5"></i> <span>Dashboard</span></a></li>
+                    <li class="collapsed">
+                        <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-product" href="#">
+                            <i class="icofont-truck-loaded fs-5"></i> <span>Products</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
+                            <!-- Menu: Sub menu ul -->
+                            <ul class="sub-menu collapse" id="menu-product">
+                                <li><a class="ms-link" href="{% url 'product_list' %}">Product List</a></li>
+                                <li><a class="ms-link" href="{% url 'product_add' %}">Product Add</a></li>
+                            </ul>
+                    </li>
+                    
+                    <li class="collapsed">
+                        <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-order" href="#">
+                        <i class="icofont-notepad fs-5"></i> <span>Orders</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
+                        <!-- Menu: Sub menu ul -->
+                        <ul class="sub-menu collapse" id="menu-order">
+                            <li><a class="ms-link" href="{% url 'order_list' %}">Orders List</a></li>
+                            <li><a class="ms-link" href="{% url 'order_details' %}">Order Details</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li class="collapsed">
+                        <a class="m-link" data-bs-toggle="collapse" data-bs-target="#customers-info" href="#">
+                        <i class="icofont-funky-man fs-5"></i> <span>Customers</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
+                        <!-- Menu: Sub menu ul -->
+                        <ul class="sub-menu collapse" id="customers-info">
+                            <li><a class="ms-link" href="{% url 'customer_list' %}">Customers List</a></li>
+                            <li><a class="ms-link" href="{% url 'customer_detail' %}">Customers Details</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="collapsed">
+                        <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-inventory" href="#">
+                        <i class="icofont-chart-histogram fs-5"></i> <span>Inventory</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
+                        <!-- Menu: Sub menu ul -->
+                        <ul class="sub-menu collapse" id="menu-inventory">
+                            <li><a class="ms-link" href="{% url 'stock_list' %}">Stock List</a></li>
+                            <li><a class="ms-link" href="{% url 'purchase' %}">Purchase</a></li>
+                            
+                        </ul>
+                    </li>
+                    
+                </ul>
+                <!-- Menu: menu collepce btn -->
+                <button type="button" class="btn btn-link sidebar-mini-btn text-light">
+                    <span class="ms-2"><i class="icofont-bubble-right"></i></span>
+                </button>
+            </div>
+        </div>    
+
+        <!-- main body area -->
+        <div class="main px-lg-4 px-md-4"> 
+
+            <!-- Body: Header -->
+            <div class="header">
+                <nav class="navbar py-4">
+                    <div class="container-xxl">
+        
+                        <!-- header rightbar icon -->
+                        <div class="h-right d-flex align-items-center mr-5 mr-lg-0 order-1">
+                            
+                       
+                        <!-- main menu Search-->
+                       
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Body: Body -->
+            <div class="body d-flex py-3">
+                <div class="border-0 mb-4">
+                            <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+                                <h3 class="fw-bold mb-0">Products Add</h3>
+                                
+                            </div>
+                        </div>
+                <div class="container-xxl">
+                    <form class="" id="register-form"  method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary btn-set-task w-sm-100 py-2 px-5 text-uppercase">Save</button>
+                    </form>
+          
+                    </div>
+                </div>
+            </div>
+
+        </div>      
+
+    </div>
+
+    <!-- Jquery Core Js -->      
+    <script src="static/ad/assets/bundles/libscripts.bundle.js"></script>
+
+    <!-- Jquery Plugin -->  
+    <script src="../../../../../cdn.ckeditor.com/ckeditor5/29.0.0/classic/ckeditor.js"></script>
+    <script src="static/ad/assets/plugin/multi-select/js/jquery.multi-select.js"></script>
+    <script src="static/ad/assets/plugin/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>  
+    <script src="static/ad/assets/plugin/cropper/cropper.min.js"></script>
+    <script src="static/ad/assets/plugin/cropper/cropper-init.js"></script>
+    <script src="static/ad/assets/bundles/dropify.bundle.js"></script>
+    <script src="static/ad/assets/bundles/dataTables.bundle.js"></script>
+
+    <!-- Jquery Page Js -->   
+    <script src="../js/template.js"></script>
+    <script>
+        $(document).ready(function() {
+        //Ch-editer
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+            //Datatable
+            $('#myCartTable')
+            .addClass( 'nowrap' )
+            .dataTable( {
+                responsive: true,
+                columnDefs: [
+                    { targets: [-1, -3], className: 'dt-body-right' }
+                ]
+            });
+            $('.deleterow').on('click',function(){
+            var tablename = $(this).closest('table').DataTable();  
+            tablename
+                    .row( $(this)
+                    .parents('tr') )
+                    .remove()
+                    .draw();
+
+            } );
+           //Multiselect
+           $('#optgroup').multiSelect({ selectableOptgroup: true });
+        });
+
+        $(function() {
+            $('.dropify').dropify();
+
+            var drEvent = $('#dropify-event').dropify();
+            drEvent.on('dropify.beforeClear', function(event, element) {
+                return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+            });
+
+            drEvent.on('dropify.afterClear', function(event, element) {
+                alert('File deleted');
+            });
+
+            $('.dropify-fr').dropify({
+                messages: {
+                    default: 'Glissez-dÃ©posez un fichier ici ou cliquez',
+                    replace: 'Glissez-dÃ©posez un fichier ou cliquez pour remplacer',
+                    remove: 'Supprimer',
+                    error: 'DÃ©solÃ©, le fichier trop volumineux'
+                }
+            });
+        });
+            
+    </script>
+</body>
+
+<!-- Mirrored from pixelwibes.com/template/ebazar/html/dist/product-add.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 03 Aug 2025 13:37:41 GMT -->
+</html> 

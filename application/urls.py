@@ -22,6 +22,29 @@ from application import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('register', views.register, name='register'),
-    path('login', views.login, name='login'),
-    path('admin', views.dashboard, name='admin')
+    path('login', views.login_view, name='login'),
+    path('dashboard', views.dashboard, name='dashboard'),
+    path('products', views.products, name='products'),
+    path('cart', views.cart_view, name='cart'),
+    path('dashboard_login', views.admin_login, name='dashboard_login'),
+    path('product_list', views.product_list, name='product_list'),
+    path('product_add', views.product_add, name='product_add'),
+    path('order_list', views.order_list, name='order_list'),
+    path('order_details', views.order_details, name='order_details'),
+    path('customer_list', views.customer_list, name='customer_list'),
+    path('customer_detail', views.customer_detail, name='customer_detail'),
+    path('purchase', views.purchase, name='purchase'),
+    path('stock_list', views.stock_list, name='stock_list'),
+    path('admin_profile', views.admin_profile, name='admin_profile'),
+    path('categories', views.categories, name='categories'),
+    path('product/<slug:slug>/', views.product_detail, name='product'),
+    path('product_edit/<slug:slug>/', views.product_edit, name='product_edit'),
+    path('products/<slug:slug>/', views.selected_category, name='products'),
+    path('add-to-cart/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
+    path('remove-from-cart/<int:product_id>/', views.remove_from_cart, name='remove_from_cart'),
+
+    path('confirm/<int:cart_items_id>/', views.order_confirmation, name='confirm'),
+
+
+
 ]

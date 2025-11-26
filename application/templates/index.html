@@ -1,668 +1,84 @@
 {% extends 'base.html' %}
 
 {% block content  %}
-<body class="preload-wrapper">
-    <!-- preload -->
-    <div class="preload preload-container">
-        <div class="preload-logo">
-            <div class="spinner"></div>
-        </div>
-    </div>
-    <!-- /preload -->
-    <div id="wrapper">
-        <!-- top bar -->
-        <div class="tf-top-bar bg_dark line">
-            <div class="container-full px_15 lg-px_40">
-                <div class="tf-top-bar_wrap grid-3 gap-30 align-items-center">
-                    <div class="tf-top-bar_left">
-                        <div class="d-flex gap-30 text_white fw-5 ">
-                            <span>(+254) 718649419 </span>
-                            <span>keshieelectronics@gmail.com</span>
-                        </div>
-                    </div>
-                    <div class="text-center overflow-hidden">
-                        <div class="swiper tf-sw-top_bar" data-preview="1" data-space="0" data-loop="true" data-speed="1000" data-delay="2000">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <p class="top-bar-text fw-5 text_white">Electronics On Sale <a href="shop-default.html" title="all collection" class="tf-btn btn-line">Shop now<i class="icon icon-arrow1-top-left"></i></a></p>
-                                </div>
-                                <div class="swiper-slide">
-                                    <p class="top-bar-text fw-5 text_white">Hurry Up while Stocks Last</a></p>
-                                </div>
-                                <div class="swiper-slide">
-                                    <p class="top-bar-text fw-5 text_white">Time to upgrade your devices</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-            
-           
-        </div> 
-        
-        <!-- header -->
-        <header id="header" class="header-default">
-            <div class="container-full px_15 lg-px_40">
-                <div class="row wrapper-header align-items-center">
-                    <div class="col-md-4 col-3 tf-lg-hidden">
-                        <a href="#mobileMenu" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" viewBox="0 0 24 16" fill="none">
-                                
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="col-xl-3 col-md-4 col-6">
-                        <a href="index.html" class="logo-header">
-                            <img src="../../static/images/logo/keshie.svg" alt="logo" class="logo">
-                        </a>
-                    </div>
-                    <div class="col-xl-6 tf-md-hidden">
-                        <nav class="box-navigation text-center">
-                            <ul class="box-nav-ul d-flex align-items-center justify-content-center gap-30">
-                                <li class="menu-item">
-                                    <a href="#" class="item-link">Home<i class="icon icon-arrow-down"></i></a>
-                                    <div class="sub-menu mega-menu">
-                                        <div class="container">
-                                            <div class="row-demo">
-                                                <div class="demo-item">
-                                                    <a href="index.html">
-                                                        <div class="demo-image position-relative">
-                                                            <img class="lazyload" data-src="images/demo/home-01.jpg" src="images/demo/home-01.jpg" alt="home-01">
-                                                            <div class="demo-label">
-                                                                <span class="demo-new">New</span>
-                                                                <span>Trend</span>
-                                                            </div>
-                                                        </div>
-                                                        <span class="demo-name">Home Fashion 01</span>
-                                                    </a>
-                                                </div>
-                                                <div class="demo-item">
-                                                    <a href="home-multi-brand.html">
-                                                        <div class="demo-image position-relative">
-                                                            <img class="lazyload" data-src="images/demo/home-multi-brand.jpg" src="images/demo/home-multi-brand.jpg" alt="home-multi-brand">
-                                                            <div class="demo-label">
-                                                                <span class="demo-new">New</span>
-                                                                <span class="demo-hot">Hot</span>
-                                                            </div>
-                                                        </div>
-                                                        <span class="demo-name">Home Multi Brand</span>
-                                                    </a>
-                                                </div>
-                                                <div class="demo-item">
-                                                    <a href="home-02.html">
-                                                        <div class="demo-image position-relative">
-                                                            <img class="lazyload" data-src="images/demo/home-02.jpg" src="images/demo/home-02.jpg" alt="home-02">
-                                                            <div class="demo-label">
-                                                                <span class="demo-hot">Hot</span>
-                                                            </div>
-                                                        </div>
-                                                        <span class="demo-name">Home Fashion 02</span>
-                                                    </a>
-                                                </div>
-                                                <div class="demo-item">
-                                                    <a href="home-03.html">
-                                                        <div class="demo-image">
-                                                            <img class="lazyload" data-src="images/demo/home-03.jpg" src="images/demo/home-03.jpg" alt="home-03">
-                                                        </div>
-                                                        <span class="demo-name">Home Fashion 03</span>
-                                                    </a>
-                                                </div>
-                                                <div class="demo-item">
-                                                    <a href="home-04.html">
-                                                        <div class="demo-image">
-                                                            <img class="lazyload" data-src="images/demo/home-04.jpg" src="images/demo/home-04.jpg" alt="home-04">
-                                                        </div>
-                                                        <span class="demo-name">Home Fashion 04</span>
-                                                    </a>
-                                                </div>
-                                                <div class="demo-item">
-                                                    <a href="home-05.html">
-                                                        <div class="demo-image">
-                                                            <img class="lazyload" data-src="images/demo/home-05.jpg" src="images/demo/home-05.jpg" alt="home-05">
-                                                        </div>
-                                                        <span class="demo-name">Home Fashion 05</span>
-                                                    </a>
-                                                </div>
-                                                <div class="demo-item">
-                                                    <a href="home-06.html">
-                                                        <div class="demo-image position-relative">
-                                                            <img class="lazyload" data-src="images/demo/home-06.jpg" src="images/demo/home-06.jpg" alt="home-06">
-                                                            <div class="demo-label">
-                                                                <span class="demo-new">New</span>
-                                                            </div>
-                                                        </div>
-                                                        <span class="demo-name">Home Fashion 06</span>
-                                                    </a>
-                                                </div>
-                                                <div class="demo-item">
-                                                    <a href="home-07.html">
-                                                        <div class="demo-image">
-                                                            <img class="lazyload" data-src="images/demo/home-07.jpg" src="images/demo/home-07.jpg" alt="home-07">
-                                                        </div>
-                                                        <span class="demo-name">Home Fashion 07</span>
-                                                    </a>
-                                                </div>
-                                                <div class="demo-item">
-                                                    <a href="home-08.html">
-                                                        <div class="demo-image">
-                                                            <img class="lazyload" data-src="images/demo/home-08.jpg" src="images/demo/home-08.jpg" alt="home-08">
-                                                        </div>
-                                                        <span class="demo-name">Home Fashion 08</span>
-                                                    </a>
-                                                </div>
-                                                <div class="demo-item">
-                                                    <a href="home-skincare.html">
-                                                        <div class="demo-image">
-                                                            <img class="lazyload" data-src="images/demo/home-skincare.jpg" src="images/demo/home-skincare.jpg" alt="home-skincare">
-                                                        </div>
-                                                        <span class="demo-name">Home Skincare</span>
-                                                    </a>
-                                                </div>
-                                                <div class="demo-item">
-                                                    <a href="home-headphone.html">
-                                                        <div class="demo-image">
-                                                            <img class="lazyload" data-src="images/demo/home-headphone.jpg" src="images/demo/home-headphone.jpg" alt="home-headphone">
-                                                        </div>
-                                                        <span class="demo-name">Home Headphone</span>
-                                                    </a>
-                                                </div>
-                                                <div class="demo-item">
-                                                    <a href="home-giftcard.html">
-                                                        <div class="demo-image">
-                                                            <img class="lazyload" data-src="images/demo/home-giftcard.jpg" src="images/demo/home-giftcard.jpg" alt="home-gift-card">
-                                                        </div>
-                                                        <span class="demo-name">Home Gift Card</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="text-center view-all-demo">
-                                                <a href="#modalDemo" data-bs-toggle="modal" class="tf-btn btn-xl btn-fill radius-3 animate-hover-btn fw-6"><span>View all demos (31+)</span><i class="icon icon-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="item-link">Shop<i class="icon icon-arrow-down"></i></a>
-                                    <div class="sub-menu mega-menu">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-lg-2">
-                                                    <div class="mega-menu-item">
-                                                        <div class="menu-heading">Shop layouts</div>
-                                                        <ul class="menu-list">
-                                                            <li><a href="shop-default.html" class="menu-link-text link">Default</a></li>
-                                                            <li><a href="shop-left-sidebar.html" class="menu-link-text link">Left sidebar</a></li>
-                                                            <li><a href="shop-right-sidebar.html" class="menu-link-text link">Right sidebar</a></li>
-                                                            <li><a href="shop-fullwidth.html" class="menu-link-text link">Fullwidth</a></li>
-                                                            <li><a href="shop-collection-sub.html" class="menu-link-text link">Sub collection</a></li>
-                                                            <li><a href="shop-collection-list.html" class="menu-link-text link">Collections list</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="mega-menu-item">
-                                                        <div class="menu-heading">Features</div>
-                                                        <ul class="menu-list">
-                                                            <li><a href="shop-link.html" class="menu-link-text link">Pagination links</a></li>
-                                                            <li><a href="shop-loadmore.html" class="menu-link-text link">Pagination loadmore</a></li>
-                                                            <li><a href="shop-infinite-scrolling.html" class="menu-link-text link">Pagination infinite scrolling</a></li>
-                                                            <li><a href="shop-filter-sidebar.html" class="menu-link-text link">Filter sidebar</a></li>
-                                                            <li><a href="shop-filter-hidden.html" class="menu-link-text link">Filter hidden</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="mega-menu-item">
-                                                        <div class="menu-heading">Product styles</div>
-                                                        <ul class="menu-list">
-                                                            <li><a href="product-style-list.html" class="menu-link-text link">Product style list</a></li>
-                                                            <li><a href="product-style-01.html" class="menu-link-text link">Product style 01</a></li>
-                                                            <li><a href="product-style-02.html" class="menu-link-text link">Product style 02</a></li>
-                                                            <li><a href="product-style-03.html" class="menu-link-text link">Product style 03</a></li>
-                                                            <li><a href="product-style-04.html" class="menu-link-text link">Product style 04</a></li>
-                                                            <li><a href="product-style-05.html" class="menu-link-text link">Product style 05</a></li>
-                                                            <li><a href="product-style-06.html" class="menu-link-text link">Product style 06</a></li>
-                                                            <li><a href="product-style-07.html" class="menu-link-text link">Product style 07</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <div class="collection-item hover-img">
-                                                        <div class="collection-inner">
-                                                            <a href="shop-men.html" class="collection-image img-style">
-                                                                <img class="lazyload" data-src="images/collections/collection-1.jpg" src="images/collections/collection-1.jpg" alt="collection-demo-1">
-                                                            </a>
-                                                            <div class="collection-content">
-                                                                <a href="shop-men.html" class="tf-btn hover-icon btn-xl collection-title fs-16"><span>Men</span><i class="icon icon-arrow1-top-left"></i></a>
 
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <div class="collection-item hover-img">
-                                                        <div class="collection-inner">
-                                                            <a href="shop-women.html" class="collection-image img-style">
-                                                                <img class="lazyload" data-src="images/collections/collection-2.jpg" src="images/collections/collection-2.jpg" alt="collection-demo-1">
-                                                            </a>
-                                                            <div class="collection-content">
-                                                                <a href="shop-women.html" class="tf-btn btn-xl collection-title fs-16 hover-icon"><span>Women</span><i class="icon icon-arrow1-top-left"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="item-link">Products<i class="icon icon-arrow-down"></i></a>
-                                    <div class="sub-menu mega-menu">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-lg-2">
-                                                    <div class="mega-menu-item">
-                                                        <div class="menu-heading">Product layouts</div>
-                                                        <ul class="menu-list">
-                                                            <li><a href="product-detail.html" class="menu-link-text link">Product default</a></li>
-                                                            <li><a href="product-grid-1.html" class="menu-link-text link">Product grid 1</a></li>
-                                                            <li><a href="product-grid-2.html" class="menu-link-text link">Product grid 2</a></li>
-                                                            <li><a href="product-stacked.html" class="menu-link-text link">Product stacked</a></li>
-                                                            <li><a href="product-right-thumbnails.html" class="menu-link-text link">Product right thumbnails</a></li>
-                                                            <li><a href="product-bottom-thumbnails.html" class="menu-link-text link">Product bottom thumbnails</a></li>
-                                                            <li><a href="product-drawer-sidebar.html" class="menu-link-text link">Product drawer sidebar</a></li>
-                                                            <li><a href="product-description-accordion.html" class="menu-link-text link">Product description accordion</a></li>
-                                                            <li><a href="product-description-list.html" class="menu-link-text link">Product description list</a></li>
-                                                            <li><a href="product-description-vertical.html" class="menu-link-text link">Product description vertical</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="mega-menu-item">
-                                                        <div class="menu-heading">Product details</div>
-                                                        <ul class="menu-list">
-                                                            <li><a href="product-inner-zoom.html" class="menu-link-text link">Product inner zoom</a></li>
-                                                            <li><a href="product-zoom-magnifier.html" class="menu-link-text link">Product zoom magnifier</a></li>
-                                                            <li><a href="product-no-zoom.html" class="menu-link-text link">Product no zoom</a></li>
-                                                            <li><a href="product-photoswipe-popup.html" class="menu-link-text link">Product photoswipe popup</a></li>
-                                                            <li><a href="product-zoom-popup.html" class="menu-link-text link">Product external zoom and photoswipe popup</a></li>
-                                                            <li><a href="product-video.html" class="menu-link-text link">Product video</a></li>
-                                                            <li><a href="product-3d.html" class="menu-link-text link">Product 3D, AR models</a></li>
-                                                            <li><a href="product-options-customizer.html" class="menu-link-text link">Product options & customizer</a></li>
-                                                            <li><a href="product-advanced-types.html" class="menu-link-text link">Advanced product types</a></li>
-                                                            <li><a href="product-giftcard.html" class="menu-link-text link">Recipient information form for gift card products</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="mega-menu-item">
-                                                        <div class="menu-heading">Product swatchs</div>
-                                                        <ul class="menu-list">
-                                                            <li><a href="product-color-swatch.html" class="menu-link-text link">Product color swatch</a></li>
-                                                            <li><a href="product-rectangle.html" class="menu-link-text link">Product rectangle</a></li>
-                                                            <li><a href="product-rectangle-color.html" class="menu-link-text link">Product rectangle color</a></li>
-                                                            <li><a href="product-swatch-image.html" class="menu-link-text link">Product swatch image</a></li>
-                                                            <li><a href="product-swatch-image-rounded.html" class="menu-link-text link">Product swatch image rounded</a></li>
-                                                            <li><a href="product-swatch-dropdown.html" class="menu-link-text link">Product swatch dropdown</a></li>
-                                                            <li><a href="product-swatch-dropdown-color.html" class="menu-link-text link">Product swatch dropdown color</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="mega-menu-item">
-                                                        <div class="menu-heading">Product features</div>
-                                                        <ul class="menu-list">
-                                                            <li><a href="product-frequently-bought-together.html" class="menu-link-text link">Frequently bought together</a></li>
-                                                            <li><a href="product-frequently-bought-together-2.html" class="menu-link-text link">Frequently bought together 2</a></li>
-                                                            <li><a href="product-upsell-features.html" class="menu-link-text link">Product upsell features</a></li>
-                                                            <li><a href="product-pre-orders.html" class="menu-link-text link">Product pre-orders</a></li>
-                                                            <li><a href="product-notification.html" class="menu-link-text link">Back in stock notification</a></li>
-                                                            <li><a href="product-pickup.html" class="menu-link-text link">Product pickup</a></li>
-                                                            <li><a href="product-images-grouped.html" class="menu-link-text link">Variant images grouped</a></li>
-                                                            <li><a href="product-complimentary.html" class="menu-link-text link">Complimentary products</a></li>
-                                                            <li><a href="product-quick-order-list.html" class="menu-link-text link position-relative">Quick order list<div class="demo-label"><span class="demo-new">New</span></div></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="menu-heading">Best seller</div>
-                                                    <div class="hover-sw-nav hover-sw-2">
-                                                        <div class="swiper tf-product-header wrap-sw-over">
-                                                            <div class="swiper-wrapper">
-                                                                <div class="swiper-slide" lazy="true">
-                                                                    <div class="card-product">
-                                                                        <div class="card-product-wrapper">
-                                                                            <a href="#" class="product-img">
-                                                                                <img class="lazyload img-product" data-src="images/products/orange-1.jpg" src="images/products/orange-1.jpg" alt="image-product">
-                                                                                <img class="lazyload img-hover" data-src="images/products/white-1.jpg" src="images/products/white-1.jpg" alt="image-product">
-                                                                            </a>
-                                                                            <div class="list-product-btn">
-                                                                                <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
-                                                                                    <span class="icon icon-bag"></span>
-                                                                                    <span class="tooltip">Quick Add</span>
-                                                                                </a>
-                                                                                <a href="javascript:void(0);" class="box-icon bg_white wishlist btn-icon-action">
-                                                                                    <span class="icon icon-heart"></span>
-                                                                                    <span class="tooltip">Add to Wishlist</span>
-                                                                                    <span class="icon icon-delete"></span>
-                                                                                </a>
-                                                                                <a href="#compare" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="box-icon bg_white compare btn-icon-action">
-                                                                                    <span class="icon icon-compare"></span>
-                                                                                    <span class="tooltip">Add to Compare</span>
-                                                                                    <span class="icon icon-check"></span>
-                                                                                </a>
-                                                                                <a href="#quick_view" data-bs-toggle="modal" class="box-icon bg_white quickview tf-btn-loading">
-                                                                                    <span class="icon icon-view"></span>
-                                                                                    <span class="tooltip">Quick View</span>
-                                                                                </a>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="card-product-info">
-                                                                            <a href="#" class="title link">Ribbed Tank Top</a>
-                                                                            <span class="price">$16.95</span>
-                                                                            <ul class="list-color-product">
-                                                                                <li class="list-color-item color-swatch active">
-                                                                                    <span class="tooltip">Orange</span>
-                                                                                    <span class="swatch-value bg_orange-3"></span>
-                                                                                    <img class="lazyload" data-src="images/products/orange-1.jpg" src="images/products/orange-1.jpg" alt="image-product">
-                                                                                </li>
-                                                                                <li class="list-color-item color-swatch">
-                                                                                    <span class="tooltip">Black</span>
-                                                                                    <span class="swatch-value bg_dark"></span>
-                                                                                    <img class="lazyload" data-src="images/products/black-1.jpg" src="images/products/black-1.jpg" alt="image-product">
-                                                                                </li>
-                                                                                <li class="list-color-item color-swatch">
-                                                                                    <span class="tooltip">White</span>
-                                                                                    <span class="swatch-value bg_white"></span>
-                                                                                    <img class="lazyload" data-src="images/products/white-1.jpg" src="images/products/white-1.jpg" alt="image-product">
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="swiper-slide" lazy="true">
-                                                                    <div class="card-product">
-                                                                        <div class="card-product-wrapper">
-                                                                            <div class="product-img">
-                                                                                <img class="lazyload img-product" data-src="images/products/white-3.jpg" src="images/products/white-3.jpg" alt="image-product">
-                                                                                <img class="lazyload img-hover" data-src="images/products/white-4.jpg" src="images/products/white-4.jpg" alt="image-product">
-                                                                            </div>
-                                                                            <div class="list-product-btn absolute-2">
-                                                                                <a href="#shoppingCart" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
-                                                                                    <span class="icon icon-bag"></span>
-                                                                                    <span class="tooltip">Add to cart</span>
-                                                                                </a>
-                                                                                <a href="javascript:void(0);" class="box-icon bg_white wishlist btn-icon-action">
-                                                                                    <span class="icon icon-heart"></span>
-                                                                                    <span class="tooltip">Add to Wishlist</span>
-                                                                                    <span class="icon icon-delete"></span>
-                                                                                </a>
-                                                                                <a href="#compare" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="box-icon bg_white compare btn-icon-action">
-                                                                                    <span class="icon icon-compare"></span>
-                                                                                    <span class="tooltip">Add to Compare</span>
-                                                                                    <span class="icon icon-check"></span>
-                                                                                </a>
-                                                                                <a href="#quick_view" data-bs-toggle="modal" class="box-icon bg_white quickview tf-btn-loading">
-                                                                                    <span class="icon icon-view"></span>
-                                                                                    <span class="tooltip">Quick View</span>
-                                                                                </a>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="card-product-info">
-                                                                            <a href="#" class="title link">Oversized Printed T-shirt</a>
-                                                                            <span class="price">$10.00</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="swiper-slide" lazy="true">
-                                                                    <div class="card-product">
-                                                                        <div class="card-product-wrapper">
-                                                                            <div class="product-img">
-                                                                                <img class="lazyload img-product" data-src="images/products/white-2.jpg" src="images/products/white-2.jpg" alt="image-product">
-                                                                                <img class="lazyload img-hover" data-src="images/products/pink-1.jpg" src="images/products/pink-1.jpg" alt="image-product">
-                                                                            </div>
-                                                                            <div class="list-product-btn">
-                                                                                <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
-                                                                                    <span class="icon icon-bag"></span>
-                                                                                    <span class="tooltip">Quick Add</span>
-                                                                                </a>
-                                                                                <a href="javascript:void(0);" class="box-icon bg_white wishlist btn-icon-action">
-                                                                                    <span class="icon icon-heart"></span>
-                                                                                    <span class="tooltip">Add to Wishlist</span>
-                                                                                    <span class="icon icon-delete"></span>
-                                                                                </a>
-                                                                                <a href="#compare" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="box-icon bg_white compare btn-icon-action">
-                                                                                    <span class="icon icon-compare"></span>
-                                                                                    <span class="tooltip">Add to Compare</span>
-                                                                                    <span class="icon icon-check"></span>
-                                                                                </a>
-                                                                                <a href="#quick_view" data-bs-toggle="modal" class="box-icon bg_white quickview tf-btn-loading">
-                                                                                    <span class="icon icon-view"></span>
-                                                                                    <span class="tooltip">Quick View</span>
-                                                                                </a>
-                                                                            </div>
-                                                                            <div class="size-list">
-                                                                                <span>S</span>
-                                                                                <span>M</span>
-                                                                                <span>L</span>
-                                                                                <span>XL</span>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="card-product-info">
-                                                                            <a href="#" class="title">Oversized Printed T-shirt</a>
-                                                                            <span class="price">$16.95</span>
-                                                                            <ul class="list-color-product">
-                                                                                <li class="list-color-item color-swatch active">
-                                                                                    <span class="tooltip">White</span>
-                                                                                    <span class="swatch-value bg_white"></span>
-                                                                                    <img class="lazyload" data-src="images/products/white-2.jpg" src="images/products/white-2.jpg" alt="image-product">
-                                                                                </li>
-                                                                                <li class="list-color-item color-swatch">
-                                                                                    <span class="tooltip">Pink</span>
-                                                                                    <span class="swatch-value bg_purple"></span>
-                                                                                    <img class="lazyload" data-src="images/products/pink-1.jpg" src="images/products/pink-1.jpg" alt="image-product">
-                                                                                </li>
-                                                                                <li class="list-color-item color-swatch">
-                                                                                    <span class="tooltip">Black</span>
-                                                                                    <span class="swatch-value bg_dark"></span>
-                                                                                    <img class="lazyload" data-src="images/products/black-2.jpg" src="images/products/black-2.jpg" alt="image-product">
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="swiper-slide" lazy="true">
-                                                                    <div class="card-product">
-                                                                        <div class="card-product-wrapper">
-                                                                            <div class="product-img">
-                                                                                <img class="lazyload img-product" data-src="images/products/brown-2.jpg" src="images/products/brown-2.jpg" alt="image-product">
-                                                                                <img class="lazyload img-hover" data-src="images/products/brown-3.jpg" src="images/products/brown-3.jpg" alt="image-product">
-                                                                            </div>
-                                                                            <div class="size-list">
-                                                                                <span>S</span>
-                                                                                <span>M</span>
-                                                                                <span>L</span>
-                                                                                <span>XL</span>
-                                                                            </div>
-                                                                            <div class="list-product-btn">
-                                                                                <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
-                                                                                    <span class="icon icon-bag"></span>
-                                                                                    <span class="tooltip">Quick Add</span>
-                                                                                </a>
-                                                                                <a href="javascript:void(0);" class="box-icon bg_white wishlist btn-icon-action">
-                                                                                    <span class="icon icon-heart"></span>
-                                                                                    <span class="tooltip">Add to Wishlist</span>
-                                                                                    <span class="icon icon-delete"></span>
-                                                                                </a>
-                                                                                <a href="#compare" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="box-icon bg_white compare btn-icon-action">
-                                                                                    <span class="icon icon-compare"></span>
-                                                                                    <span class="tooltip">Add to Compare</span>
-                                                                                    <span class="icon icon-check"></span>
-                                                                                </a>
-                                                                                <a href="#quick_view" data-bs-toggle="modal" class="box-icon bg_white quickview tf-btn-loading">
-                                                                                    <span class="icon icon-view"></span>
-                                                                                    <span class="tooltip">Quick View</span>
-                                                                                </a>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="card-product-info">
-                                                                            <a href="#" class="title link">V-neck linen T-shirt</a>
-                                                                            <span class="price">$114.95</span>
-                                                                            <ul class="list-color-product">
-                                                                                <li class="list-color-item color-swatch active">
-                                                                                    <span class="tooltip">Brown</span>
-                                                                                    <span class="swatch-value bg_brown"></span>
-                                                                                    <img class="lazyload" data-src="images/products/brown-2.jpg" src="images/products/brown-2.jpg" alt="image-product">
-                                                                                </li>
-                                                                                <li class="list-color-item color-swatch">
-                                                                                    <span class="tooltip">White</span>
-                                                                                    <span class="swatch-value bg_white"></span>
-                                                                                    <img class="lazyload" data-src="images/products/white-5.jpg" src="images/products/white-5.jpg" alt="image-product">
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="nav-sw nav-next-slider nav-next-product-header box-icon w_46 round"><span class="icon icon-arrow-left"></span></div>
-                                                        <div class="nav-sw nav-prev-slider nav-prev-product-header box-icon w_46 round"><span class="icon icon-arrow-right"></span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="menu-item position-relative">
-                                    <a href="#" class="item-link">Pages<i class="icon icon-arrow-down"></i></a>
-                                    <div class="sub-menu submenu-default">
-                                        <ul class="menu-list">
-                                            <li><a href="about-us.html" class="menu-link-text link text_black-2">About us</a></li>
-                                            <li>
-                                                <a href="brands.html" class="menu-link-text link text_black-2 position-relative">Brands
-                                                    <div class="demo-label"><span class="demo-new">New</span></div> 
-                                                </a>
-                                            </li>
-                                            <li><a href="brands-v2.html" class="menu-link-text link text_black-2">Brand V2</a></li>
-                                            <li><a href="contact-1.html" class="menu-link-text link text_black-2">Contact 1</a></li>
-                                            <li><a href="contact-2.html" class="menu-link-text link text_black-2">Contact 2</a></li>
-                                            <li><a href="faq-1.html" class="menu-link-text link text_black-2">FAQ 01</a></li>
-                                            <li><a href="faq-2.html" class="menu-link-text link text_black-2">FAQ 02</a></li>
-                                            <li><a href="our-store.html" class="menu-link-text link text_black-2">Our store</a></li>
-                                            <li><a href="store-locations.html" class="menu-link-text link text_black-2">Store locator</a></li>
-                                            <li><a href="timeline.html" class="menu-link-text link text_black-2 position-relative">Timeline <div class="demo-label"><span class="demo-new">New</span></div> </a></li>
-                                            <li><a href="view-cart.html" class="menu-link-text link text_black-2 position-relative">View cart</a></li>
-                                            <li><a href="checkout.html" class="menu-link-text link text_black-2 position-relative">Check out</a></li>
-                                            <li><a href="payment-confirmation.html" class="menu-link-text link text_black-2 position-relative">Payment Confirmation</a></li>
-                                            <li><a href="payment-failure.html" class="menu-link-text link text_black-2 position-relative">Payment Failure</a></li>
-                                            <li><a href="my-account.html" class="menu-link-text link text_black-2 position-relative">My Account</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="menu-item position-relative">
-                                    <a href="#" class="item-link">Blog<i class="icon icon-arrow-down"></i></a>
-                                    <div class="sub-menu submenu-default">
-                                        <ul class="menu-list">
-                                            <li><a href="blog-grid.html" class="menu-link-text link text_black-2">Grid layout</a></li>
-                                            <li><a href="blog-sidebar-left.html" class="menu-link-text link text_black-2">Left sidebar</a></li>
-                                            <li><a href="blog-sidebar-right.html" class="menu-link-text link text_black-2">Right sidebar</a></li>
-                                            <li><a href="blog-list.html" class="menu-link-text link text_black-2">Blog list</a></li>
-                                            <li><a href="blog-detail.html" class="menu-link-text link text_black-2">Single Post</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="menu-item"><a href="https://themeforest.net/item/ecomus-ultimate-html5-template/53417990?s_rank=3" class="item-link">Buy now</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="col-xl-3 col-md-4 col-3">
-                        <ul class="nav-icon d-flex justify-content-end align-items-center gap-20">
-                            <li class="nav-search"><a href="#canvasSearch" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="nav-icon-item"><i class="icon icon-search"></i></a></li>
-                            <li class="nav-account"><a href="#login" data-bs-toggle="modal" class="nav-icon-item"><i class="icon icon-account"></i></a></li>
-                            <li class="nav-wishlist"><a href="wishlist.html" class="nav-icon-item"><i class="icon icon-heart"></i><span class="count-box">0</span></a></li>
-                            <li class="nav-cart"><a href="#shoppingCart" data-bs-toggle="modal" class="nav-icon-item"><i class="icon icon-bag"></i><span class="count-box">0</span></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- /header -->
-       
         <!-- Collection -->
         <section class="flat-spacing-10 flat-testimonial">
             <div class="container">
+                
                 <div class="wrap-carousel style-2">
                     <div class="swiper tf-sw-testimonial" data-preview="6" data-tablet="4" data-mobile="2" data-space-lg="30" data-space-md="15">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <div class="collection-item-circle has-bg hover-img">
-                                    <a href="shop-collection-sub.html" class="collection-image img-style">
-                                        <img class="lazyload" data-src="images/collections/new-releases.png" alt="collection-img" src="images/collections/new-releases.png">
+                                    <a href="{% url 'products' 'laptops' %}" class="collection-image img-style">
+
+                                        <img class="lazyload" data-src="../../static/images/collections/images_2.jpg" alt="collection-img" src="../../static/images/collections/images_2.jpg">
                                     </a>
                                     <div class="collection-content text-center">
-                                        <a href="shop-collection-sub.html" class="link title fw-6">New Releases</a>
+                                            <a href="{% url 'products' 'laptops' %}" class="link title fw-6">Laptops</a>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="collection-item-circle has-bg hover-img">
+                                    <a href="{% url 'products' 'phones' %}" class="collection-image img-style">
+                                        <img class="lazyload" data-src="../../static/images/collections/best-deals.png" alt="collection-img" src="../../static/images/collections/best-deals.png">
+                                    </a>
+                                    <div class="collection-content text-center">
+                                        <a href="{% url 'products' 'phones' %}" class="link title fw-6">Phones</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="swiper-slide">
+                                <div class="collection-item-circle has-bg hover-img">
+                                    <a href="{% url 'products' 'earbuds' %}" class="collection-image img-style">
+                                        <img class="lazyload" data-src="../../static/images/collections/collection-circle-15.png" alt="collection-img" src="../../static/images/collections/collection-circle-15.png">
+                                    </a>
+                                    <div class="collection-content text-center">
+                                        <a href="{% url 'products' 'earbuds' %}" class="link title fw-6">Earbuds</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="collection-item-circle has-bg hover-img">
-                                    <a href="shop-collection-sub.html" class="collection-image img-style">
-                                        <img class="lazyload" data-src="images/collections/best-deals.png" alt="collection-img" src="images/collections/best-deals.png">
+                                    <a href="{% url 'products' 'headphones' %}" class="collection-image img-style">
+                                        <img class="lazyload" data-src="../../static/images/collections/collection-circle-16.png" alt="collection-img" src="../../static/images/collections/collection-circle-16.png">
                                     </a>
                                     <div class="collection-content text-center">
-                                        <a href="shop-collection-sub.html" class="link title fw-6">Best Deals</a>
+                                        <a href="{% url 'products' 'headphones' %}" class="link title fw-6">Headphones</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="collection-item-circle has-bg hover-img">
-                                    <a href="shop-collection-sub.html" class="collection-image img-style">
-                                        <img class="lazyload" data-src="images/collections/collection-circle-14.png" alt="collection-img" src="images/collections/collection-circle-14.png">
+                                    <a href="{% url 'products' 'speakers' %}" class="collection-image img-style">
+                                        <img class="lazyload" data-src="../../static/images/collections/collection-circle-17.png" alt="collection-img" src="../../static/images/collections/collection-circle-17.png">
                                     </a>
                                     <div class="collection-content text-center">
-                                        <a href="shop-collection-sub.html" class="link title fw-6">Open-Ear</a>
+                                        <a href="{% url 'products' 'speakers' %}" class="link title fw-6">Speakers</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="collection-item-circle has-bg hover-img">
-                                    <a href="shop-collection-sub.html" class="collection-image img-style">
-                                        <img class="lazyload" data-src="images/collections/collection-circle-15.png" alt="collection-img" src="images/collections/collection-circle-15.png">
+                                    <a href="{% url 'products' 'tablets' %}" class="collection-image img-style">
+                                        <img class="lazyload" data-src="../../static/images/collections/collection-circle-18.png" alt="collection-img" src="../../static/images/collections/collection-circle-18.png">
                                     </a>
                                     <div class="collection-content text-center">
-                                        <a href="shop-collection-sub.html" class="link title fw-6">Earbuds</a>
+                                        <a href="{% url 'products' 'tablets' %}" class="link title fw-6">Tablets</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="collection-item-circle has-bg hover-img">
-                                    <a href="shop-collection-sub.html" class="collection-image img-style">
-                                        <img class="lazyload" data-src="images/collections/collection-circle-16.png" alt="collection-img" src="images/collections/collection-circle-16.png">
+                                    <a href="{% url 'products' 'phones' %}" class="collection-image img-style">
+                                        <img class="lazyload" data-src="../../static/images/collections/collection-circle-14.png" alt="collection-img" src="../../static/images/collections/collection-circle-14.png">
                                     </a>
                                     <div class="collection-content text-center">
-                                        <a href="shop-collection-sub.html" class="link title fw-6">Headphones</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="collection-item-circle has-bg hover-img">
-                                    <a href="shop-collection-sub.html" class="collection-image img-style">
-                                        <img class="lazyload" data-src="images/collections/collection-circle-17.png" alt="collection-img" src="images/collections/collection-circle-17.png">
-                                    </a>
-                                    <div class="collection-content text-center">
-                                        <a href="shop-collection-sub.html" class="link title fw-6">Speakers</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="collection-item-circle has-bg hover-img">
-                                    <a href="shop-collection-sub.html" class="collection-image img-style">
-                                        <img class="lazyload" data-src="images/collections/collection-circle-18.png" alt="collection-img" src="images/collections/collection-circle-18.png">
-                                    </a>
-                                    <div class="collection-content text-center">
-                                        <a href="shop-collection-sub.html" class="link title fw-6">Head</a>
+                                        <a href="{% url 'products' 'phones' %}" class="link title fw-6">Open-Ear</a>
                                     </div>
                                 </div>
                             </div>
@@ -672,77 +88,80 @@
                     <div class="nav-sw nav-prev-slider nav-prev-testimonial lg"><span class="icon icon-arrow-right"></span></div>
                     <div class="sw-dots style-2 sw-pagination-testimonial justify-content-center"></div>
                 </div>
+                
             </div>
         </section>
         <!-- /Collection -->
         <!-- Collection -->
         <section>
-            <div class="container">
-                <div class="swiper tf-sw-recent" data-preview="3" data-tablet="3" data-mobile="1.3" data-space-lg="30" data-space-md="15" data-space="15" data-pagination="1" data-pagination-md="1" data-pagination-lg="1">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide" lazy="true">
-                            <div class="collection-item-v4 lg hover-img">
-                                <div class="collection-inner">
-                                    <a href="shop-collection-sub.html" class="radius-20 collection-image img-style">
-                                        <img class="lazyload" data-src="images/collections/collection-66.jpg" src="images/collections/collection-66.jpg" alt="collection-img">
-                                    </a>
-                                    <div class="collection-content wow fadeInUp" data-wow-delay="0s">
-                                        <p class="subheading text_white">HEADPHONE</p>
-                                        <h5 class="heading text_white fw-6">Designed for All Occasions</h5>
-                                        <a href="shop-collection-sub.html" class="rounded-full tf-btn style-3 fw-6 btn-light-icon animate-hover-btn"><span>Shop now</span></a>
-                                    </div>
-                                </div>
+            <div class="container-full">
+                <div class="bg_grey-5 radius-60 flat-spacing-21">
+                    <div class="flat-title">
+                        <span class="title fw-6 wow fadeInUp" data-wow-delay="0s">Our best sellers</span>
+                    </div>
+                     
+                    <div class="container">
+    <div class="wrap-carousel wrap-sw-2">
+        <div class="swiper tf-sw-product-sell wrap-sw-over" data-preview="4" data-tablet="3" data-mobile="2" data-space-lg="30" data-space-md="15" data-pagination="2" data-pagination-md="3" data-pagination-lg="3">
+            <div class="swiper-wrapper">
+                
+                {% for product in featured_products %}
+                <div class="swiper-slide" lazy="true">
+                    <div class="card-product bg_white radius-20">
+                        <div class="card-product-wrapper">
+                            <a href="{% url 'product' product.slug %}" class="product-img">
+                                
+                                <img class="lazyload img-product" src="{{ product.image1.url }}" data-src="{{ product.image1.url }}" alt="{{ product.name }}">
+                                <img class="lazyload img-hover" src="{{ product.image2.url }}" data-src="{{ product.image2.url }}" alt="{{ product.name }}">
+                                
+                            </a>
+                            <div class="list-product-btn">
+                                <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
+                                    <span class="icon icon-bag"></span>
+                                    <span class="tooltip">Add to Cart</span>
+                                </a>
+                                
+                                <a href="#quick_view" data-bs-toggle="modal" class="box-icon bg_white quickview tf-btn-loading">
+                                    <span class="icon icon-view"></span>
+                                    <span class="tooltip">View Details</span>
+                                </a>
                             </div>
+                            {% if product.available %}
+                             <div class="on-sale-wrap text-end">
+                              <div class="on-sale-item">SALE</div>
+                                </div>
+                            {% else %}
+                                     <div class="on-sale-wrap text-end">
+                                <div class="on-sale-item">Finished</div>
+                                </div>
+                            {% endif %}
+
+                            
                         </div>
-                        <div class="swiper-slide" lazy="true">
-                            <div class="collection-item-v4 lg hover-img">
-                                <div class="collection-inner">
-                                    <a href="shop-collection-sub.html" class="radius-20 collection-image img-style">
-                                        <img class="lazyload" data-src="images/collections/collection-67.jpg" src="images/collections/collection-67.jpg" alt="collection-img">
-                                    </a>
-                                    <div class="collection-content wow fadeInUp" data-wow-delay="0s">
-                                        <p class="subheading text_white">30% OFF</p>
-                                        <h5 class="heading text_white fw-6">Comfort, unlimited movement</h5>
-                                        <a href="shop-collection-sub.html" class="rounded-full tf-btn style-3 fw-6 btn-light-icon animate-hover-btn"><span>Shop now</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide" lazy="true">
-                            <div class="collection-item-v4 lg hover-img">
-                                <div class="collection-inner">
-                                    <a href="shop-collection-sub.html" class="radius-20 collection-image img-style">
-                                        <img class="lazyload" data-src="images/collections/collection-68.jpg" src="images/collections/collection-68.jpg" alt="collection-img">
-                                    </a>
-                                    <div class="collection-content wow fadeInUp" data-wow-delay="0s">
-                                        <p class="subheading text_white">FREE SHIPPING</p>
-                                        <h5 class="heading text_white fw-6">Iconic design and brilliant acoustics</h5>
-                                        <a href="shop-collection-sub.html" class="rounded-full tf-btn style-3 fw-6 btn-light-icon animate-hover-btn"><span>Shop now</span></a>
-                                    </div>
-                                </div>
-                            </div>
+                        
+                        <div class="card-product-info has-padding">
+                            <a href="{% url 'product' product.slug %}" class="title link">{{ product.name }}</a>
+                            <span class="price">
+                                <span class="fw-4 text-sale">Ksh{{ product.price }}</span> 
+                                <span class="text_primary">Ksh{{ product.price }}</span>
+                            </span>
+                            
                         </div>
                     </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+        <div class="nav-sw nav-next-slider nav-next-product box-icon w_46 round"><span class="icon icon-arrow-left"></span></div>
+        <div class="nav-sw nav-prev-slider nav-prev-product box-icon w_46 round"><span class="icon icon-arrow-right"></span></div>
+    </div>
+</div>
                 </div>
             </div>
         </section>
         <!-- /Collection -->
-        <!-- Banner Collection -->
-        <section class="flat-spacing-8 pb_0">
-            <div class="container">
-                <div class="tf-banner-collection">
-                    <img class="lazyload" data-src="images/collections/banner-collection.jpg" src="images/collections/banner-collection.jpg" alt="img-banner" loading="lazy">
-                    <div class="box-content">
-                        <div class="container wow fadeInUp" data-wow-delay="0s">
-                            <div class="sub fw-7 text_white">ECOMUS HEADPHONE DESIGN</div>
-                            <h2 class="heading fw-6 text_white">Uniting Performance</h2>
-                            <p class="text_white">Fast wireless charging on-the-go.</p>
-                            <a href="shop-default.html" class="rounded-full tf-btn style-3 fw-6 btn-light-icon animate-hover-btn"><span>Shop Collection</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
         <!-- /Banner Collection -->
         <!-- Marquee -->
         <section class="flat-spacing-9">
@@ -834,8 +253,8 @@
                                 <div class="card-product style-price radius-20">
                                     <div class="card-product-wrapper">
                                         <a href="product-detail.html" class="product-img">
-                                            <img class="lazyload img-product" src="images/products/headphone-1.png" data-src="images/products/headphone-1.png" alt="image-product">
-                                            <img class="lazyload img-hover" data-src="images/products/headphone-2.png" src="images/products/headphone-2.png" alt="image-product">
+                                            <img class="lazyload img-product" src="../../static/images/products/headphone-1.png" data-src="../../static/images/products/headphone-1.png" alt="image-product">
+                                            <img class="lazyload img-hover" data-src="../../static/images/products/headphone-2.png" src="../../static/images/products/headphone-2.png" alt="image-product">
                                         </a>
                                         <div class="list-product-btn style-black">
                                             <a href="#quick_add" data-bs-toggle="modal" class="box-icon quick-add tf-btn-loading">
@@ -868,20 +287,16 @@
                                             <li class="list-color-item color-swatch active">
                                                 <span class="tooltip">Light Green</span>
                                                 <span class="swatch-value bg_light-green"></span>
-                                                <img class="lazyload" data-src="images/products/headphone-1.png" src="images/products/headphone-1.png" alt="image-product">
+                                                <img class="lazyload" data-src="../../static/images/products/headphone-1.png" src="../../static/images/products/headphone-1.png" alt="image-product">
                                             </li>
-                                            <li class="list-color-item color-swatch">
-                                                <span class="tooltip">Black</span>
-                                                <span class="swatch-value bg_dark"></span>
-                                                <img class="lazyload" data-src="images/products/headphone-2.png" src="images/products/headphone-2.png" alt="image-product">
-                                            </li>
+                                            
                                             <li class="list-color-item color-swatch">
                                                 <span class="tooltip">White</span>
                                                 <span class="swatch-value bg_white"></span>
-                                                <img class="lazyload" data-src="images/products/headphone-3.png" src="images/products/headphone-3.png"  alt="image-product">
+                                                <img class="lazyload" data-src="../../static/images/products/headphone-3.png" src="../../static/images/products/headphone-3.png"  alt="image-product">
                                             </li>
                                         </ul>
-                                        <div class="price">$499.00</div>
+                                        <div class="price">Ksh4999.00</div>
                                     </div>
                                     <div class="tf-price-table-contents">
                                         <ul>
@@ -911,8 +326,8 @@
                                 <div class="card-product style-price bg_black radius-20">
                                     <div class="card-product-wrapper">
                                         <a href="product-detail.html" class="product-img">
-                                            <img class="lazyload img-product" src="images/products/headphone-4.png" data-src="images/products/headphone-4.png" alt="image-product">
-                                            <img class="lazyload img-hover" data-src="images/products/headphone-5.png" src="images/products/headphone-5.png" alt="image-product">
+                                            <img class="lazyload img-product" src="../../static/images/products/headphone-4.png" data-src="../../static/images/products/headphone-4.png" alt="image-product">
+                                            <img class="lazyload img-hover" data-src="../../static/images/products/headphone-5.png" src="../../static/images/products/headphone-5.png" alt="image-product">
                                         </a>
                                         <div class="list-product-btn">
                                             <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
@@ -945,15 +360,15 @@
                                             <li class="list-color-item color-swatch active">
                                                 <span class="tooltip">Blue</span>
                                                 <span class="swatch-value bg_blue-2"></span>
-                                                <img class="lazyload" data-src="images/products/headphone-4.png" src="images/products/headphone-4.png" alt="image-product">
+                                                <img class="lazyload" data-src="../../static/images/products/headphone-4.png" src="../../static/images/products/headphone-4.png" alt="image-product">
                                             </li>
                                             <li class="list-color-item color-swatch">
                                                 <span class="tooltip">Pink</span>
                                                 <span class="swatch-value bg_purple"></span>
-                                                <img class="lazyload" data-src="images/products/headphone-5.png" src="images/products/headphone-5.png" alt="image-product">
+                                                <img class="lazyload" data-src="../../static/images/products/headphone-5.png" src="../../static/images/products/headphone-5.png" alt="image-product">
                                             </li>
                                         </ul>
-                                        <div class="price">$384.00</div>
+                                        <div class="price">Ksh3884.00</div>
                                     </div>
                                     <div class="tf-price-table-contents">
                                         <ul>
@@ -983,8 +398,8 @@
                                 <div class="card-product style-price radius-20">
                                     <div class="card-product-wrapper">
                                         <a href="product-detail.html" class="product-img">
-                                            <img class="lazyload img-product" src="images/products/headphone-6.png" data-src="images/products/headphone-6.png" alt="image-product">
-                                            <img class="lazyload img-hover" data-src="images/products/headphone-7.png" src="images/products/headphone-7.png" alt="image-product">
+                                            <img class="lazyload img-product" src="../../static/images/products/headphone-6.png" data-src="../../static/images/products/headphone-6.png" alt="image-product">
+                                            <img class="lazyload img-hover" data-src="../../static/images/products/headphone-7.png" src="../../static/images/products/headphone-7.png" alt="image-product">
                                         </a>
                                         <div class="list-product-btn style-black">
                                             <a href="#quick_add" data-bs-toggle="modal" class="box-icon quick-add tf-btn-loading">
@@ -1017,15 +432,15 @@
                                             <li class="list-color-item color-swatch active">
                                                 <span class="tooltip">Blue</span>
                                                 <span class="swatch-value bg_blue-2"></span>
-                                                <img class="lazyload" data-src="images/products/headphone-6.png" src="images/products/headphone-6.png" alt="image-product">
+                                                <img class="lazyload" data-src="../../static/images/products/headphone-6.png" src="../../static/images/products/headphone-6.png" alt="image-product">
                                             </li>
                                             <li class="list-color-item color-swatch">
                                                 <span class="tooltip">Orange</span>
                                                 <span class="swatch-value bg_orange-3"></span>
-                                                <img class="lazyload" data-src="images/products/headphone-7.png" src="images/products/headphone-7.png" alt="image-product">
+                                                <img class="lazyload" data-src="../../static/images/products/headphone-7.png" src="../../static/images/products/headphone-7.png" alt="image-product">
                                             </li>
                                         </ul>
-                                        <div class="price">$384.00</div>
+                                        <div class="price">KSH7840.00</div>
                                     </div>
                                     <div class="tf-price-table-contents">
                                         <ul>
@@ -1070,8 +485,8 @@
                                         <i class="icon-shipping"></i>
                                     </div>
                                     <div class="content">
-                                        <div class="title fw-6">Free Premium Shipping</div>
-                                        <p>Free ground shipping on orders of $99 or more in <br> the U.S. and $250 in Canada</p>
+                                        <div class="title fw-6"> Premium Shipping</div>
+                                        <p> shipping on orders of Ksh 20,000 or more in <br> Nairobi. and surrounding areas</p>
                                     </div>
                                 </div>
                             </div>
@@ -1092,8 +507,8 @@
                                         <i class="icon-return"></i>
                                     </div>
                                     <div class="content">
-                                        <div class="title fw-6">Free Returns in 14 Days</div>
-                                        <p>We offer a generous 14-days return policy, allowing <br> you to shop with confidence</p>
+                                        <div class="title fw-6">Quality Assurance</div>
+                                        <p>We offer only Original products  <br>  So you to shop with confidence</p>
                                     </div>
                                 </div>
                             </div>
@@ -1108,259 +523,7 @@
         </section>
         <!-- /Icon box -->
         <!-- Best seller -->
-        <section>
-            <div class="container-full">
-                <div class="bg_grey-5 radius-60 flat-spacing-21">
-                    <div class="flat-title">
-                        <span class="title fw-6 wow fadeInUp" data-wow-delay="0s">Our best sellers</span>
-                    </div>
-                    <div class="container">
-                        <div class="wrap-carousel wrap-sw-2">
-                            <div class="swiper tf-sw-product-sell wrap-sw-over" data-preview="4" data-tablet="3" data-mobile="2" data-space-lg="30" data-space-md="15" data-pagination="2" data-pagination-md="3" data-pagination-lg="3">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide" lazy="true">
-                                        <div class="card-product bg_white radius-20">
-                                            <div class="card-product-wrapper">
-                                                <a href="product-detail.html" class="product-img">
-                                                    <img class="lazyload img-product" src="images/products/headphone-8.png" data-src="images/products/headphone-8.png" alt="image-product">
-                                                    <img class="lazyload img-hover" data-src="images/products/headphone-9.png" src="images/products/headphone-9.png" alt="image-product">
-                                                </a>
-                                                <div class="list-product-btn">
-                                                    <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
-                                                        <span class="icon icon-bag"></span>
-                                                        <span class="tooltip">Quick Add</span>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="box-icon bg_white wishlist btn-icon-action">
-                                                        <span class="icon icon-heart"></span>
-                                                        <span class="tooltip">Add to Wishlist</span>
-                                                        <span class="icon icon-delete"></span>
-                                                    </a>
-                                                    <a href="#compare" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="box-icon bg_white compare btn-icon-action">
-                                                        <span class="icon icon-compare"></span>
-                                                        <span class="tooltip">Add to Compare</span>
-                                                        <span class="icon icon-check"></span>
-                                                    </a>
-                                                    <a href="#quick_view" data-bs-toggle="modal" class="box-icon bg_white quickview tf-btn-loading">
-                                                        <span class="icon icon-view"></span>
-                                                        <span class="tooltip">Quick View</span>
-                                                    </a>
-                                                </div>
-                                                <div class="on-sale-wrap text-end">
-                                                    <div class="on-sale-item">Sale</div>
-                                                </div>
-                                            </div>
-                                            <div class="card-product-info has-padding">
-                                                <a href="product-detail.html" class="title link">WH-1000XM4 Wireless Headphones</a>
-                                                <span class="price"><span class="fw-4 text-sale">$349.00</span> <span class="text_primary">$279.00</span></span>
-                                                <ul class="list-color-product">
-                                                    <li class="list-color-item color-swatch active">
-                                                        <span class="tooltip">Black</span>
-                                                        <span class="swatch-value bg_dark"></span>
-                                                        <img class="lazyload" data-src="images/products/headphone-8.png" src="images/products/headphone-8.png" alt="image-product">
-                                                    </li>
-                                                    <li class="list-color-item color-swatch">
-                                                        <span class="tooltip">Blue</span>
-                                                        <span class="swatch-value bg_blue-2"></span>
-                                                        <img class="lazyload" data-src="images/products/headphone-9.png" src="images/products/headphone-9.png" alt="image-product">
-                                                    </li>
-                                                    <li class="list-color-item color-swatch">
-                                                        <span class="tooltip">Light Grey</span>
-                                                        <span class="swatch-value bg_light-grey"></span>
-                                                        <img class="lazyload" data-src="images/products/headphone-10.png" src="images/products/headphone-10.png" alt="image-product">
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide" lazy="true">
-                                        <div class="card-product bg_white radius-20">
-                                            <div class="card-product-wrapper">
-                                                <a href="product-detail.html" class="product-img">
-                                                    <img class="lazyload img-product" src="images/products/headphone-11.png" data-src="images/products/headphone-11.png" alt="image-product">
-                                                    <img class="lazyload img-hover" data-src="images/products/headphone-12.png" src="images/products/headphone-12.png" alt="image-product">
-                                                </a>
-                                                <div class="list-product-btn">
-                                                    <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
-                                                        <span class="icon icon-bag"></span>
-                                                        <span class="tooltip">Quick Add</span>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="box-icon bg_white wishlist btn-icon-action">
-                                                        <span class="icon icon-heart"></span>
-                                                        <span class="tooltip">Add to Wishlist</span>
-                                                        <span class="icon icon-delete"></span>
-                                                    </a>
-                                                    <a href="#compare" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="box-icon bg_white compare btn-icon-action">
-                                                        <span class="icon icon-compare"></span>
-                                                        <span class="tooltip">Add to Compare</span>
-                                                        <span class="icon icon-check"></span>
-                                                    </a>
-                                                    <a href="#quick_view" data-bs-toggle="modal" class="box-icon bg_white quickview tf-btn-loading">
-                                                        <span class="icon icon-view"></span>
-                                                        <span class="tooltip">Quick View</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="card-product-info has-padding">
-                                                <a href="product-detail.html" class="title link">LinkBuds S Wireless Earbuds</a>
-                                                <span class="price">$199.00</span>
-                                                <ul class="list-color-product">
-                                                    <li class="list-color-item color-swatch active">
-                                                        <span class="tooltip">White</span>
-                                                        <span class="swatch-value bg_white"></span>
-                                                        <img class="lazyload" data-src="images/products/headphone-11.png" src="images/products/headphone-11.png" alt="image-product">
-                                                    </li>
-                                                    <li class="list-color-item color-swatch">
-                                                        <span class="tooltip">Pink</span>
-                                                        <span class="swatch-value bg_purple"></span>
-                                                        <img class="lazyload" data-src="images/products/headphone-12.png" src="images/products/headphone-12.png" alt="image-product">
-                                                    </li>
-                                                    <li class="list-color-item color-swatch">
-                                                        <span class="tooltip">Black</span>
-                                                        <span class="swatch-value bg_dark"></span>
-                                                        <img class="lazyload" data-src="images/products/headphone-13.png" src="images/products/headphone-13.png" alt="image-product">
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide" lazy="true">
-                                        <div class="card-product bg_white radius-20">
-                                            <div class="card-product-wrapper">
-                                                <a href="product-detail.html" class="product-img">
-                                                    <img class="lazyload img-product" src="images/products/headphone-14.png" data-src="images/products/headphone-14.png" alt="image-product">
-                                                    <img class="lazyload img-hover" data-src="images/products/headphone-15.png" src="images/products/headphone-15.png" alt="image-product">
-                                                </a>
-                                                <div class="list-product-btn">
-                                                    <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
-                                                        <span class="icon icon-bag"></span>
-                                                        <span class="tooltip">Quick Add</span>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="box-icon bg_white wishlist btn-icon-action">
-                                                        <span class="icon icon-heart"></span>
-                                                        <span class="tooltip">Add to Wishlist</span>
-                                                        <span class="icon icon-delete"></span>
-                                                    </a>
-                                                    <a href="#compare" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="box-icon bg_white compare btn-icon-action">
-                                                        <span class="icon icon-compare"></span>
-                                                        <span class="tooltip">Add to Compare</span>
-                                                        <span class="icon icon-check"></span>
-                                                    </a>
-                                                    <a href="#quick_view" data-bs-toggle="modal" class="box-icon bg_white quickview tf-btn-loading">
-                                                        <span class="icon icon-view"></span>
-                                                        <span class="tooltip">Quick View</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="card-product-info has-padding">
-                                                <a href="product-detail.html" class="title link">INZONE H9 Wireless Gaming Headset</a>
-                                                <span class="price">$299.00</span>
-                                                <ul class="list-color-product">
-                                                    <li class="list-color-item color-swatch">
-                                                        <span class="tooltip">Black</span>
-                                                        <span class="swatch-value bg_dark"></span>
-                                                        <img class="lazyload" data-src="images/products/headphone-15.png" src="images/products/headphone-15.png" alt="image-product">
-                                                    </li>
-                                                    <li class="list-color-item color-swatch active">
-                                                        <span class="tooltip">White</span>
-                                                        <span class="swatch-value bg_white"></span>
-                                                        <img class="lazyload" data-src="images/products/headphone-14.png" src="images/products/headphone-14.png" alt="image-product">
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide" lazy="true">
-                                        <div class="card-product bg_white radius-20">
-                                            <div class="card-product-wrapper">
-                                                <a href="product-detail.html" class="product-img">
-                                                    <img class="lazyload img-product" src="images/products/headphone-16.png" data-src="images/products/headphone-16.png" alt="image-product">
-                                                    <img class="lazyload img-hover" data-src="images/products/headphone-17.png" src="images/products/headphone-17.png" alt="image-product">
-                                                </a>
-                                                <div class="list-product-btn">
-                                                    <a href="#shoppingCart" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
-                                                        <span class="icon icon-bag"></span>
-                                                        <span class="tooltip">Add to cart</span>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="box-icon bg_white wishlist btn-icon-action">
-                                                        <span class="icon icon-heart"></span>
-                                                        <span class="tooltip">Add to Wishlist</span>
-                                                        <span class="icon icon-delete"></span>
-                                                    </a>
-                                                    <a href="#compare" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="box-icon bg_white compare btn-icon-action">
-                                                        <span class="icon icon-compare"></span>
-                                                        <span class="tooltip">Add to Compare</span>
-                                                        <span class="icon icon-check"></span>
-                                                    </a>
-                                                    <a href="#quick_view" data-bs-toggle="modal" class="box-icon bg_white quickview tf-btn-loading">
-                                                        <span class="icon icon-view"></span>
-                                                        <span class="tooltip">Quick View</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="card-product-info has-padding">
-                                                <a href="product-detail.html" class="title link">NS7 Wireless Wearable TV Speaker</a>
-                                                <span class="price">$299.00</span>
-                                                <ul class="list-color-product">
-                                                    <li class="list-color-item color-swatch active">
-                                                        <span class="tooltip">Grey</span>
-                                                        <span class="swatch-value bg_grey"></span>
-                                                        <img class="lazyload" data-src="images/products/headphone-16.png" src="images/products/headphone-16.png" alt="image-product">
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide" lazy="true">
-                                        <div class="card-product bg_white radius-20">
-                                            <div class="card-product-wrapper">
-                                                <a href="product-detail.html" class="product-img">
-                                                    <img class="lazyload img-product" src="images/products/headphone-18.png" data-src="images/products/headphone-18.png" alt="image-product">
-                                                    <img class="lazyload img-hover" data-src="images/products/headphone-19.png" src="images/products/headphone-19.png" alt="image-product">
-                                                </a>
-                                                <div class="list-product-btn">
-                                                    <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
-                                                        <span class="icon icon-bag"></span>
-                                                        <span class="tooltip">Quick Add</span>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="box-icon bg_white wishlist btn-icon-action">
-                                                        <span class="icon icon-heart"></span>
-                                                        <span class="tooltip">Add to Wishlist</span>
-                                                        <span class="icon icon-delete"></span>
-                                                    </a>
-                                                    <a href="#compare" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="box-icon bg_white compare btn-icon-action">
-                                                        <span class="icon icon-compare"></span>
-                                                        <span class="tooltip">Add to Compare</span>
-                                                        <span class="icon icon-check"></span>
-                                                    </a>
-                                                    <a href="#quick_view" data-bs-toggle="modal" class="box-icon bg_white quickview tf-btn-loading">
-                                                        <span class="icon icon-view"></span>
-                                                        <span class="tooltip">Quick View</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="card-product-info has-padding">
-                                                <a href="product-detail.html" class="title link">IER-M7 Monitor In-ear Headphones</a>
-                                                <span class="price">$499.00</span>
-                                                <ul class="list-color-product">
-                                                    <li class="list-color-item color-swatch active">
-                                                        <span class="tooltip">Black</span>
-                                                        <span class="swatch-value bg_dark"></span>
-                                                        <img class="lazyload" data-src="images/products/headphone-18.png" src="images/products/headphone-18.png" alt="image-product">
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="nav-sw nav-next-slider nav-next-product box-icon w_46 round"><span class="icon icon-arrow-left"></span></div>
-                            <div class="nav-sw nav-prev-slider nav-prev-product box-icon w_46 round"><span class="icon icon-arrow-right"></span></div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </section>
+        
         <!-- /Best seller -->
         <!-- Testimonial -->
         <section class="flat-spacing-12">
@@ -1374,12 +537,12 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="img-sw-thumb">
-                                        <img class="lazyload img-product" data-src="images/item/tets5.jpg" src="images/item/tets5.jpg" alt="image-product">
+                                        <img class="lazyload img-product" data-src="../../static/images/item/tets5.jpg" src="../../static/images/item/tets5.jpg" alt="image-product">
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="img-sw-thumb">
-                                        <img class="lazyload img-product" data-src="images/item/tets6.jpg" src="images/item/tets6.jpg" alt="image-product">
+                                        <img class="lazyload img-product" data-src="../../static/images/item/tets6.jpg" src="../../static/images/item/tets6.jpg" alt="image-product">
                                     </div>
                                 </div>
 
@@ -1400,16 +563,16 @@
                                             <i class="icon-start"></i>
                                         </div>
                                         <p class="text fw-5">
-                                            I have been shopping with this web fashion site for over a year nowand I can confidently say it is the best online fashion site out there.
+                                            I bought my Laptop here  I can confidently say it is the best Electronics site out there.
                                         </p>
                                         <div class="divider"></div>
                                         <div class="author box-author">
                                             <div class="box-img d-md-none">
-                                                <img class="lazyload img-product" data-src="images/item/tets1.jpg" src="images/item/tets1.jpg" alt="image-product">
+                                                <img class="lazyload img-product" data-src="../../static/images/item/tets1.jpg" src="../../static/images/item/tets1.jpg" alt="image-product">
                                             </div>
                                             <div class="content">
                                                 <div class="name">Jenifer Unix</div>
-                                                <a href="product-detail.html" class="metas link">Purchase item : <span>Oversized Printed T-shirt</span></a>
+                                                <a href="product-detail.html" class="metas link">Purchase item : <span>Macbook Pro</span></a>
                                             </div>
                                             
                                         </div>
@@ -1426,16 +589,16 @@
                                             <i class="icon-start"></i>
                                         </div>
                                         <p class="text fw-5">
-                                            Fashion website is impressive! The user-friendly interface and excellent customer service make shopping a breeze.
+                                             The user-friendly interface and excellent customer service make shopping a breeze.
                                         </p>
                                         <div class="divider"></div>
                                         <div class="author box-author">
                                             <div class="box-img d-md-none">
-                                                <img class="lazyload img-product" data-src="images/item/tets2.jpg" src="images/item/tets2.jpg" alt="image-product">
+                                                <img class="lazyload img-product" data-src="../../static/images/item/tets2.jpg" src="../../static/images/item/tets2.jpg" alt="image-product">
                                             </div>
                                             <div class="content">
                                                 <div class="name">Robert smith</div>
-                                                <a href="product-detail.html" class="metas link">Purchase item : <span> The Scot Collar Mint</span></a>
+                                                <a href="product-detail.html" class="metas link">Purchase item : <span> Headphones</span></a>
                                             </div>
                                             
                                         </div>
@@ -1459,32 +622,32 @@
                     <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <div class="brand-item">
-                                    <img class="lazyload" data-src="images/brand/brand-01.png" src="images/brand/brand-01.png" alt="image-brand">
+                                    <img class="lazyload" data-src="../../static/images/brand/brand-01.png" src="../../static/images/brand/brand-01.png" alt="image-brand">
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-item">
-                                    <img class="lazyload" data-src="images/brand/brand-02.png" src="images/brand/brand-02.png" alt="image-brand">
+                                    <img class="lazyload" data-src="../../static/images/brand/brand-02.png" src="../../static/images/brand/brand-02.png" alt="image-brand">
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-item">
-                                    <img class="lazyload" data-src="images/brand/brand-03.png" src="images/brand/brand-03.png" alt="image-brand">
+                                    <img class="lazyload" data-src="../../static/images/brand/brand-03.png" src="../../static/images/brand/brand-03.png" alt="image-brand">
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-item">
-                                    <img class="lazyload" data-src="images/brand/brand-04.png" src="images/brand/brand-04.png" alt="image-brand">
+                                    <img class="lazyload" data-src="../../static/images/brand/brand-04.png" src="../../static/images/brand/brand-04.png" alt="image-brand">
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-item">
-                                    <img class="lazyload" data-src="images/brand/brand-05.png" src="images/brand/brand-05.png" alt="image-brand">
+                                    <img class="lazyload" data-src="../../static/images/brand/brand-05.png" src="../../static/images/brand/brand-05.png" alt="image-brand">
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="brand-item">
-                                    <img class="lazyload" data-src="images/brand/brand-06.png" src="images/brand/brand-06.png" alt="image-brand">
+                                    <img class="lazyload" data-src="../../static/images/brand/brand-06.png" src="../../static/images/brand/brand-06.png" alt="image-brand">
                                 </div>
                             </div>
                     </div>
@@ -1494,157 +657,7 @@
         </section>
         <!-- /brand -->
         <!-- Footer -->
-        <footer id="footer" class="footer background-gray md-pb-70">
-            <div class="footer-wrap">
-                <div class="footer-body">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-3 col-md-6 col-12">
-                                <div class="footer-infor">
-                                    <div class="footer-logo">
-                                        <a href="index.html">
-                                            <img src="images/logo/logo.svg" alt="">
-                                        </a>
-                                    </div>
-                                    <ul>
-                                        <li>
-                                            <p>Address: 1234 Fashion Street, Suite 567, <br> New York, NY 10001</p>
-                                        </li>
-                                        <li>
-                                            <p>Email: <a href="#">info@fashionshop.com</a></p>
-                                        </li>
-                                        <li>
-                                            <p>Phone: <a href="#">(212) 555-1234</a></p>
-                                        </li>
-                                    </ul>
-                                    <a href="contact-1.html" class="tf-btn btn-line">Get direction<i class="icon icon-arrow1-top-left"></i></a>
-                                    <ul class="tf-social-icon d-flex gap-10">
-                                        <li><a href="#" class="box-icon w_34 round social-facebook social-line"><i class="icon fs-14 icon-fb"></i></a></li>
-                                        <li><a href="#" class="box-icon w_34 round social-twiter social-line"><i class="icon fs-12 icon-Icon-x"></i></a></li>
-                                        <li><a href="#" class="box-icon w_34 round social-instagram social-line"><i class="icon fs-14 icon-instagram"></i></a></li>
-                                        <li><a href="#" class="box-icon w_34 round social-tiktok social-line"><i class="icon fs-14 icon-tiktok"></i></a></li>
-                                        <li><a href="#" class="box-icon w_34 round social-pinterest social-line"><i class="icon fs-14 icon-pinterest-1"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 col-12 footer-col-block">
-                                <div class="footer-heading footer-heading-desktop">
-                                    <h6>Help</h6>
-                                </div>
-                                <div class="footer-heading footer-heading-moblie">
-                                    <h6>Help</h6>
-                                </div>
-                                <ul class="footer-menu-list tf-collapse-content">
-                                    <li>
-                                        <a href="privacy-policy.html" class="footer-menu_item">Privacy Policy</a>
-                                    </li>
-                                    <li> 
-                                        <a href="delivery-return.html" class="footer-menu_item">  Returns + Exchanges </a>
-                                    </li>
-                                    <li> 
-                                        <a href="shipping-delivery.html" class="footer-menu_item">Shipping</a>
-                                    </li>
-                                    <li> 
-                                        <a href="terms-conditions.html" class="footer-menu_item">Terms &amp; Conditions</a>
-                                    </li>
-                                    <li> 
-                                        <a href="faq-1.html" class="footer-menu_item">FAQ’s</a>
-                                    </li>
-                                    <li> 
-                                        <a href="compare.html" class="footer-menu_item">Compare</a>
-                                    </li>
-                                    <li> 
-                                        <a href="wishlist.html" class="footer-menu_item">My Wishlist</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-xl-3 col-md-6 col-12 footer-col-block">
-                                <div class="footer-heading footer-heading-desktop">
-                                    <h6>About us</h6>
-                                </div>
-                                <div class="footer-heading footer-heading-moblie">
-                                    <h6>About us</h6>
-                                </div>
-                                <ul class="footer-menu-list tf-collapse-content">
-                                    <li>
-                                        <a href="about-us.html" class="footer-menu_item">Our Story</a>
-                                    </li>
-                                    <li> 
-                                        <a href="our-store.html" class="footer-menu_item">Visit Our Store</a>
-                                    </li>
-                                    <li> 
-                                        <a href="contact-1.html" class="footer-menu_item">Contact Us</a>
-                                    </li>
-                                    <li> 
-                                        <a href="login.html" class="footer-menu_item">Account</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-xl-3 col-md-6 col-12">
-                                <div class="footer-newsletter footer-col-block">
-                                    <div class="footer-heading footer-heading-desktop">
-                                        <h6>Sign Up for Email</h6>
-                                    </div>
-                                    <div class="footer-heading footer-heading-moblie">
-                                        <h6>Sign Up for Email</h6>
-                                    </div>
-                                    <div class="tf-collapse-content">
-                                        <div class="footer-menu_item">Sign up to get first dibs on new arrivals, sales, exclusive content, events and more!</div>
-                                        <form class="form-newsletter" id="subscribe-form" action="#" method="post" accept-charset="utf-8" data-mailchimp="true">
-                                            <div id="subscribe-content">
-                                                <fieldset class="email">
-                                                    <input type="email" name="email-form" id="subscribe-email" placeholder="Enter your email...." tabindex="0" aria-required="true">
-                                                </fieldset>
-                                                <div class="button-submit">
-                                                    <button id="subscribe-button" class="tf-btn btn-sm radius-3 btn-fill btn-icon animate-hover-btn" type="button">Subscribe<i class="icon icon-arrow1-top-left"></i></button>
-                                                </div>
-                                            </div>
-                                            <div id="subscribe-msg"></div>
-                                        </form>
-                                        <div class="tf-cur">
-                                            <div class="tf-currencies">
-                                                <select class="image-select center style-default type-currencies">
-                                                    <option data-thumbnail="images/country/fr.svg">EUR <span>€ | France</span></option>
-                                                    <option data-thumbnail="images/country/de.svg">EUR <span>€ | Germany</span></option>
-                                                    <option selected data-thumbnail="images/country/us.svg">USD <span>$ | United States</span></option>
-                                                    <option data-thumbnail="images/country/vn.svg">VND <span>₫ | Vietnam</span></option>
-                                                </select>
-                                            </div>
-                                            <div class="tf-languages">
-                                                <select class="image-select center style-default type-languages">
-                                                    <option>English</option>
-                                                    <option>العربية</option>
-                                                    <option>简体中文</option>
-                                                    <option>اردو</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="footer-bottom-wrap d-flex gap-20 flex-wrap justify-content-between align-items-center">
-                                    <div class="footer-menu_item">© 2024 Ecomus Store. All Rights Reserved</div>
-                                    <div class="tf-payment">
-                                        <img src="images/payments/visa.png" alt="">
-                                        <img src="images/payments/img-1.png" alt="">
-                                        <img src="images/payments/img-2.png" alt="">
-                                        <img src="images/payments/img-3.png" alt="">
-                                        <img src="images/payments/img-4.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        
         <!-- /Footer -->
 
     </div>
@@ -3275,5 +2288,5 @@
             </div>
         </div>
     </div>
-</body>
+
 {% endblock %}
