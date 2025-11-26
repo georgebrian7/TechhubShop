@@ -47,7 +47,7 @@ def login_view(request):
             return redirect('cart')
     return render(request, 'login.html')
 
-@login_required(login_url='dashboard_login')
+
 def dashboard(request,):
     return render(request, 'admin.html')
 
