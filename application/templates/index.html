@@ -111,9 +111,13 @@
                         <div class="card-product-wrapper">
                             <a href="{% url 'product' product.slug %}" class="product-img">
                                 
-                                <img class="lazyload img-product" src="{{ product.image1.url }}" data-src="{{ product.image1.url }}" alt="{{ product.name }}">
-                                <img class="lazyload img-hover" src="{{ product.image2.url }}" data-src="{{ product.image2.url }}" alt="{{ product.name }}">
                                 
+                                {% if product.image1 %}
+                             <img class="lazyload img-product" src="{{ product.image1.url }}" data-src="{{ product.image1.url }}" alt="{{ product.name }}">
+                                <img class="lazyload img-hover" src="{{ product.image2.url }}" data-src="{{ product.image2.url }}" alt="{{ product.name }}">
+                         {% else %}
+                        <img src="/static/images/placeholder.jpg" alt="No image available">
+                          {% endif %}
                             </a>
                             <div class="list-product-btn">
                                 <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
