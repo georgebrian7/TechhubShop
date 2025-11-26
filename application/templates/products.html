@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block content  %}
+
+<div class="tf-page-title">
+    <div class="container-full">
+        <div class="row">
+            <div class="col-12">
+                <div class="heading text-center">{{ category.name }}</div>
+                <p class="text-center text-2 text_black-2 mt_5">Shop through our latest selection of {{ category.name }}</p> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="flat-spacing-1">
+    <div class="container">
+        <div class="tf-shop-control grid-3 align-items-center">
+            <div class="tf-control-filter">
+                <a href="#filterShop" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="tf-btn-filter">
+                    <span class="icon icon-filter"></span><span class="text">Filter</span>
+                </a>
+            </div>
+
+            <ul class="tf-control-layout d-flex justify-content-center">
+                <li class="tf-view-layout-switch sw-layout-2" data-value-grid="grid-2"><div class="item"><span class="icon icon-grid-2"></span></div></li>
+                <li class="tf-view-layout-switch sw-layout-3" data-value-grid="grid-3"><div class="item"><span class="icon icon-grid-3"></span></div></li>
+                <li class="tf-view-layout-switch sw-layout-4 active" data-value-grid="grid-4"><div class="item"><span class="icon icon-grid-4"></span></div></li>
+                <li class="tf-view-layout-switch sw-layout-5" data-value-grid="grid-5"><div class="item"><span class="icon icon-grid-5"></span></div></li>
+                <li class="tf-view-layout-switch sw-layout-6" data-value-grid="grid-6"><div class="item"><span class="icon icon-grid-6"></span></div></li>
+            </ul>
+
+            <div class="tf-control-sorting d-flex justify-content-end">
+                <div class="tf-dropdown-sort" data-bs-toggle="dropdown">
+                    <div class="btn-select">
+                        <span class="text-sort-value">Featured</span>
+                        <span class="icon icon-arrow-down"></span>
+                    </div>
+                    <div class="dropdown-menu">
+                        <div class="select-item active"><span class="text-value-item">Featured</span></div>
+                        <div class="select-item"><span class="text-value-item">Best selling</span></div>
+                        <div class="select-item"><span class="text-value-item">Alphabetically, A-Z</span></div>
+                        <div class="select-item"><span class="text-value-item">Alphabetically, Z-A</span></div>
+                        <div class="select-item"><span class="text-value-item">Price, low to high</span></div>
+                        <div class="select-item"><span class="text-value-item">Price, high to low</span></div>
+                        <div class="select-item"><span class="text-value-item">Date, old to new</span></div>
+                        <div class="select-item"><span class="text-value-item">Date, new to old</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-layout wrapper-shop" data-grid="grid-2">
+            
+            <div class="card-product style-2" style="display: flex; border: 20px;" >
+
+                {% for product in products %}
+                    
+                <div class="card-product-wrapper "  >
+                    <a href="product-detail.html" class="product-img">
+                        <img class="lazyload img-product" data-src="{{ product.image1.url }}" src="{{ product.image2.url }}" alt="{{ product.name }}">
+                        <img class="lazyload img-hover" data-src="{{ product.image2.url }}" src="{{ product.image1.url }}" alt="{{ product.name }}">
+                    </a>
+
+                    <div class="list-product-btn column-left">
+                        <a href="{% url 'add_to_cart' product.id %}" class="box-icon wishlist bg_white btn-icon-action">
+                            
+                            <span class="icon icon-heart"></span>
+                            <span class="tooltip">Add to Cart</span>
+                            <span class="icon icon-delete"></span>
+                        </a>
+                        <a href="#compare" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="box-icon bg_white compare btn-icon-action">
+                            <span class="icon icon-compare"></span>
+                            <span class="tooltip">Add to Compare</span>
+                            <span class="icon icon-check"></span>
+                        </a>
+                    </div>
+
+                    <div class="list-product-btn absolute-3">
+                        <a href="{% url 'add_to_cart' product.id %}" data-bs-toggle="modal" class="box-icon quick-add style-2">
+                            <span class="icon icon-bag"></span><span class="text">QUICK ADD</span>
+                        </a>
+                        <a href="#quick_view" data-bs-toggle="modal" class="box-icon quickview style-2">
+                            <span class="icon icon-view"></span><span class="text">QUICK VIEW</span>
+                        </a>
+                    </div>
+
+                    <div class="size-list style-2">
+                        <span>S</span><span>M</span><span>L</span><span>XL</span>
+                    </div>
+
+                    <div class="card-product-info">
+                        <a href="product-detail.html" class="title link">{{ product.name }}</a>
+                        <span class="price">Ksh {{ product.price }}</span>
+                    </div>
+                </div>
+                {% empty %}
+                <div>No products available in this category.</li>
+                {% endfor %}
+
+                </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
