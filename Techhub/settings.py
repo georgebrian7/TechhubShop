@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import dj_database_url
+import os
 from pathlib import Path
 import dj_database_url
 
@@ -26,7 +27,7 @@ SECRET_KEY = 'django-insecure-$!63jsf0bbt1ed1lw*l*wfj4#vhjora=*+kw-0ky8frwlhr)uh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -43,6 +44,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -76,10 +79,11 @@ WSGI_APPLICATION = 'Techhub.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+   'default': dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default='postgresql://postgres:fancyMe@127.0.0.1:5432/postgres',
+        conn_max_age=600
+    )
 }
 
 
@@ -118,6 +122,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+
+# if not DEBUG:
+    # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
+STATIC_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
