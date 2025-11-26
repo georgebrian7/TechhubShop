@@ -10,7 +10,7 @@ sys.path.append(project_root)
 
 # Set the Django settings module - CHANGE THIS to match your project structure
 # Common options: "TechhubShop.settings" or "config.settings" or "core.settings"
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "TechhubShop.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Techhub.settings")
 
 django.setup()
 
