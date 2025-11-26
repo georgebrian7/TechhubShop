@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Cart, CartItem, Category, Order, OrderItem, Payment, Product, User,UserProfile
-from application.forms import CategoryForm, CheckoutForm, ProductAdminForm, ProductForm, SignUpForm, UserProfileForm
+from application.forms import CategoryAdminForm, CategoryForm, CheckoutForm, ProductAdminForm, ProductForm, SignUpForm, UserProfileForm
 from django.contrib import messages
 from django.db.models import Q
 from django.core.paginator import Paginator
@@ -229,6 +229,18 @@ def product_add(request):
         form=ProductAdminForm()
 
     return render(request, 'product-add.html',{'form':form})
+
+
+def category_add(request):
+    if request.method == 'POST':
+        form=CategoryAdminForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('category_add')
+    else:
+        form=CategoryAdminForm()
+
+    return render(request, 'category_add.html',{'form':form})
 
 def product_list(request):
     products = Product.objects.all()

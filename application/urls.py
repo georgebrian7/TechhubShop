@@ -44,7 +44,8 @@ urlpatterns = [
     path('remove-from-cart/<int:product_id>/', views.remove_from_cart, name='remove_from_cart'),
 
     path('confirm/<int:cart_items_id>/', views.order_confirmation, name='confirm'),
-
+    path('category_add', views.category_add, name='category_add'),
+    
 
 
 ]
