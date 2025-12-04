@@ -262,6 +262,11 @@ def product_edit(request, slug):
         form = ProductForm(instance=product)
     return render(request, 'product-edit.html', {'form': form, 'product': product})
 
+def delete_product(request, slug):
+    product = get_object_or_404(Product, slug=slug)
+    product.delete()
+    messages.success(request, 'Product deleted successfully')
+    return redirect('product_list')
 
 def order_list(request):
     return render(request, 'order-list.html')

@@ -45,7 +45,7 @@ urlpatterns = [
 
     path('confirm/<int:cart_items_id>/', views.order_confirmation, name='confirm'),
     path('category_add', views.category_add, name='category_add'),
-    
+    path('product_delete/<slug:slug>/', views.delete_product, name='product_delete'),
 
 
 ]
