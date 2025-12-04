@@ -48,13 +48,10 @@
                                         <td class="tf-cart-item_quantity" cart-data-title="Quantity">
                                             <div class="cart-quantity">
                                                 <div class="wg-quantity">
-                                                    <span class="btn-quantity minus-btn">
-                                                        <svg class="d-inline-block" width="9" height="1" viewBox="0 0 9 1" fill="currentColor"><path d="M9 1H5.14286H3.85714H0V1.50201e-05H3.85714L5.14286 0L9 1.50201e-05V1Z"></path></svg>
+                                                    <span class="btn-quantity ">
+                                                        <svg class="d-inline-block" width="9" height="1" viewBox="0 0 9 1" fill="currentColor"></svg>{{ item.quantity }}
                                                     </span>
-                                                    <input type="text" name="number" value="1">
-                                                    <span class="btn-quantity plus-btn">
-                                                        <svg class="d-inline-block" width="9" height="9" viewBox="0 0 9 9" fill="currentColor"><path d="M9 5.14286H5.14286V9H3.85714V5.14286H0V3.85714H3.85714V0H5.14286V3.85714H9V5.14286Z"></path></svg>
-                                                    </span>
+                                                    
                                                 </div>
                                             </div>
                                         </td>
@@ -122,7 +119,7 @@
                                                 <p class="name">{{ item.product.name }}</p>
                                                 <span class="variant"></span>{{ item.product.name }} x {{ item.quantity }}</span>
                                             </div>
-                                            <span class="price">${{ item.get_total_price }}</span>
+                                            <span class="price">Ksh{{ item.get_total_price }}</span>
                                         </div>
                                     </li>
                                     {% endfor %}
@@ -133,7 +130,7 @@
                                 
                                 <div class="d-flex justify-content-between line pb_20">
                                     <h6 class="fw-5">Total</h6>
-                                    <h6 class="total fw-5">{{ total }}</h6>
+                                    <h6 class="total fw-5">Ksh {{ total }}</h6>
                                 </div>
                                 <div class="wd-check-payment">
                                     <div class="fieldset-radio mb_20">
