@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content  %}
+    
+<div class="container mt-5">
+  <div class="card shadow-lg border-success">
+    <div class="card-header bg-success text-white">
+      <h4 class="mb-0">ORDER SUCCESS ✅</h4>
+    </div>
+    <div class="card-body">
+      
+      <p class="card-text">
+        Thank you for your purchase, <strong>{{ order.first_name }}</strong>!
+      </p>
+      <p class="card-text">
+        <strong>Order ID:</strong> {{ order.id }}
+      </p>
+      <p class="card-text">
+        <strong>Total:</strong> {{ order.get_total_cost }}
+      </p>
+    </div>
+    <div class="card-footer text-center">
+      <a href="{% url 'order' %}" class="btn btn-primary">
+        View My Orders
+      </a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

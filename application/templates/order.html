@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content  %}
+
+
+ 
+ <!-- page-title -->
+        <div class="tf-page-title">
+            <div class="container-full">
+                <div class="heading text-center">My Orders</div>
+            </div>
+        </div>
+        <!-- /page-title -->
+        
+        <!-- page-cart -->
+        <section class="flat-spacing-11">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <ul class="my-account-nav">
+                            <li><a href="{% url 'profile' %}" class="my-account-nav-item ">Dashboard</a></li>
+                            <li><span class="my-account-nav-item active">Orders</span></li>
+                            
+                            <!-- <li><a href="my-account-edit.html" class="my-account-nav-item">Account Details</a></li> -->
+                            
+                            <li>{% if user.is_authenticated %}
+                             <form method="post" action="{% url 'logout' %}">
+                             {% csrf_token %}
+                              <button type="submit" class="btn btn-danger">Logout</button>
+                                 </form>
+                                    {% endif %}
+                                </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="my-account-content account-order">
+                            <div class="wrap-account-order">
+                                {% if orders %}
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th class="fw-6">Order</th>
+                                            <th class="fw-6">Date</th>
+                                            <th class="fw-6">Shipping Status</th>
+                                            <th class="fw-6">Total</th>
+                                            <th class="fw-6">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for order in orders %}
+                                        <tr class="tf-order-item">
+                                            <td>
+                                                {{ order.id }}
+                                            </td>
+                                            <td>
+                                                {{ order.created_at|date:"M d, Y H:i" }}
+                                            </td>
+                                            <td>
+                                                {{ order.status }}
+                                            </td>
+                                            <td>
+                                                Ksh{{ order.get_total_cost }}
+                                            </td>
+                                            <td>
+                                                <a href="{% url 'order_detail' order.id %}" class="tf-btn btn-fill animate-hover-btn rounded-0 justify-content-center">
+                                                    <span>View</span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        
+                                        {% endfor %}
+
+                                    </tbody>
+                                </table>
+                                {% else %}
+                                <p>You have no orders yet.</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    
+
+
+
+{% endblock %}

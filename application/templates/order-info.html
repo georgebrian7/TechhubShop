@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content  %}
+
+
+ 
+ <!-- page-title -->
+        <div class="tf-page-title">
+            <div class="container-full">
+                <div class="heading text-center">My Orders</div>
+            </div>
+        </div>
+        <!-- /page-title -->
+        <form class="tf-page-cart-checkout widget-wrap-checkout" method="post" enctype="multipart/form-data">
+                                
+                           <h class="heading text-center">Order id #{{ order.id }}</h>
+<p>Placed on {{ order.created_at|date:"F j, Y" }}</p>
+<p>Shipping Status: {{ order.status }}</p>     
+                                <ul class="wrap-checkout-product">
+                                    {% for item in order_items %}
+                
+                    
+                    
+                
+                
+                                    <li class="checkout-product-item">
+                                        <figure class="img-product">
+                                            <img src="{{ item.product.image1.url }}" alt="product">
+                                            <span class="quantity">{{ item.quantity }}</span>
+                                        </figure>
+                                        <div class="content">
+                                            <div class="info">
+                                                <p class="name">{{ item.product.name }}</p>
+                                                <span class="variant"></span>{{ item.product.name }} x {{ item.quantity }}</span>
+                                            </div>
+                                            <span class="price">Ksh{{ item.price }}</span>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                    
+                                    
+                                    
+                                </ul>
+                                
+                                <div class="d-flex justify-content-between line pb_20">
+                                    <h6 class="fw-5">Total</h6>
+                                    <h6 class="total fw-5">Ksh {{ order.get_total_cost }}</h6>
+                                </div>
+                               
+                               
+
+                            </form>
+ 
+
+
+
+
+{% endblock %}

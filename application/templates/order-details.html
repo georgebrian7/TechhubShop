@@ -1,721 +1,273 @@
-<!doctype html>
-<html class="no-js" lang="en" dir="ltr">
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>::Keshi ELectronics:: Order Details </title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
+    <meta charset="UTF-8">
+    <title>keshi electronics </title>
+    {% load static %}
+    <!-- <link rel="stylesheet" href="{% static 'style/style.css'%}"> -->
+    <!-- <link rel="stylesheet" href="{% static 'style/bootstrap/css/bootstrap.min.css'%}"> -->
+     
+   <!-- font -->
+   <link rel="stylesheet" href="{% static 'fonts/fonts.css'%}">
+   <link rel="stylesheet" href="{% static 'fonts/font-icons.css'%}">
+   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+   <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css'%}">
+   <link rel="stylesheet" href="{% static 'css/animate.css'%}">
+   <link rel="stylesheet"type="text/css" href="{% static 'css/styles.css'%}"/>
 
-    <!-- plugin css file  -->
-    <link rel="stylesheet" href="static/ad/assets/plugin/datatables/responsive.dataTables.min.css">
-    <link rel="stylesheet" href="static/ad/assets/plugin/datatables/dataTables.bootstrap5.min.css">
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="../../static/images/logo/keshie.svg">
+<link rel="apple-touch-icon-precomposed" href="../../static/images/logo/favicon.png">
 
-    <!-- project css file  -->
-    <link rel="stylesheet" href="static/ad/assets/css/ebazar.style.min.css">
 </head>
-<body>
-    <div id="ebazar-layout" class="theme-blue">
+<body class="preload-wrapper popup-loader">
+    
+<section class="flat-spacing-10">
+            <div class="container">
+                <div class="form-register-wrap">
+                    <div class="flat-title align-items-start gap-0 mb_30 px-0">
+                        <h5 class="mb_18">  ADMIN PORTAL</h5>
+                        
+                    </div>
+                   <div class="container mt-5">
+  <div class="card shadow-lg border-primary">
+    <!-- Card Header -->
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">Order Details</h4>
+    </div>
 
-        <!-- sidebar -->
-        <div class="sidebar px-4 py-4 py-md-4 me-0">
-            <div class="d-flex flex-column h-100">
-                <a href="{% url 'dashboard' %}" class="mb-0 brand-icon">
-                    <span class="logo-icon">
-                        <i class="bi bi-bag-check-fill fs-4"></i>
-                    </span>
-                    <span class="logo-text">Keshi Dashboard</span>
-                </a>
-                <!-- Menu: main ul -->
-                <ul class="menu-list flex-grow-1 mt-3">
-                    <li><a class="m-link active" href="{% url 'dashboard' %}"><i class="icofont-home fs-5"></i> <span>Dashboard</span></a></li>
-                    <li class="collapsed">
-                        <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-product" href="#">
-                            <i class="icofont-truck-loaded fs-5"></i> <span>Products</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
-                            <!-- Menu: Sub menu ul -->
-                            <ul class="sub-menu collapse" id="menu-product">
-                                <li><a class="ms-link" href="{% url 'product_list' %}">Product List</a></li>
-                                <li><a class="ms-link" href="{% url 'product_add' %}">Product Add</a></li>
-                            </ul>
-                    </li>
-                    
-                    <li class="collapsed">
-                        <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-order" href="#">
-                        <i class="icofont-notepad fs-5"></i> <span>Orders</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
-                        <!-- Menu: Sub menu ul -->
-                        <ul class="sub-menu collapse" id="menu-order">
-                            <li><a class="ms-link" href="{% url 'order_list' %}">Orders List</a></li>
-                            <li><a class="ms-link" href="{% url 'order_details' %}">Order Details</a></li>
-                            
-                        </ul>
-                    </li>
-                    <li class="collapsed">
-                        <a class="m-link" data-bs-toggle="collapse" data-bs-target="#customers-info" href="#">
-                        <i class="icofont-funky-man fs-5"></i> <span>Customers</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
-                        <!-- Menu: Sub menu ul -->
-                        <ul class="sub-menu collapse" id="customers-info">
-                            <li><a class="ms-link" href="{% url 'customer_list' %}">Customers List</a></li>
-                            <li><a class="ms-link" href="{% url 'customer_detail' %}">Customers Details</a></li>
-                        </ul>
-                    </li>
-                    
-                    <li class="collapsed">
-                        <a class="m-link" data-bs-toggle="collapse" data-bs-target="#menu-inventory" href="#">
-                        <i class="icofont-chart-histogram fs-5"></i> <span>Inventory</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
-                        <!-- Menu: Sub menu ul -->
-                        <ul class="sub-menu collapse" id="menu-inventory">
-                            <li><a class="ms-link" href="{% url 'stock_list' %}">Stock List</a></li>
-                            <li><a class="ms-link" href="{% url 'purchase' %}">Purchase</a></li>
-                            
-                        </ul>
-                    </li>
-                    
-                </ul>
-                <!-- Menu: menu collepce btn -->
-                <button type="button" class="btn btn-link sidebar-mini-btn text-light">
-                    <span class="ms-2"><i class="icofont-bubble-right"></i></span>
-                </button>
-            </div>
+    <!-- Card Body -->
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <p><strong>Order ID:</strong> {{ order.id }}</p>
+          <p><strong>Customer:</strong> {{ order.first_name }} {{ order.last_name }}</p>
+          <p><strong>Email:</strong> {{ order.email }}</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <h5 class="text-success"><strong>Total:</strong> {{ order.get_total_cost }}</h5>
+        </div>
+      </div>
+
+      <hr>
+
+      <!-- Items List -->
+      <h5 class="mb-3">Items</h5>
+      <ul class="list-group mb-3">
+        {% for item in order_items %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ item.product.name }}
+            <span class="badge bg-primary rounded-pill">
+              {{ item.quantity }} × {{ item.price }}
+            </span>
+          </li>
+        {% endfor %}
+      </ul>
+
+      <!-- Payment & Status -->
+      <h5 class="mb-3">Payment & Shipping</h5>
+      <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label class="form-label"><strong>Shipping Status</strong></label>
+          <select name="shipping_status" class="form-select">
+            <option value="pending" {% if order.status == 'pending' %}selected{% endif %}>Pending</option>
+            <option value="shipped" {% if order.status == 'shipped' %}selected{% endif %}>Shipped</option>
+            <option value="delivered" {% if order.status == 'delivered' %}selected{% endif %}>Delivered</option>
+            <option value="cancelled" {% if order.status == 'cancelled' %}selected{% endif %}>Cancelled</option>
+          </select>
         </div>
 
-        <!-- main body area -->   
-        <div class="main px-lg-4 px-md-4"> 
+        {% if payment %}
+        <div class="mb-3">
+          <label class="form-label"><strong>Transaction Status</strong></label>
+          <select name="transaction_status" class="form-select">
+            <option value="pending" {% if payment.status == 'pending' %}selected{% endif %}>Pending</option>
+            <option value="completed" {% if payment.status == 'completed' %}selected{% endif %}>Completed</option>
+            <option value="failed" {% if payment.status == 'failed' %}selected{% endif %}>Failed</option>
+          </select>
+        </div>
+        <p><strong>Transaction ID:</strong> {{ payment.transaction_id }}</p>
+        {% endif %}
 
-            <!-- Body: Header -->
-            <div class="header">
-                <nav class="navbar py-4">
-                    <div class="container-xxl">
+        <button type="submit" class="btn btn-success">Update Status</button>
+      </form>
+    </div>
 
-                        <!-- header rightbar icon -->
-                        <div class="h-right d-flex align-items-center mr-5 mr-lg-0 order-1">
-                            <div class="d-flex">
-                                <a class="nav-link text-primary collapsed" href="help.html" title="Get Help">
-                                    <i class="icofont-info-square fs-5"></i>
-                                </a>
-                            </div>
-                            <div class="dropdown zindex-popover">
-                                <a class="nav-link dropdown-toggle pulse" href="#" role="button" data-bs-toggle="dropdown">
-                                    <img src="assets/images/flag/GB.png" alt="">
-                                </a>
-                                <div class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-md-end p-0 m-0 mt-3">
-                                    <div class="card border-0">
-                                        <ul class="list-unstyled py-2 px-3">
-                                            <li>
-                                                <a href="#" class=""><img src="assets/images/flag/GB.png" alt=""> English</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class=""><img src="assets/images/flag/DE.png" alt=""> German</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class=""><img src="assets/images/flag/FR.png" alt=""> French</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class=""><img src="assets/images/flag/IT.png" alt=""> Italian</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class=""><img src="assets/images/flag/RU.png" alt=""> Russian</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="dropdown notifications">
-                                <a class="nav-link dropdown-toggle pulse" href="#" role="button" data-bs-toggle="dropdown">
-                                    <i class="icofont-alarm fs-5"></i>
-                                    <span class="pulse-ring"></span>
-                                </a>
-                                <div id="NotificationsDiv" class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-md-end p-0 m-0 mt-3">
-                                    <div class="card border-0 w380">
-                                        <div class="card-header border-0 p-3">
-                                            <h5 class="mb-0 font-weight-light d-flex justify-content-between">
-                                                <span>Notifications</span>
-                                                <span class="badge text-white">06</span>
-                                            </h5>
-                                        </div>
-                                        <div class="tab-content card-body">
-                                            <div class="tab-pane fade show active">
-                                                <ul class="list-unstyled list mb-0">
-                                                    <li class="py-2 mb-1 border-bottom">
-                                                        <a href="javascript:void(0);" class="d-flex">
-                                                            <img class="avatar rounded-circle" src="assets/images/xs/avatar1.svg" alt="">
-                                                            <div class="flex-fill ms-2">
-                                                                <p class="d-flex justify-content-between mb-0 "><span class="font-weight-bold">Chloe Walkerr</span> <small>2MIN</small></p>
-                                                                <span class="">Added New Product 2021-07-15 <span class="badge bg-success">Add</span></span>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li class="py-2 mb-1 border-bottom">
-                                                        <a href="javascript:void(0);" class="d-flex">
-                                                            <div class="avatar rounded-circle no-thumbnail">AH</div>
-                                                            <div class="flex-fill ms-2">
-                                                                <p class="d-flex justify-content-between mb-0 "><span class="font-weight-bold">Alan	Hill</span> <small>13MIN</small></p>
-                                                                <span class="">Invoice generator </span>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li class="py-2 mb-1 border-bottom">
-                                                        <a href="javascript:void(0);" class="d-flex">
-                                                            <img class="avatar rounded-circle" src="assets/images/xs/avatar3.svg" alt="">
-                                                            <div class="flex-fill ms-2">
-                                                                <p class="d-flex justify-content-between mb-0 "><span class="font-weight-bold">Melanie	Oliver</span> <small>1HR</small></p>
-                                                                <span class="">Orader  Return RT-00004</span>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li class="py-2 mb-1 border-bottom">
-                                                        <a href="javascript:void(0);" class="d-flex">
-                                                            <img class="avatar rounded-circle" src="assets/images/xs/avatar5.svg" alt="">
-                                                            <div class="flex-fill ms-2">
-                                                                <p class="d-flex justify-content-between mb-0 "><span class="font-weight-bold">Boris Hart</span> <small>13MIN</small></p>
-                                                                <span class="">Product Order to Toyseller</span>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li class="py-2 mb-1 border-bottom">
-                                                        <a href="javascript:void(0);" class="d-flex">
-                                                            <img class="avatar rounded-circle" src="assets/images/xs/avatar6.svg" alt="">
-                                                            <div class="flex-fill ms-2">
-                                                                <p class="d-flex justify-content-between mb-0 "><span class="font-weight-bold">Alan	Lambert</span> <small>1HR</small></p>
-                                                                <span class="">Leave Apply</span>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li class="py-2">
-                                                        <a href="javascript:void(0);" class="d-flex">
-                                                            <img class="avatar rounded-circle" src="assets/images/xs/avatar7.svg" alt="">
-                                                            <div class="flex-fill ms-2">
-                                                                <p class="d-flex justify-content-between mb-0 "><span class="font-weight-bold">Zoe Wright</span> <small class="">1DAY</small></p>
-                                                                <span class="">Product Stoke Entry Updated</span>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <a class="card-footer text-center border-top-0" href="#"> View all notifications</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-center zindex-popover">
-                                <div class="u-info me-2">
-                                    <p class="mb-0 text-end line-height-sm "><span class="font-weight-bold">John Quinn</span></p>
-                                    <small>Admin Profile</small>
-                                </div>
-                                <a class="nav-link dropdown-toggle pulse p-0" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
-                                    <img class="avatar lg rounded-circle img-thumbnail" src="assets/images/profile_av.svg" alt="profile">
-                                </a>
-                                <div class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-end p-0 m-0">
-                                    <div class="card border-0 w280">
-                                        <div class="card-body pb-0">
-                                            <div class="d-flex py-1">
-                                                <img class="avatar rounded-circle" src="assets/images/profile_av.svg" alt="profile">
-                                                <div class="flex-fill ms-3">
-                                                    <p class="mb-0"><span class="font-weight-bold">John	Quinn</span></p>
-                                                    <small class="">Johnquinn@gmail.com</small>
-                                                </div>
-                                            </div>
-                                            
-                                            <div><hr class="dropdown-divider border-dark"></div>
-                                        </div>
-                                        <div class="list-group m-2 ">
-                                            <a href="admin-profile.html" class="list-group-item list-group-item-action border-0 "><i class="icofont-ui-user fs-5 me-3"></i>Profile Page</a>
-                                            <a href="order-invoices.html" class="list-group-item list-group-item-action border-0 "><i class="icofont-file-text fs-5 me-3"></i>Order Invoices</a>
-                                            <a href="ui-elements/auth-signin.html" class="list-group-item list-group-item-action border-0 "><i class="icofont-logout fs-5 me-3"></i>Signout</a>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="setting ms-2">
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#Settingmodal"><i class="icofont-gear-alt fs-5"></i></a>
-                            </div>
-                        </div>
-
-                        <!-- menu toggler -->
-                        <button class="navbar-toggler p-0 border-0 menu-toggle order-3" type="button" data-bs-toggle="collapse" data-bs-target="#mainHeader">
-                            <span class="fa fa-bars"></span>
-                        </button>
-
-                        <!-- main menu Search-->
-                        <div class="order-0 col-lg-4 col-md-4 col-sm-12 col-12 mb-3 mb-md-0 ">
-                            <div class="input-group flex-nowrap input-group-lg">
-                                <input type="search" class="form-control" placeholder="Search" aria-label="search" aria-describedby="addon-wrapping">
-                                <button type="button" class="input-group-text" id="addon-wrapping"><i class="fa fa-search"></i></button>
-                            </div>
-                        </div>
-
-                    </div>
-                </nav>
-            </div>
-
-            <!-- Body: Body --> 
-            <div class="body d-flex py-3">  
-                <div class="container-xxl"> 
-                    <div class="row align-items-center"> 
-                        <div class="border-0 mb-4"> 
-                            <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
-                                <h3 class="fw-bold mb-0">Order Details: #Order-78414</h3>
-                                <div class="col-auto d-flex btn-set-task w-sm-100 align-items-center">
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected="">Select Order Id</option>
-                                        <option value="1">Order-78414</option>
-                                        <option value="2">Order-78415</option>
-                                        <option value="3">Order-78416</option>
-                                        <option value="4">Order-78417</option>
-                                        <option value="5">Order-78418</option>
-                                        <option value="6">Order-78419</option>
-                                        <option value="7">Order-78420</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- Row end  -->
-                    <div class="row g-3 mb-3 row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-4">
-                        <div class="col">
-                            <div class="alert-success alert mb-0">
-                                <div class="d-flex align-items-center">
-                                    <div class="avatar rounded no-thumbnail bg-success text-light"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></div>
-                                    <div class="flex-fill ms-3 text-truncate">
-                                        <div class="h6 mb-0">Order Created at</div>
-                                        <span class="small">16/03/2021 at 04:23 PM</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="alert-danger alert mb-0">
-                                <div class="d-flex align-items-center">
-                                    <div class="avatar rounded no-thumbnail bg-danger text-light"><i class="fa fa-user fa-lg" aria-hidden="true"></i></div>
-                                    <div class="flex-fill ms-3 text-truncate">
-                                        <div class="h6 mb-0">Name</div>
-                                        <span class="small">Gabrielle</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="alert-warning alert mb-0">
-                                <div class="d-flex align-items-center">
-                                    <div class="avatar rounded no-thumbnail bg-warning text-light"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></div>
-                                    <div class="flex-fill ms-3 text-truncate">
-                                        <div class="h6 mb-0">Email</div>
-                                        <span class="small">gabrielle.db@gmail.com</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="alert-info alert mb-0">
-                                <div class="d-flex align-items-center">
-                                    <div class="avatar rounded no-thumbnail bg-info text-light"><i class="fa fa-phone-square fa-lg" aria-hidden="true"></i></div>
-                                    <div class="flex-fill ms-3 text-truncate">
-                                        <div class="h6 mb-0">Contact No</div>
-                                        <span class="small">202-906-12354</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- Row end  -->
-                    <div class="row g-3 mb-3 row-cols-1 row-cols-md-1 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-3 row-deck"> 
-                        <div class="col">
-                            <div class="card auth-detailblock">
-                                <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
-                                    <h6 class="mb-0 fw-bold ">Delivery Address</h6>
-                                    <a href="#" class="text-muted">Edit</a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row g-3">
-                                        <div class="col-12">
-                                            <label class="form-label col-6 col-sm-5">Block Number:</label>
-                                            <span><strong>A-510</strong></span>
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label col-6 col-sm-5">Address:</label>
-                                            <span><strong>81 Fulton London</strong></span>
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label col-6 col-sm-5">Pincode:</label>
-                                            <span><strong>385467</strong></span>
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label col-6 col-sm-5">Phone:</label>
-                                            <span><strong>202-458-4568</strong></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
-                                    <h6 class="mb-0 fw-bold ">Billing Address</h6>
-                                    <a href="#" class="text-muted">Edit</a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row g-3">
-                                        <div class="col-12">
-                                            <label class="form-label col-6 col-sm-5">Block Number:</label>
-                                            <span><strong>A-510</strong></span>
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label col-6 col-sm-5">Address:</label>
-                                            <span><strong>81 Fulton London</strong></span>
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label col-6 col-sm-5">Pincode:</label>
-                                            <span><strong>385467</strong></span>
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label col-6 col-sm-5">Phone:</label>
-                                            <span><strong>202-458-4568</strong></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
-                                    <h6 class="mb-0 fw-bold ">Invoice Deatil</h6>
-                                    <a href="#" class="text-muted">Download</a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row g-3">
-                                        <div class="col-12">
-                                            <label class="form-label col-6 col-sm-5">Number:</label>
-                                            <span><strong>#78414</strong></span>
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label col-6 col-sm-5">Seller GST :</label>
-                                            <span><strong>AFQWEPX17390VJ</strong></span>
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label col-6 col-sm-5">Purchase GST :</label>
-                                            <span><strong>NVFQWEPX1730VJ</strong></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- Row end  -->
-                    <div class="row g-3 mb-3">
-                        <div class="col-xl-12 col-xxl-8">
-                            <div class="card">
-                                <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
-                                    <h6 class="mb-0 fw-bold ">Order Summary</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-cart">
-                                        <div class="checkout-table table-responsive">
-                                            <table id="myCartTable" class="table display dataTable table-hover align-middle" style="width:100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="product">Product Image</th>
-                                                        <th>Product Name</th>
-                                                        <th class="quantity">Quantity</th>
-                                                        <th class="price">Price</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <img src="assets/images/product/product-1.jpg" class="avatar rounded lg" alt="Product">
-                                                        </td>
-                                                        <td>
-                                                            <h6 class="title">Oculus VR <span class="d-block fs-6 text-primary">Pr-1204</span></h6>
-                                                        </td>
-                                                        <td>
-                                                            1
-                                                        </td>
-                                                        <td>
-                                                            <p class="price">$149.00</p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <img src="assets/images/product/product-2.jpg" class="avatar rounded lg" alt="Product">
-                                                        </td>
-                                                        <td>
-                                                            <h6 class="title">Wall Clock <span class="d-block fs-6 text-primary">Pr-1004</span></h6>
-                                                        </td>
-                                                        <td>
-                                                            1
-                                                        </td>
-                                                        <td>
-                                                            <p class="price">$399.00</p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <img src="assets/images/product/product-3.jpg" class="avatar rounded lg" alt="Product">
-                                                        </td>
-                                                        <td>
-                                                            <h6 class="title">Note Diaries <span class="d-block fs-6 text-primary">Pr-1224</span></h6>
-                                                        </td>
-                                                        <td>
-                                                            1
-                                                        </td>
-                                                        <td>
-                                                            <p class="price">$149.00</p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <img src="assets/images/product/product-4.jpg" class="avatar rounded lg" alt="Product">
-                                                        </td>
-                                                        <td>
-                                                            <h6 class="title">Flower Port  <span class="d-block fs-6 text-primary">Pr-1414</span></h6>
-                                                        </td>
-                                                        <td>
-                                                            1
-                                                        </td>
-                                                        <td>
-                                                            <p class="price">$399.00</p>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="checkout-coupon-total checkout-coupon-total-2 d-flex flex-wrap justify-content-end">
-                                            <div class="checkout-total">
-                                                <div class="single-total">
-                                                    <p class="value">Subotal Price:</p>
-                                                    <p class="price">$1096.00</p>
-                                                </div>
-                                                <div class="single-total">
-                                                    <p class="value">Shipping Cost (+):</p>
-                                                    <p class="price">$12.00</p>
-                                                </div>
-                                                <div class="single-total">
-                                                    <p class="value">Discount (-):</p>
-                                                    <p class="price">$10.00</p>
-                                                </div>
-                                                <div class="single-total">
-                                                    <p class="value">Tax(18%):</p>
-                                                    <p class="price">$198.00</p>
-                                                </div>
-                                                <div class="single-total total-payable">
-                                                    <p class="value">Total Payable:</p>
-                                                    <p class="price">$1296.00</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>     
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-12 col-xxl-4">
-                            <div class="card mb-3">
-                                <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
-                                    <h6 class="mb-0 fw-bold ">Status Orders</h6>
-                                </div>
-                                <div class="card-body">
-                                    <form>
-                                        <div class="row g-3 align-items-center">
-                                            <div class="col-md-12">
-                                                <label  class="form-label">Order ID</label>
-                                                <input type="text" class="form-control" value="78414">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label  class="form-label">Order Status</label>
-                                                <select class="form-select" aria-label="Default select example">
-                                                    <option  value="1">Progress</option>
-                                                    <option value="2">Completed</option>
-                                                    <option selected value="3">Pending</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label class="form-label">Quantity</label>
-                                                <input type="text" class="form-control" value="4">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label  class="form-label">Order Transection</label>
-                                                <select class="form-select" aria-label="Transection">
-                                                    <option  value="1">Completed</option>
-                                                    <option value="2">Fail</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label for="comment" class="form-label">Comment</label>
-                                                <textarea  class="form-control" id="comment" rows="4">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</textarea>
-                                            </div>
-                                        </div>
-                                        <button type="button" class="btn btn-primary mt-4 text-uppercase">Submit</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- Row end  -->
+    <!-- Card Footer -->
+    <div class="card-footer text-center">
+      <a href="{% url 'order_list' %}" class="btn btn-outline-primary me-2">Back to Orders</a>
+      
+    </div>
+  </div>
+</div>
+                    
                 </div>
             </div>
-        
-            <!-- Modal Custom Settings-->
-            <div class="modal fade right" id="Settingmodal" tabindex="-1"  aria-hidden="true">
-                <div class="modal-dialog  modal-sm">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Custom Settings</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body custom_setting">
-                            <!-- Settings: Color -->
-                            <div class="setting-theme pb-3">
-                                <h6 class="card-title mb-2 fs-6 d-flex align-items-center"><i class="icofont-color-bucket fs-4 me-2 text-primary"></i>Template Color Settings</h6>
-                                <ul class="list-unstyled row row-cols-3 g-2 choose-skin mb-2 mt-2">
-                                    <li data-theme="indigo"><div class="indigo"></div></li>
-                                    <li data-theme="tradewind"><div class="tradewind"></div></li>
-                                    <li data-theme="monalisa"><div class="monalisa"></div></li>
-                                    <li data-theme="blue" class="active"><div class="blue"></div></li>
-                                    <li data-theme="cyan"><div class="cyan"></div></li>
-                                    <li data-theme="green"><div class="green"></div></li>
-                                    <li data-theme="orange"><div class="orange"></div></li>
-                                    <li data-theme="blush"><div class="blush"></div></li>
-                                    <li data-theme="red"><div class="red"></div></li>
-                                </ul>
-                            </div>
-                            <div class="sidebar-gradient py-3">
-                                <h6 class="card-title mb-2 fs-6 d-flex align-items-center"><i class="icofont-paint fs-4 me-2 text-primary"></i>Sidebar Gradient</h6>
-                                <div class="form-check form-switch gradient-switch pt-2 mb-2">
-                                    <input class="form-check-input" type="checkbox" id="CheckGradient">
-                                    <label class="form-check-label" for="CheckGradient">Enable Gradient! ( Sidebar )</label>
-                                </div>
-                            </div>
-                            <!-- Settings: Template dynamics -->
-                            <div class="dynamic-block py-3">
-                                <ul class="list-unstyled choose-skin mb-2 mt-1">
-                                    <li data-theme="dynamic"><div class="dynamic"><i class="icofont-paint me-2"></i> Click to Dyanmic Setting</div></li>
-                                </ul>
-                                <div class="dt-setting">
-                                    <ul class="list-group list-unstyled mt-1">
-                                        <li class="list-group-item d-flex justify-content-between align-items-center py-1 px-2">
-                                            <label>Primary Color</label>
-                                            <button id="primaryColorPicker" class="btn bg-primary avatar xs border-0 rounded-0"></button>
+        </section>
+<footer id="footer" class="footer background-gray md-pb-70">
+            <div class="footer-wrap">
+                <div class="footer-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6 col-12">
+                                <div class="footer-infor">
+                                    <div class="footer-logo">
+                                        <a href="index.html">
+                                            <img src="images/logo/logo.svg" alt="">
+                                        </a>
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <p>Address: 1234 Fashion Street, Suite 567, <br> New York, NY 10001</p>
                                         </li>
-                                        <li class="list-group-item d-flex justify-content-between align-items-center py-1 px-2">
-                                            <label>Secondary Color</label>
-                                            <button id="secondaryColorPicker" class="btn bg-secondary avatar xs border-0 rounded-0"></button>
+                                        <li>
+                                            <p>Email: <a href="#">info@fashionshop.com</a></p>
                                         </li>
-                                        <li class="list-group-item d-flex justify-content-between align-items-center py-1 px-2">
-                                            <label class="text-muted">Chart Color 1</label>
-                                            <button id="chartColorPicker1" class="btn chart-color1 avatar xs border-0 rounded-0"></button>
+                                        <li>
+                                            <p>Phone: <a href="#">(212) 555-1234</a></p>
                                         </li>
-                                        <li class="list-group-item d-flex justify-content-between align-items-center py-1 px-2">
-                                            <label class="text-muted">Chart Color 2</label>
-                                            <button id="chartColorPicker2" class="btn chart-color2 avatar xs border-0 rounded-0"></button>
-                                        </li>
-                                        <li class="list-group-item d-flex justify-content-between align-items-center py-1 px-2">
-                                            <label class="text-muted">Chart Color 3</label>
-                                            <button id="chartColorPicker3" class="btn chart-color3 avatar xs border-0 rounded-0"></button>
-                                        </li>
-                                        <li class="list-group-item d-flex justify-content-between align-items-center py-1 px-2">
-                                            <label class="text-muted">Chart Color 4</label>
-                                            <button id="chartColorPicker4" class="btn chart-color4 avatar xs border-0 rounded-0"></button>
-                                        </li>
-                                        <li class="list-group-item d-flex justify-content-between align-items-center py-1 px-2">
-                                            <label class="text-muted">Chart Color 5</label>
-                                            <button id="chartColorPicker5" class="btn chart-color5 avatar xs border-0 rounded-0"></button>
-                                        </li>
+                                    </ul>
+                                    <a href="contact-1.html" class="tf-btn btn-line">Get direction<i class="icon icon-arrow1-top-left"></i></a>
+                                    <ul class="tf-social-icon d-flex gap-10">
+                                        <li><a href="#" class="box-icon w_34 round social-facebook social-line"><i class="icon fs-14 icon-fb"></i></a></li>
+                                        <li><a href="#" class="box-icon w_34 round social-twiter social-line"><i class="icon fs-12 icon-Icon-x"></i></a></li>
+                                        <li><a href="#" class="box-icon w_34 round social-instagram social-line"><i class="icon fs-14 icon-instagram"></i></a></li>
+                                        <li><a href="#" class="box-icon w_34 round social-tiktok social-line"><i class="icon fs-14 icon-tiktok"></i></a></li>
+                                        <li><a href="#" class="box-icon w_34 round social-pinterest social-line"><i class="icon fs-14 icon-pinterest-1"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
-                            <!-- Settings: Font -->
-                            <div class="setting-font py-3">
-                                <h6 class="card-title mb-2 fs-6 d-flex align-items-center"><i class="icofont-font fs-4 me-2 text-primary"></i> Font Settings</h6>
-                                <ul class="list-group font_setting mt-1">
-                                    <li class="list-group-item py-1 px-2">
-                                        <div class="form-check mb-0">
-                                            <input class="form-check-input" type="radio" name="font" id="font-poppins" value="font-poppins">
-                                            <label class="form-check-label" for="font-poppins">
-                                                Poppins Google Font
-                                            </label>
-                                        </div>
+                            <div class="col-xl-3 col-md-6 col-12 footer-col-block">
+                                <div class="footer-heading footer-heading-desktop">
+                                    <h6>Help</h6>
+                                </div>
+                                <div class="footer-heading footer-heading-moblie">
+                                    <h6>Help</h6>
+                                </div>
+                                <ul class="footer-menu-list tf-collapse-content">
+                                    <li>
+                                        <a href="privacy-policy.html" class="footer-menu_item">Privacy Policy</a>
                                     </li>
-                                    <li class="list-group-item py-1 px-2">
-                                        <div class="form-check mb-0">
-                                            <input class="form-check-input" type="radio" name="font" id="font-opensans" value="font-opensans" checked="">
-                                            <label class="form-check-label" for="font-opensans">
-                                                Open Sans Google Font
-                                            </label>
-                                        </div>
+                                    <li> 
+                                        <a href="delivery-return.html" class="footer-menu_item">  Returns + Exchanges </a>
                                     </li>
-                                    <li class="list-group-item py-1 px-2">
-                                        <div class="form-check mb-0">
-                                            <input class="form-check-input" type="radio" name="font" id="font-montserrat" value="font-montserrat">
-                                            <label class="form-check-label" for="font-montserrat">
-                                                Montserrat Google Font
-                                            </label>
-                                        </div>
+                                    <li> 
+                                        <a href="shipping-delivery.html" class="footer-menu_item">Shipping</a>
                                     </li>
-                                    <li class="list-group-item py-1 px-2">
-                                        <div class="form-check mb-0">
-                                            <input class="form-check-input" type="radio" name="font" id="font-mukta" value="font-mukta">
-                                            <label class="form-check-label" for="font-mukta">
-                                                Mukta Google Font
-                                            </label>
-                                        </div>
+                                    <li> 
+                                        <a href="terms-conditions.html" class="footer-menu_item">Terms &amp; Conditions</a>
+                                    </li>
+                                    <li> 
+                                        <a href="faq-1.html" class="footer-menu_item">FAQ’s</a>
+                                    </li>
+                                    <li> 
+                                        <a href="compare.html" class="footer-menu_item">Compare</a>
+                                    </li>
+                                    <li> 
+                                        <a href="wishlist.html" class="footer-menu_item">My Wishlist</a>
                                     </li>
                                 </ul>
                             </div>
-                            <!-- Settings: Light/dark -->
-                            <div class="setting-mode py-3">
-                                <h6 class="card-title mb-2 fs-6 d-flex align-items-center"><i class="icofont-layout fs-4 me-2 text-primary"></i>Contrast Layout</h6>
-                                <ul class="list-group list-unstyled mb-0 mt-1">
-                                    <li class="list-group-item d-flex align-items-center py-1 px-2">
-                                        <div class="form-check form-switch theme-switch mb-0">
-                                            <input class="form-check-input" type="checkbox" id="theme-switch">
-                                            <label class="form-check-label" for="theme-switch">Enable Dark Mode!</label>
-                                        </div>
+                            <div class="col-xl-3 col-md-6 col-12 footer-col-block">
+                                <div class="footer-heading footer-heading-desktop">
+                                    <h6>About us</h6>
+                                </div>
+                                <div class="footer-heading footer-heading-moblie">
+                                    <h6>About us</h6>
+                                </div>
+                                <ul class="footer-menu-list tf-collapse-content">
+                                    <li>
+                                        <a href="about-us.html" class="footer-menu_item">Our Story</a>
                                     </li>
-                                    <li class="list-group-item d-flex align-items-center py-1 px-2">
-                                        <div class="form-check form-switch theme-high-contrast mb-0">
-                                            <input class="form-check-input" type="checkbox" id="theme-high-contrast">
-                                            <label class="form-check-label" for="theme-high-contrast">Enable High Contrast</label>
-                                        </div>
+                                    <li> 
+                                        <a href="our-store.html" class="footer-menu_item">Visit Our Store</a>
                                     </li>
-                                    <li class="list-group-item d-flex align-items-center py-1 px-2">
-                                        <div class="form-check form-switch theme-rtl mb-0">
-                                            <input class="form-check-input" type="checkbox" id="theme-rtl">
-                                            <label class="form-check-label" for="theme-rtl">Enable RTL Mode!</label>
-                                        </div>
+                                    <li> 
+                                        <a href="contact-1.html" class="footer-menu_item">Contact Us</a>
+                                    </li>
+                                    <li> 
+                                        <a href="login.html" class="footer-menu_item">Account</a>
                                     </li>
                                 </ul>
                             </div>
-                        </div>
-                        <div class="modal-footer justify-content-start">
-                            <button type="button" class="btn btn-white border lift" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary lift">Save Changes</button>
+                            <div class="col-xl-3 col-md-6 col-12">
+                                <div class="footer-newsletter footer-col-block">
+                                    <div class="footer-heading footer-heading-desktop">
+                                        <h6>Sign Up for Email</h6>
+                                    </div>
+                                    <div class="footer-heading footer-heading-moblie">
+                                        <h6>Sign Up for Email</h6>
+                                    </div>
+                                    <div class="tf-collapse-content">
+                                        <div class="footer-menu_item">Sign up to get first dibs on new arrivals, sales, exclusive content, events and more!</div>
+                                        <form class="form-newsletter" id="subscribe-form" action="#" method="post" accept-charset="utf-8" data-mailchimp="true">
+                                            <div id="subscribe-content">
+                                                <fieldset class="email">
+                                                    <input type="email" name="email-form" id="subscribe-email" placeholder="Enter your email...." tabindex="0" aria-required="true">
+                                                </fieldset>
+                                                <div class="button-submit">
+                                                    <button id="subscribe-button" class="tf-btn btn-sm radius-3 btn-fill btn-icon animate-hover-btn" type="button">Subscribe<i class="icon icon-arrow1-top-left"></i></button>
+                                                </div>
+                                            </div>
+                                            <div id="subscribe-msg"></div>
+                                        </form>
+                                        <div class="tf-cur">
+                                            <div class="tf-currencies">
+                                                <select class="image-select center style-default type-currencies">
+                                                    <option data-thumbnail="images/country/fr.svg">EUR <span>€ | France</span></option>
+                                                    <option data-thumbnail="images/country/de.svg">EUR <span>€ | Germany</span></option>
+                                                    <option selected data-thumbnail="images/country/us.svg">USD <span>$ | United States</span></option>
+                                                    <option data-thumbnail="images/country/vn.svg">VND <span>₫ | Vietnam</span></option>
+                                                </select>
+                                            </div>
+                                            <div class="tf-languages">
+                                                <select class="image-select center style-default type-languages">
+                                                    <option>English</option>
+                                                    <option>العربية</option>
+                                                    <option>简体中文</option>
+                                                    <option>اردو</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div> 
-            
-        </div> 
+                <div class="footer-bottom">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="footer-bottom-wrap d-flex gap-20 flex-wrap justify-content-between align-items-center">
+                                    <div class="footer-menu_item">© 2024 Ecomus Store. All Rights Reserved</div>
+                                    <div class="tf-payment">
+                                        <img src="images/payments/visa.png" alt="">
+                                        <img src="images/payments/img-1.png" alt="">
+                                        <img src="images/payments/img-2.png" alt="">
+                                        <img src="images/payments/img-3.png" alt="">
+                                        <img src="images/payments/img-4.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
-    </div>
 
-    <!-- Jquery Core Js -->
-    <script src="static/ad/assets/bundles/libscripts.bundle.js"></script>
-
-    <!-- Plugin Js-->
-    <script src="static/ad/assets/bundles/dataTables.bundle.js"></script>
-
-    <!-- Jquery Page Js -->
-    <script src="../js/template.js"></script>
-    <script>
-        $(document).ready(function() {
-        $('#myCartTable')
-        .addClass( 'nowrap' )
-        .dataTable( {
-            responsive: true,
-            columnDefs: [
-                { targets: [-1, -3], className: 'dt-body-right' }
-            ]
-        });
-    });
-    </script>
+<script type="text/javascript" src="../../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="../../static/js/carousel.js"></script>
+    <script type="text/javascript" src="../../static/js/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="../../static/js/lazysize.min.js"></script>
+    <script type="text/javascript" src="../../static/js/count-down.js"></script>
+    <script type="text/javascript" src="../../static/js/wow.min.js"></script>
+    <script type="text/javascript" src="../../static/js/multiple-modal.js"></script>
+    <script type="text/javascript" src="../../static/js/main.js"></script>
 </body>
-
-<!-- Mirrored from pixelwibes.com/template/ebazar/html/dist/order-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 03 Aug 2025 13:37:43 GMT -->
 </html>

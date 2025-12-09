@@ -30,7 +30,7 @@ urlpatterns = [
     path('product_list', views.product_list, name='product_list'),
     path('product_add', views.product_add, name='product_add'),
     path('order_list', views.order_list, name='order_list'),
-    path('order_details', views.order_details, name='order_details'),
+    path('order_details/<int:order_id>/', views.order_details, name='order_details'),
     path('customer_list', views.customer_list, name='customer_list'),
     path('customer_detail', views.customer_detail, name='customer_detail'),
     path('purchase', views.purchase, name='purchase'),
@@ -46,6 +46,10 @@ urlpatterns = [
     path('confirm/<int:cart_items_id>/', views.order_confirmation, name='confirm'),
     path('category_add', views.category_add, name='category_add'),
     path('product_delete/<slug:slug>/', views.delete_product, name='product_delete'),
-
-
-]
+    path('checkout', views.checkout, name='checkout'),
+    path('confirm_order/<int:order_id>/', views.order_confirmation, name='confirm_order'),
+    path('profile', views.profile, name='profile'),
+    path('order/', views.order_page, name='order'),
+    path('order/<int:order_id>/', views.order_detail, name='order_detail'),
+    path('logout/', views.user_logout, name='logout'),
+]   

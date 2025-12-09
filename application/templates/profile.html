@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content  %}
+    
+        <div class="tf-page-title">
+            <div class="container-full">
+                <div class="heading text-center">My Account</div>
+            </div>
+        </div>
+
+ <!-- page-cart -->
+        <section class="flat-spacing-11">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <ul class="my-account-nav">
+                            <li><span class="my-account-nav-item active">Dashboard</span></li>
+                            <li><a href="{% url 'order' %}" class="my-account-nav-item">Orders</a></li>
+            
+                            <!-- <li><a href="my-account-edit.html" class="my-account-nav-item">Account Details</a></li> -->
+                            
+                            <li>{% if user.is_authenticated %}
+                             <form method="post" action="{% url 'logout' %}">
+                             {% csrf_token %}
+                              <button type="submit" class="btn btn-danger">Logout</button>
+                                 </form>
+                                    {% endif %}
+                                </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="my-account-content account-dashboard">
+                            <div class="mb_60">
+                                <h5 class="fw-5 mb_20">Hello </h5>
+                                <p>
+                                    From your account dashboard you can view your <a class="text_primary" href="{% url 'order' %}">recent orders</a>, check your <a class="text_primary" href="{% url 'order' %}">shipping and billing status</a>, and <a class="text_primary" href="my-account-edit.html">Log out</a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}

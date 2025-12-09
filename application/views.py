@@ -1,6 +1,6 @@
 
 import uuid
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Cart, CartItem, Category, Order, OrderItem, Payment, Product, User,UserProfile
@@ -9,6 +9,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 def index(request):
     featured_products = Product.objects.filter(available=True)[:8]
@@ -130,18 +131,25 @@ def update_cart(request, item_id):
     return redirect('cart')
 
 def remove_from_cart(request, product_id):
-    cart_item = get_object_or_404(CartItem, id=product_id)
-    cart_item.delete()
-    messages.success(request, 'Item removed from cart!')
+    
+    cart_item = CartItem.objects.filter(product_id=product_id).first()
+    
+    if cart_item:
+        cart_item.delete()
+        messages.success(request, 'Item removed from cart!')
+    else:
+        messages.warning(request, 'Item not found in your cart.')
+    
     return redirect('cart')
 
 def checkout(request):
     cart = get_or_create_cart(request)
     cart_items = cart.items.all()
-    
+    order = None
+
     if not cart_items:
         messages.warning(request, 'Your cart is empty!')
-        return redirect('shop:product_list')
+        return redirect('cart')
     
     if request.method == 'POST':
         form = CheckoutForm(request.POST)
@@ -151,9 +159,7 @@ def checkout(request):
                 first_name=form.cleaned_data['first_name'],
                 last_name=form.cleaned_data['last_name'],
                 email=form.cleaned_data['email'],
-                address=form.cleaned_data['address'],
-                postal_code=form.cleaned_data['postal_code'],
-                city=form.cleaned_data['city']
+               
             )
             
             for item in cart_items:
@@ -170,12 +176,12 @@ def checkout(request):
                 order=order,
                 transaction_id=str(uuid.uuid4()),
                 amount=order.get_total_cost(),
-                status='completed'
+                status='pending'
             )
             
             cart_items.delete()
             
-            return redirect('shop:order_confirmation', order_id=order.id)
+            return redirect('confirm_order', order_id=order.id)
     else:
         initial_data = {
             'first_name': request.user.first_name,
@@ -186,10 +192,11 @@ def checkout(request):
     
     total = cart.get_total_price()
     
-    return render(request, 'cart.html', {
+    return render(request, 'checkout.html', {
         'form': form,
         'cart_items': cart_items,
-        'total': total
+        'total': total,
+        'order': order
     })
 def cart_total(request, total):
     total_item = get_object_or_404(total)
@@ -215,9 +222,20 @@ def product_detail(request, slug):
 
 def order_confirmation(request, order_id):
     order = get_object_or_404(Order, id=order_id, user=request.user)
-    return render(request, 'cart.html', {'order': order})
+    return render(request, 'confirmation.html', {'order': order})
 
+def order_page(request,):
+    orders = Order.objects.filter(user=request.user).order_by('-created_at')
+    return render(request, 'order.html', {'orders': orders})
 
+def order_detail(request, order_id):
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+    order_items = OrderItem.objects.filter(order=order)
+    
+    return render(request, 'order-info.html', {
+        'order': order,
+        'order_items': order_items
+    })
 
 def product_add(request):
     if request.method == 'POST':
@@ -269,10 +287,38 @@ def delete_product(request, slug):
     return redirect('product_list')
 
 def order_list(request):
-    return render(request, 'order-list.html')
+   
+    orders = Order.objects.all().order_by('-created_at')
+    
+    return render(request, 'order-list.html', {
+        'orders': orders
+    })
 
-def order_details(request):
-    return render(request, 'order-details.html')
+def order_details(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    order_items = OrderItem.objects.filter(order=order)
+    payment = getattr(order, 'payment', None)  # if OneToOneField exists
+
+    if request.method == 'POST':
+        # Update shipping status
+        shipping_status = request.POST.get('shipping_status')
+        if shipping_status:
+            order.status = shipping_status
+            order.save()
+
+        # Update transaction status
+        transaction_status = request.POST.get('transaction_status')
+        if payment and transaction_status:
+            payment.status = transaction_status
+            payment.save()
+
+        return redirect('order_details', order_id=order.id)
+
+    return render(request, 'order-details.html', {
+        'order': order,
+        'order_items': order_items,
+        'payment': payment
+    })
 
 def customer_list(request):
     return render(request, 'customers.html')
@@ -298,3 +344,22 @@ def categories(request):
     else:
         form=CategoryForm()
     return render(request, 'categories.html' ,{'form':form})
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        form=UserProfileForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form=UserProfileForm()
+    return render(request, 'profile.html' ,{'form':form})
+
+
+def user_logout(request):
+   
+    logout(request)
+    messages.success(request, "You have been logged out successfully.")
+    
+    return redirect('login')   

@@ -6,7 +6,7 @@ from django.core.validators import MinValueValidator
 
 # Create your models here.
 class UserProfile(models.Model):
-    user=models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     phone_number = models.CharField(max_length=20)
     gender = models.CharField(max_length=20)
     age = models.IntegerField(blank=True, null=True)
