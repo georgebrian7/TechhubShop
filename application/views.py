@@ -32,7 +32,7 @@ def register(request):
             raw_password = form.cleaned_data.get('password1')
             user=authenticate(request, username=username,password=raw_password)
             login(request, user)
-            return redirect('login')
+            return redirect('index')
         else:
             messages.error(request, 'Please correct the error below.')
 
@@ -321,10 +321,18 @@ def order_details(request, order_id):
     })
 
 def customer_list(request):
-    return render(request, 'customers.html')
+    customers = User.objects.all().order_by('date_joined')
+    return render(request, 'customers.html', {
+        'customers': customers,
+    })
 
-def customer_detail(request):
-    return render(request, 'customer-detail.html')
+def customer_detail(request, customer_id):
+    customer = get_object_or_404(User, id=customer_id)
+    orders = customer.orders.all().order_by('-created_at')
+    return render(request, 'customer-detail.html', {
+        'customer': customer,
+        'orders': orders,
+    })
 
 def stock_list(request):
     return render(request, 'inventory-info.html')
