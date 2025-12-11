@@ -12,21 +12,24 @@ import dj_database_url
 # =======================================
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # =======================================
 # SECURITY SETTINGS
 # =======================================
 SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-prod')
 
-DEBUG = os.environ.get("DEBUG", "True") == "True"
+DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ['*', 'techhubpage.onrender.com']
-
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'techhubpage.onrender.com',
+]
 
 # =======================================
 # APPLICATIONS
 # =======================================
 INSTALLED_APPS = [
+    # Django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -34,21 +37,23 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Your app
+    # App
     'application',
 
-    # Cloudinary apps
+    # Cloudinary
     'cloudinary',
     'cloudinary_storage',
 ]
-
 
 # =======================================
 # MIDDLEWARE
 # =======================================
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Static handling for Render and local
+
+    # Whitenoise must stay directly under SecurityMiddleware
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -56,7 +61,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 
 # =======================================
 # URLS + WSGI
@@ -66,7 +70,7 @@ ROOT_URLCONF = 'Techhub.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],   # recommended for Render
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,7 +85,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Techhub.wsgi.application'
 
-
 # =======================================
 # DATABASE CONFIG
 # =======================================
@@ -91,7 +94,6 @@ DATABASES = {
         conn_max_age=600
     )
 }
-
 
 # =======================================
 # PASSWORD VALIDATION
@@ -103,7 +105,6 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-
 # =======================================
 # INTERNATIONALIZATION
 # =======================================
@@ -112,51 +113,46 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-
 # =======================================
 # STATIC FILES
 # =======================================
 STATIC_URL = '/static/'
 
-# Where collectstatic will place files
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# Where collectstatic stores files
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# For local static directory
+# Local static files
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-# Whitenoise handles static in production
+# Production static file handling (Render)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# =======================================
+# MEDIA FILES (Local Only)
+# =======================================
+# These are ignored in production because of Cloudinary
 
-# =======================================
-# MEDIA FILES
-# =======================================
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # =======================================
 # CLOUDINARY SETTINGS
 # =======================================
-# Must be added in Vercel / Render dashboard:
-# CLOUDINARY_URL = cloudinary://API_KEY:API_SECRET@CLOUD_NAME
-
+# Must be set in Render Dashboard → Environment Variables
 CLOUDINARY_URL = os.environ.get("CLOUDINARY_URL")
 
-# Store uploaded images in Cloudinary
+# Store UPLOADED MEDIA in Cloudinary
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# Optional: If you want static files on Cloudinary, uncomment:
+# (Optional) If you want static files on Cloudinary instead of Whitenoise:
 # STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
-
 # =======================================
-# AUTH SETTINGS
+# LOGIN
 # =======================================
 LOGIN_URL = 'login'
-
 
 # =======================================
 # AUTO FIELD
