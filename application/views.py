@@ -10,6 +10,9 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
+from django.db.models import Sum, Avg, Count
+
+
 # Create your views here.
 def index(request):
     featured_products = Product.objects.filter(available=True)[:8]
@@ -49,8 +52,41 @@ def login_view(request):
     return render(request, 'login.html')
 
 @login_required(login_url='dashboard_login')
-def dashboard(request,):
-    return render(request, 'admin.html')
+def dashboard(request):
+    # Revenue from completed payments
+    revenue = Payment.objects.filter(status="completed").aggregate(total=Sum('amount'))['total'] or 0
+
+    users_count = User.objects.count()
+    orders_pending = Order.objects.filter(status="pending").count()
+
+    from django.utils import timezone
+    from datetime import timedelta
+    new_users = User.objects.filter(date_joined__gte=timezone.now()-timedelta(days=30)).count()
+
+    customers = User.objects.filter(orders__isnull=False).distinct().count()
+    orders_total = Order.objects.count()
+
+    avg_sale = Payment.objects.filter(status="completed").aggregate(avg=Avg('amount'))['avg'] or 0
+    avg_item_sale = OrderItem.objects.aggregate(avg=Avg('quantity'))['avg'] or 0
+
+    total_sale = Payment.objects.filter(status="completed").aggregate(total=Sum('amount'))['total'] or 0
+    total_products = Product.objects.count()
+
+    top_item = Product.objects.annotate(sales=Sum('orderitem__quantity')).order_by('-sales').first()
+
+    return render(request, 'admin.html', {
+        'revenue': revenue,
+        'users_count': users_count,
+        'orders_pending': orders_pending,
+        'new_users': new_users,
+        'customers': customers,
+        'orders_total': orders_total,
+        'avg_sale': avg_sale,
+        'avg_item_sale': avg_item_sale,
+        'total_sale': total_sale,
+        'total_products': total_products,
+        'top_item': top_item.name if top_item else "—",
+    })
 
 def products(request):
     products = Product.objects.filter(available=True)
@@ -335,10 +371,14 @@ def customer_detail(request, customer_id):
     })
 
 def stock_list(request):
-    return render(request, 'inventory-info.html')
+    products = Product.objects.all()
+    return render(request, 'inventory-info.html', {'products':products})
 
 def purchase(request):
-    return render(request, 'purchase.html')
+    purchased_items = Order.objects.select_related('user', 'payment').order_by('-created_at')
+    return render(request, 'purchase.html', {
+        'purchased_items': purchased_items,
+    })
 
 def admin_profile(request):
     return render(request, 'admin-profile.html')

@@ -109,7 +109,7 @@
                 <div class="swiper-slide" lazy="true">
                     <div class="card-product bg_white radius-20">
                         <div class="card-product-wrapper">
-                            <a href="{% url 'product' product.slug %}" class="product-img">
+                            <a href="" class="product-img">
                                 
                                 
                                 {% if product.image1 %}
@@ -125,10 +125,7 @@
                                     <span class="tooltip">Add to Cart</span>
                                 </a>
                                 
-                                <a href="#quick_view" data-bs-toggle="modal" class="box-icon bg_white quickview tf-btn-loading">
-                                    <span class="icon icon-view"></span>
-                                    <span class="tooltip">View Details</span>
-                                </a>
+                               
                             </div>
                             {% if product.available %}
                              <div class="on-sale-wrap text-end">
@@ -144,7 +141,8 @@
                         </div>
                         
                         <div class="card-product-info has-padding">
-                            <a href="{% url 'product' product.slug %}" class="title link">{{ product.name }}</a>
+                            <a href="" class="title link">{{ product.name }}</a>
+                            <a href="" class="title link">{{ product.description }}</a>
                             <span class="price">
                                 <span class="fw-4 text-sale">Ksh{{ product.price }}</span> 
                                 <span class="text_primary">Ksh{{ product.price }}</span>
@@ -265,20 +263,7 @@
                                                 <span class="icon icon-bag"></span>
                                                 <span class="tooltip">Quick Add</span>
                                             </a>
-                                            <a href="javascript:void(0);" class="box-icon wishlist btn-icon-action">
-                                                <span class="icon icon-heart"></span>
-                                                <span class="tooltip">Add to Wishlist</span>
-                                                <span class="icon icon-delete"></span>
-                                            </a>
-                                            <a href="#compare" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="box-icon compare btn-icon-action">
-                                                <span class="icon icon-compare"></span>
-                                                <span class="tooltip">Add to Compare</span>
-                                                <span class="icon icon-check"></span>
-                                            </a>
-                                            <a href="#quick_view" data-bs-toggle="modal" class="box-icon quickview tf-btn-loading">
-                                                <span class="icon icon-view"></span>
-                                                <span class="tooltip">Quick View</span>
-                                            </a>
+                                            
                                         </div>
                                         <div class="on-sale-wrap text-end">
                                             <div class="on-sale-item new">New !</div>
@@ -320,9 +305,7 @@
                                                 <i class="icon icon-check"></i>Warranty : 1-year
                                             </li>
                                         </ul>
-                                        <div class="tf-price-table-btn text-center">
-                                            <a href="product-detail.html" class="tf-btn btn-md rounded-full btn-fill btn-icon animate-hover-btn">View details</a>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -338,20 +321,7 @@
                                                 <span class="icon icon-bag"></span>
                                                 <span class="tooltip">Quick Add</span>
                                             </a>
-                                            <a href="javascript:void(0);" class="box-icon bg_white wishlist btn-icon-action">
-                                                <span class="icon icon-heart"></span>
-                                                <span class="tooltip">Add to Wishlist</span>
-                                                <span class="icon icon-delete"></span>
-                                            </a>
-                                            <a href="#compare" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="box-icon bg_white compare btn-icon-action">
-                                                <span class="icon icon-compare"></span>
-                                                <span class="tooltip">Add to Compare</span>
-                                                <span class="icon icon-check"></span>
-                                            </a>
-                                            <a href="#quick_view" data-bs-toggle="modal" class="box-icon bg_white quickview tf-btn-loading">
-                                                <span class="icon icon-view"></span>
-                                                <span class="tooltip">Quick View</span>
-                                            </a>
+                                            
                                         </div>
                                         <div class="on-sale-wrap text-end">
                                             <div class="on-sale-item best-seller">Best Seller !</div>
@@ -392,9 +362,7 @@
                                                 <i class="icon icon-check"></i>Warranty : 3-year
                                             </li>
                                         </ul>
-                                        <div class="tf-price-table-btn text-center">
-                                            <a href="product-detail.html" class="tf-btn btn-md btn-light-icon rounded-full animate-hover-btn">View details</a>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -410,20 +378,8 @@
                                                 <span class="icon icon-bag"></span>
                                                 <span class="tooltip">Quick Add</span>
                                             </a>
-                                            <a href="javascript:void(0);" class="box-icon wishlist btn-icon-action">
-                                                <span class="icon icon-heart"></span>
-                                                <span class="tooltip">Add to Wishlist</span>
-                                                <span class="icon icon-delete"></span>
-                                            </a>
-                                            <a href="#compare" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="box-icon compare btn-icon-action">
-                                                <span class="icon icon-compare"></span>
-                                                <span class="tooltip">Add to Compare</span>
-                                                <span class="icon icon-check"></span>
-                                            </a>
-                                            <a href="#quick_view" data-bs-toggle="modal" class="box-icon quickview tf-btn-loading">
-                                                <span class="icon icon-view"></span>
-                                                <span class="tooltip">Quick View</span>
-                                            </a>
+                                            
+                                            
                                         </div>
                                         <div class="on-sale-wrap text-end">
                                             <div class="on-sale-item recommend">Recommend !</div>
@@ -464,9 +420,7 @@
                                                 <i class="icon icon-check"></i>Warranty : 2-year
                                             </li>
                                         </ul>
-                                        <div class="tf-price-table-btn text-center">
-                                            <a href="product-detail.html" class="tf-btn btn-sm rounded-full btn-fill btn-icon animate-hover-btn">View details</a>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -677,7 +631,7 @@
     <!-- toolbar-bottom -->
     <div class="tf-toolbar-bottom type-1150">
         <div class="toolbar-item active">
-            <a href="#toolbarShopmb" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft">
+            <a href="{% url 'index' %}"  aria-controls="offcanvasLeft">
                 <div class="toolbar-icon">
                     <i class="icon-shop"></i>
                 </div>
@@ -685,33 +639,18 @@
             </a>
         </div>
         
+        
         <div class="toolbar-item">
-            <a href="#canvasSearch" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft">
-                <div class="toolbar-icon">
-                    <i class="icon-search"></i>
-                </div>
-                <div class="toolbar-label">Search</div>
-            </a>
-        </div>
-        <div class="toolbar-item">
-            <a href="#login" data-bs-toggle="modal">
+            <a href="{% url 'profile' %}" >
                 <div class="toolbar-icon">
                     <i class="icon-account"></i>
                 </div>
                 <div class="toolbar-label">Account</div>
             </a>
         </div>
+        
         <div class="toolbar-item">
-            <a href="wishlist.html">
-                <div class="toolbar-icon">
-                    <i class="icon-heart"></i>
-                    <div class="toolbar-count">0</div>
-                </div>
-                <div class="toolbar-label">Wishlist</div>
-            </a>
-        </div>
-        <div class="toolbar-item">
-            <a href="#shoppingCart" data-bs-toggle="modal">
+            <a href="{% url 'cart' %}" >
                 <div class="toolbar-icon">
                     <i class="icon-bag"></i>
                     <div class="toolbar-count">1</div>

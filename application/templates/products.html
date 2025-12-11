@@ -57,7 +57,7 @@
                 {% for product in products %}
                     
                 <div class="card-product-wrapper "  >
-                    <a href="product-detail.html" class="product-img">
+                    <a href="" class="product-img">
                         
                         {% if product.image1 %}
                         <img class="lazyload img-product" data-src="{{ product.image1.url }}" src="{{ product.image2.url }}" alt="{{ product.name }}">
@@ -82,18 +82,19 @@
                             <span class="icon icon-bag"></span><span class="text">{{ product.name }}</span>
                         </a>
                         <a href="" data-bs-toggle="modal" class="box-icon quickview style-2">
-                            <span class="icon icon-view"></span><span class="text">Ksh {{ product.price }}</span>
+                            <span class="icon "></span><span class="text">Ksh {{ product.price }}</span>
                         </a>
                     </div>
 
-                    <!-- <div class="size-list style-2">
-                        {{ product.name }}
-                    </div> -->
+                    <div class="size-list style-2">
+                        {{ product.description }}
+                    </div>
 
                     <div class="card-product-info">
                         <a href="" class="title link">{{ product.name }}</a>
                         <span class="price">Ksh {{ product.price }}</span>
                     </div>
+                    
                 </div>
                 {% empty %}
                 <div>No products available in this category.</li>
