@@ -112,15 +112,20 @@ USE_TZ = True
 # =======================================
 # STATIC FILES
 # =======================================
-STATIC_URL = "/static/"
+
+
+STATIC_URL = '/static/'
+
+# Static root MUST always exist so collectstatic works
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 if DEBUG:
-    STATICFILES_DIRS = [BASE_DIR / "static"]
+    STATICFILES_DIRS = [
+        BASE_DIR / "static",
+    ]
 else:
-    STATIC_ROOT = BASE_DIR / "staticfiles"
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# =======================================
 # MEDIA
 # =======================================
 MEDIA_URL = "/media/"
