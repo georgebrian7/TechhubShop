@@ -39,7 +39,7 @@ INSTALLED_APPS = [
 
     # App
     'application',
-    
+
     # Cloudinary
     'cloudinary',
     'cloudinary_storage',
@@ -51,7 +51,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 
-    # Whitenoise must stay directly under SecurityMiddleware
+    # Whitenoise — must be directly under SecurityMiddleware
     'whitenoise.middleware.WhiteNoiseMiddleware',
 
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -70,7 +70,7 @@ ROOT_URLCONF = 'Techhub.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],   # recommended for Render
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -114,40 +114,34 @@ USE_I18N = True
 USE_TZ = True
 
 # =======================================
-# STATIC FILES
+# STATIC FILES (Whitenoise)
 # =======================================
 STATIC_URL = '/static/'
 
-# Where collectstatic stores files
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# Local static files
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-# Production static file handling (Render)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # =======================================
-# MEDIA FILES (Local Only)
+# MEDIA (LOCAL ONLY)
 # =======================================
-# These are ignored in production because of Cloudinary
-
 MEDIA_URL = '/media/'
-# MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # =======================================
-# CLOUDINARY SETTINGS
+# CLOUDINARY SETTINGS (ONLY USE THIS)
 # =======================================
-# Must be set in Render Dashboard → Environment Variables
+# Set this in Render → Environment Variables:
+# CLOUDINARY_URL = cloudinary://<api_key>:<api_secret>@<cloud_name>
+
 CLOUDINARY_URL = os.environ.get("CLOUDINARY_URL")
 
-# Store UPLOADED MEDIA in Cloudinary
+# Use Cloudinary for uploaded media files
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-# (Optional) If you want static files on Cloudinary instead of Whitenoise:
-# STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
 # =======================================
 # LOGIN
