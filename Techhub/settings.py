@@ -39,7 +39,7 @@ INSTALLED_APPS = [
 
     # App
     'application',
-
+    'bootstrap5',
     # Cloudinary
     'cloudinary',
     'cloudinary_storage',
@@ -135,7 +135,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # These are ignored in production because of Cloudinary
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# MEDIA_ROOT = BASE_DIR / 'media'
 
 # =======================================
 # CLOUDINARY SETTINGS

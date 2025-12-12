@@ -1,3 +1,3 @@
 # TechhubShop
 Online Electronic shop 
-Live on vercel 
+Live on Render
