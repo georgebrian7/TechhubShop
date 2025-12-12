@@ -39,7 +39,7 @@ INSTALLED_APPS = [
 
     # App
     'application',
-    'bootstrap5',
+    
     # Cloudinary
     'cloudinary',
     'cloudinary_storage',
