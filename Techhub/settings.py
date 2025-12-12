@@ -7,7 +7,6 @@ from pathlib import Path
 import dj_database_url
 from dotenv import load_dotenv
 
-# Load local environment variables (.env)
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,7 +28,6 @@ ALLOWED_HOSTS = [
 # APPS
 # =======================================
 INSTALLED_APPS = [
-    # Django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -37,10 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # App
     'application',
 
-    # Cloudinary
     'cloudinary',
     'cloudinary_storage',
 ]
@@ -52,7 +48,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 ]
 
-# Enable Whitenoise ONLY in production
+# Whitenoise ONLY IN PRODUCTION
 if not DEBUG:
     MIDDLEWARE.append('whitenoise.middleware.WhiteNoiseMiddleware')
 
@@ -65,9 +61,6 @@ MIDDLEWARE += [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# =======================================
-# URL + WSGI
-# =======================================
 ROOT_URLCONF = 'Techhub.urls'
 
 TEMPLATES = [
@@ -99,13 +92,13 @@ DATABASES = {
 }
 
 # =======================================
-# PASSWORD VALIDATION
+# PASSWORDS
 # =======================================
 AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
 # =======================================
@@ -119,40 +112,31 @@ USE_TZ = True
 # =======================================
 # STATIC FILES
 # =======================================
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
 
 if DEBUG:
-    # Local static files served by Django
-    STATICFILES_DIRS = [
-        BASE_DIR / 'static',
-    ]
+    STATICFILES_DIRS = [BASE_DIR / "static"]
 else:
-    # Production static files collected here
-    STATIC_ROOT = BASE_DIR / 'staticfiles'
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    STATIC_ROOT = BASE_DIR / "staticfiles"
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # =======================================
-# MEDIA FILES (LOCAL ONLY)
+# MEDIA
 # =======================================
-# Local use: media folder
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 # =======================================
-# CLOUDINARY SETTINGS
+# CLOUDINARY (production only)
 # =======================================
 CLOUDINARY_URL = os.environ.get("CLOUDINARY_URL")
 
 if not DEBUG:
-    # Store uploaded media in Cloudinary (Production only)
     DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
 # =======================================
 # LOGIN
 # =======================================
-LOGIN_URL = 'login'
+LOGIN_URL = "login"
 
-# =======================================
-# AUTO FIELD
-# =======================================
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
