@@ -18,7 +18,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY
 # =======================================
 SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-prod')
-
 DEBUG = os.environ.get("DEBUG", "True") == "True"
 
 ALLOWED_HOSTS = [
@@ -28,7 +27,7 @@ ALLOWED_HOSTS = [
 ]
 
 # =======================================
-# APPS
+# APPS - ORDER IS CRITICAL
 # =======================================
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -36,11 +35,12 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',  # Add this for development
     'django.contrib.staticfiles',
 
     'application',
 
-    'cloudinary_storage',  # MUST be before django.contrib.staticfiles
+    'cloudinary_storage',
     'cloudinary',
 ]
 
@@ -49,7 +49,7 @@ INSTALLED_APPS = [
 # =======================================
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Add whitenoise in all environments
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Must be after SecurityMiddleware
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -71,7 +71,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media',  # Add this
+                'django.template.context_processors.media',  # Important for media files
+                'django.template.context_processors.static',  # Important for static files
             ],
         },
     },
@@ -113,7 +114,6 @@ USE_TZ = True
 CLOUDINARY_URL = os.environ.get("CLOUDINARY_URL")
 
 if CLOUDINARY_URL:
-    # Parse the URL manually to configure cloudinary
     import re
     match = re.match(r'cloudinary://(\d+):([^@]+)@([^/]+)', CLOUDINARY_URL)
     if match:
@@ -123,6 +123,11 @@ if CLOUDINARY_URL:
             api_secret=match.group(2),
             secure=True
         )
+        print(f"✓ Cloudinary configured: {match.group(3)}")
+    else:
+        print("✗ Invalid CLOUDINARY_URL format")
+else:
+    print("⚠ CLOUDINARY_URL not set - using local storage")
 
 # =======================================
 # STATIC FILES
@@ -130,22 +135,26 @@ if CLOUDINARY_URL:
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+# Only use STATICFILES_DIRS in development or if you have a separate static folder
 if DEBUG:
     STATICFILES_DIRS = [BASE_DIR / "static"]
 
+# Use Whitenoise for static files
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # =======================================
 # MEDIA FILES
 # =======================================
-if not DEBUG and CLOUDINARY_URL:
+if CLOUDINARY_URL and not DEBUG:
     # Production: Use Cloudinary
     DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
-    MEDIA_URL = '/media/'  # Cloudinary will handle this
+    MEDIA_URL = '/media/'
+    print("✓ Using Cloudinary for media storage")
 else:
     # Development: Use local storage
     MEDIA_URL = "/media/"
     MEDIA_ROOT = BASE_DIR / "media"
+    print("✓ Using local media storage")
 
 # =======================================
 # LOGIN
@@ -153,3 +162,20 @@ else:
 LOGIN_URL = "login"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# =======================================
+# LOGGING (helpful for debugging)
+# =======================================
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    },
+}
