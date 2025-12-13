@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.utils.text import slugify
 from django.core.validators import MinValueValidator
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class UserProfile(models.Model):
@@ -42,8 +43,8 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(0)])
     stock = models.PositiveIntegerField(default=0)
-    image1 = models.ImageField(upload_to='products/', blank=True)
-    image2 = models.ImageField(upload_to='products/', blank=True)
+    image1 = CloudinaryField('image', blank=True, null=True, folder='products')
+    image2 = CloudinaryField('image', blank=True, null=True, folder='products')
     available = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
