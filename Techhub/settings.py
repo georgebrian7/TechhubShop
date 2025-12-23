@@ -181,3 +181,10 @@ LOGGING = {
         'level': 'INFO',
     },
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://keshilimited.com",
+    "https://www.keshilimited.com",
+]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
