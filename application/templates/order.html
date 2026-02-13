@@ -39,7 +39,7 @@
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th class="fw-6">Order</th>
+                                            <th class="fw-6">Order id</th>
                                             <th class="fw-6">Date</th>
                                             <th class="fw-6">Shipping Status</th>
                                             <th class="fw-6">Total</th>
@@ -48,7 +48,7 @@
                                     </thead>
                                     <tbody>
                                         {% for order in orders %}
-                                        <tr class="tf-order-item">
+                                        <tr class="tf-order-item" >
                                             <td>
                                                 {{ order.id }}
                                             </td>
