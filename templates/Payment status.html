@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Payment Status - Order #{{ order.id }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3 class="mb-0"><i class="fas fa-receipt"></i> Payment Status</h3>
+                </div>
+                <div class="card-body">
+                    <div class="transaction-status text-center" id="statusContainer">
+                        <!-- Loading State -->
+                        <div id="loadingState">
+                            <div class="status-icon status-pending">
+                                <i class="fas fa-spinner fa-spin fa-4x text-warning"></i>
+                            </div>
+                            <h4 class="mt-3">Checking Payment Status...</h4>
+                            <p class="text-muted">Please wait while we verify your M-Pesa payment</p>
+                            <div class="progress mt-3" style="height: 5px;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" 
+                                     role="progressbar" style="width: 100%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Details (hidden initially) -->
+                        <div id="paymentDetails" style="display: none;">
+                            <div id="statusIcon"></div>
+                            <h4 id="statusTitle" class="mt-3"></h4>
+                            <p id="statusMessage" class="text-muted"></p>
+
+                            <div class="card bg-light mt-4">
+                                <div class="card-body text-start">
+                                    <h6 class="card-title">Payment Information</h6>
+                                    <div class="row">
+                                        <div class="col-6 mb-3">
+                                            <small class="text-muted">Order Number</small>
+                                            <h6>{{ order.id }}</h6>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <small class="text-muted">Amount</small>
+                                            <h6 id="detailAmount">-</h6>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <small class="text-muted">Phone Number</small>
+                                            <h6 id="detailPhone">-</h6>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <small class="text-muted">Status</small>
+                                            <h6 id="detailStatus">-</h6>
+                                        </div>
+                                        <div class="col-6 mb-3" id="receiptContainer" style="display: none;">
+                                            <small class="text-muted">M-Pesa Receipt</small>
+                                            <h6 id="detailReceipt" class="text-success">-</h6>
+                                        </div>
+                                        <div class="col-6 mb-3" id="dateContainer" style="display: none;">
+                                            <small class="text-muted">Transaction Date</small>
+                                            <h6 id="detailDate">-</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 d-grid gap-2">
+                                <a href="{% url 'order_detail' order.id %}" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-eye"></i> View Order Details
+                                </a>
+                                <a href="{% url 'order' %}" class="btn btn-outline-secondary">
+                                    <i class="fas fa-list"></i> My Orders
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tips Card -->
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h6><i class="fas fa-lightbulb text-warning"></i> Payment Tips</h6>
+                    <ul class="mb-0 small">
+                        <li>Payment confirmation usually takes 5-30 seconds</li>
+                        <li>You'll receive an M-Pesa confirmation SMS</li>
+                        <li>If payment fails, you can try again from your order page</li>
+                        <li>Keep your M-Pesa receipt number for reference</li>
+                        <li>Your order will be processed once payment is confirmed</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.card {
+    border-radius: 15px;
+    border: none;
+}
+.status-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+.status-pending { color: #ffc107; }
+.status-success { color: #28a745; }
+.status-failed { color: #dc3545; }
+</style>
+
+<script>
+const checkoutRequestId = "{{ checkout_request_id }}";
+let checkInterval;
+let checkCount = 0;
+const maxChecks = 24; // Check for 2 minutes (24 * 5 seconds)
+
+// Start checking payment status
+checkPaymentStatus();
+checkInterval = setInterval(checkPaymentStatus, 5000);
+
+async function checkPaymentStatus() {
+    checkCount++;
+    
+    try {
+        const response = await fetch(`/mpesa/check-status/${checkoutRequestId}/`);
+        const data = await response.json();
+        
+        if (data.status !== 'pending' || checkCount >= maxChecks) {
+            clearInterval(checkInterval);
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('paymentDetails').style.display = 'block';
+            updatePaymentUI(data);
+        }
+        
+    } catch (error) {
+        console.error('Error checking status:', error);
+        
+        if (checkCount >= maxChecks) {
+            clearInterval(checkInterval);
+            showError();
+        }
+    }
+}
+
+function updatePaymentUI(data) {
+    const statusIcon = document.getElementById('statusIcon');
+    const statusTitle = document.getElementById('statusTitle');
+    const statusMessage = document.getElementById('statusMessage');
+    
+    // Update details
+    document.getElementById('detailPhone').textContent = data.phone_number || '-';
+    document.getElementById('detailAmount').textContent = data.amount ? `KES ${parseFloat(data.amount).toFixed(2)}` : '-';
+    
+    if (data.status === 'completed') {
+        // Success
+        statusIcon.innerHTML = '<i class="fas fa-check-circle fa-4x text-success"></i>';
+        statusTitle.textContent = 'Payment Successful!';
+        statusMessage.textContent = 'Your M-Pesa payment has been received. Your order is now being processed.';
+        document.getElementById('detailStatus').innerHTML = '<span class="badge bg-success">Completed</span>';
+        
+        if (data.mpesa_receipt_number) {
+            document.getElementById('receiptContainer').style.display = 'block';
+            document.getElementById('detailReceipt').textContent = data.mpesa_receipt_number;
+        }
+        
+        if (data.transaction_date) {
+            document.getElementById('dateContainer').style.display = 'block';
+            document.getElementById('detailDate').textContent = new Date(data.transaction_date).toLocaleString();
+        }
+        
+    } else if (data.status === 'failed') {
+        // Failed
+        statusIcon.innerHTML = '<i class="fas fa-times-circle fa-4x text-danger"></i>';
+        statusTitle.textContent = 'Payment Failed';
+        statusMessage.textContent = data.result_desc || 'The payment was not successful. Please try again.';
+        document.getElementById('detailStatus').innerHTML = '<span class="badge bg-danger">Failed</span>';
+        
+    } else {
+        // Pending/Timeout
+        statusIcon.innerHTML = '<i class="fas fa-clock fa-4x text-warning"></i>';
+        statusTitle.textContent = 'Payment Pending';
+        statusMessage.textContent = 'Payment is still processing. Please check back later or contact support.';
+        document.getElementById('detailStatus').innerHTML = '<span class="badge bg-warning">Pending</span>';
+    }
+}
+
+function showError() {
+    document.getElementById('loadingState').style.display = 'none';
+    document.getElementById('paymentDetails').style.display = 'block';
+    
+    document.getElementById('statusIcon').innerHTML = '<i class="fas fa-exclamation-triangle fa-4x text-warning"></i>';
+    document.getElementById('statusTitle').textContent = 'Unable to Verify Payment';
+    document.getElementById('statusMessage').textContent = 'We are still processing your payment. Please check your order page later.';
+}
+</script>
+{% endblock %}

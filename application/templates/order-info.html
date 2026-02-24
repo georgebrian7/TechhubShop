@@ -36,6 +36,82 @@
                                     
                                 </ul>
                                 
+{% if order.status == 'pending' and not order.payment.status == 'completed' %}
+<div class="card mt-4 border-success">
+    <div class="card-header bg-success text-white">
+        <h5 class="mb-0"><i class="fas fa-exclamation-circle"></i> Payment Required</h5>
+    </div>
+    <div class="card-body">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h6>Complete your payment to process this order</h6>
+                <p class="mb-0 text-muted">
+                    <i class="fas fa-shield-alt"></i> 
+                    Pay securely via M-Pesa Paybill. You'll receive an STK push on your phone.
+                </p>
+            </div>
+            <div class="col-md-4 text-end">
+                <a href="{% url 'mpesa:payment_form' order.id %}" class="btn btn-success btn-lg">
+                    <i class="fas fa-mobile-alt"></i> Pay KES {{ order.get_total_cost|floatformat:2 }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Show M-Pesa Payment Details if paid -->
+{% if order.mpesa_payments.exists %}
+<div class="card mt-4">
+    <div class="card-header bg-info text-white">
+        <h5 class="mb-0"><i class="fas fa-receipt"></i> M-Pesa Payment Details</h5>
+    </div>
+    <div class="card-body">
+        {% for mpesa in order.mpesa_payments.all %}
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <small class="text-muted">Status</small>
+                <p>
+                    {% if mpesa.status == 'completed' %}
+                        <span class="badge bg-success">Completed</span>
+                    {% elif mpesa.status == 'pending' %}
+                        <span class="badge bg-warning">Pending</span>
+                    {% else %}
+                        <span class="badge bg-danger">{{ mpesa.status|title }}</span>
+                    {% endif %}
+                </p>
+            </div>
+            <div class="col-md-3">
+                <small class="text-muted">Amount</small>
+                <p><strong>KES {{ mpesa.amount|floatformat:2 }}</strong></p>
+            </div>
+            <div class="col-md-3">
+                <small class="text-muted">Phone Number</small>
+                <p>{{ mpesa.phone_number }}</p>
+            </div>
+            <div class="col-md-3">
+                <small class="text-muted">M-Pesa Receipt</small>
+                <p>
+                    {% if mpesa.mpesa_receipt_number %}
+                        <strong class="text-success">{{ mpesa.mpesa_receipt_number }}</strong>
+                    {% else %}
+                        -
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+        {% if mpesa.status == 'pending' %}
+        <div class="alert alert-warning mb-0">
+            <i class="fas fa-clock"></i> Payment is pending. 
+            <a href="{% url 'payment_status' mpesa.checkout_request_id %}" class="alert-link">
+                Check payment status
+            </a>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
                                 <div class="d-flex justify-content-between line pb_20">
                                     <h6 class="fw-5">Total</h6>
                                     <h6 class="total fw-5">Ksh {{ order.get_total_cost }}</h6>

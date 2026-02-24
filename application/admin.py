@@ -5,6 +5,7 @@ from django.utils.safestring import mark_safe
 from application.forms import CategoryAdminForm, ProductAdminForm
 from application.models import UserProfile , Category, Product, Cart, CartItem, Order, OrderItem, Payment
 from django.urls import reverse
+
 # Register your models here.
 admin.site.register(UserProfile)
 
@@ -245,3 +246,4 @@ class PaymentAdmin(admin.ModelAdmin):
         url = reverse('admin:shop_order_change', args=[obj.order.id])
         return format_html('Order #{}', url, obj.order.id)
     order_link.short_description = 'Order'
+

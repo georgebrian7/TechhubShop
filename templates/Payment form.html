@@ -1,0 +1,158 @@
+{% extends 'good.html' %}
+{% load static %}
+
+{% block title %}M-Pesa Payment - Order #{{ order.id }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Order Summary Card -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0"><i class="fas fa-shopping-cart"></i> Order Summary</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Order Number:</strong> #{{ order.id }}</p>
+                            <p><strong>Order Status:</strong> 
+                                <span class="badge bg-warning">{{ order.get_status_display }}</span>
+                            </p>
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <h3 class="text-primary">KES {{ total|floatformat:2 }}</h3>
+                            <p class="text-muted">Total Amount</p>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    
+                    <h6>Items in Order:</h6>
+                    <ul class="list-unstyled">
+                        {% for item in order.items.all %}
+                        <li class="mb-2">
+                            <i class="fas fa-check text-success"></i> 
+                            {{ item.product.name }} x {{ item.quantity }} - 
+                            <strong>KES {{ item.get_cost|floatformat:2 }}</strong>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <!-- M-Pesa Payment Card -->
+            <div class="card shadow-lg">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0"><i class="fas fa-mobile-alt"></i> Pay via M-Pesa Paybill</h4>
+                </div>
+                <div class="card-body">
+                    <!-- Payment Instructions -->
+                    <div class="alert alert-info">
+                        <h6><i class="fas fa-info-circle"></i> Payment Instructions</h6>
+                        <ol class="mb-0">
+                            <li>Enter your M-Pesa registered phone number below</li>
+                            <li>Click "Pay Now"</li>
+                            <li>You'll receive an STK push on your phone</li>
+                            <li>Enter your M-Pesa PIN to complete payment</li>
+                            <li>You'll receive confirmation via SMS</li>
+                        </ol>
+                    </div>
+
+                    {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <!-- Payment Form -->
+                    <form method="POST" action="{% url 'mpesa:initiate_payment' order.id %}">
+                        {% csrf_token %}
+                        
+                        <div class="mb-4">
+                            <label for="phone_number" class="form-label">
+                                <i class="fas fa-phone"></i> M-Pesa Phone Number
+                            </label>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text">+254</span>
+                                <input 
+                                    type="tel" 
+                                    class="form-control" 
+                                    id="phone_number" 
+                                    name="phone_number"
+                                    value="{{ user_phone|slice:'3:' }}"
+                                    placeholder="712345678" 
+                                    pattern="[0-9]{9}"
+                                    maxlength="9"
+                                    required
+                                >
+                            </div>
+                            <small class="form-text text-muted">
+                                Enter 9 digits (e.g., 712345678). The phone will receive the STK push.
+                            </small>
+                        </div>
+
+                        <div class="card bg-light mb-4">
+                            <div class="card-body">
+                                <h6 class="card-title">Payment Details</h6>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p class="mb-1"><strong>Paybill:</strong> 601380</p>
+                                        <p class="mb-1"><strong>Account No:</strong> {{ account_reference }}</p>
+                                    </div>
+                                    <div class="col-6 text-end">
+                                        <p class="mb-1"><strong>Amount:</strong></p>
+                                        <h4 class="text-success mb-0">KES {{ total|floatformat:2 }}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="fas fa-lock"></i> Pay KES {{ total|floatformat:2 }} Now
+                            </button>
+                            <a href="{% url 'order_detail' order.id %}" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-left"></i> Back to Order
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Help Section -->
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h6><i class="fas fa-question-circle text-primary"></i> Need Help?</h6>
+                    <ul class="mb-0 small">
+                        <li>Make sure your phone is on and has network coverage</li>
+                        <li>Ensure you have sufficient M-Pesa balance</li>
+                        <li>The payment prompt will appear on your phone automatically</li>
+                        <li>If you don't receive the prompt within 30 seconds, try again</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.card {
+    border-radius: 15px;
+    border: none;
+}
+.card-header {
+    border-radius: 15px 15px 0 0 !important;
+}
+.btn-success {
+    background: #00A651;
+    border: none;
+}
+.btn-success:hover {
+    background: #1B5E20;
+}
+</style>
+{% endblock %}

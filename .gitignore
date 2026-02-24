@@ -1,0 +1,15 @@
+
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+
+# Secrets
+*.pem
+*.key
+secrets.json
+service.py

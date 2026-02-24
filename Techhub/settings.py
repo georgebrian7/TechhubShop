@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
-
+from decouple import config
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,6 +26,7 @@ ALLOWED_HOSTS = [
     "techhubpage.onrender.com",
     "www.keshilimited.com",
     "keshilimited.com",
+    "*"
 ]
 
 # =======================================
@@ -41,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'application',
-
+    'mpesa',
     'cloudinary_storage',
     'cloudinary',
 ]
@@ -189,3 +190,4 @@ CSRF_TRUSTED_ORIGINS = [
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
+cloudinary.config( cloud_name = "dmxhx6ubm", api_key = "263322782632457", api_secret = "qtYj6Ep4o62g0ACG39yiPLqzEv8" )

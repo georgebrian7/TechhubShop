@@ -11,8 +11,14 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
 from django.db.models import Sum, Avg, Count
-
-
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
+from datetime import datetime
+# from .utils import MpesaAPI
+# from .models import Mpesa_payment
+from application.models import Order, Payment
+import json
 # Create your views here.
 def index(request):
     featured_products = Product.objects.filter(available=True)[:8]
@@ -189,6 +195,8 @@ def checkout(request):
     
     if request.method == 'POST':
         form = CheckoutForm(request.POST)
+        payment_method = request.POST.get('payment_method', 'mpesa')
+
         if form.is_valid():
             order = Order.objects.create(
                 user=request.user,
@@ -212,12 +220,18 @@ def checkout(request):
                 order=order,
                 transaction_id=str(uuid.uuid4()),
                 amount=order.get_total_cost(),
-                status='pending'
+                status='pending',
+                payment_method=payment_method
             )
             
             cart_items.delete()
             
-            return redirect('confirm_order', order_id=order.id)
+            if payment_method == 'mpesa':
+                messages.success(request, 'Order created! Please complete payment via M-Pesa.')
+                return redirect('mpesa:payment_form', order_id=order.id)
+            else:
+                # For other payment methods (card, etc.)
+                return redirect('confirm_order', order_id=order.id)
     else:
         initial_data = {
             'first_name': request.user.first_name,
@@ -411,3 +425,7 @@ def user_logout(request):
     messages.success(request, "You have been logged out successfully.")
     
     return redirect('login')   
+
+def payment_view(request):
+    return render(request, 'payment.html')
+

@@ -15,9 +15,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from application import views
+
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -52,4 +53,6 @@ urlpatterns = [
     path('order/', views.order_page, name='order'),
     path('order/<int:order_id>/', views.order_detail, name='order_detail'),
     path('logout/', views.user_logout, name='logout'),
+    path('payment', views.payment_view, name='payment'),
+    path('mpesa/', include('mpesa.urls')),
 ]   
