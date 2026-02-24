@@ -190,4 +190,3 @@ CSRF_TRUSTED_ORIGINS = [
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-cloudinary.config( cloud_name = "dmxhx6ubm", api_key = "263322782632457", api_secret = "qtYj6Ep4o62g0ACG39yiPLqzEv8" )
