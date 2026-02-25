@@ -172,7 +172,7 @@ def payment_status(request, checkout_request_id):
     """Display payment status page"""
     payment = get_object_or_404(Mpesa_payment, checkout_request_id=checkout_request_id, user=request.user)
     
-    return render(request, 'mpesa/payment_status.html', {
+    return render(request, 'Payment status.html', {
         'checkout_request_id': checkout_request_id,
         'payment': payment,
         'order': payment.order
