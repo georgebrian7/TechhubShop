@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Received</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background: linear-gradient(135deg, #00A651 0%, #1B5E20 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+        .success-icon {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+        .content {
+            background: #ffffff;
+            padding: 30px;
+            border: 1px solid #e0e0e0;
+        }
+        .payment-details {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #00A651;
+        }
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed #c8e6c9;
+        }
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+        .receipt-box {
+            background: #fff;
+            border: 2px dashed #00A651;
+            padding: 15px;
+            text-align: center;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .receipt-number {
+            font-size: 1.5em;
+            color: #00A651;
+            font-weight: bold;
+            font-family: monospace;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="success-icon">✅</div>
+        <h1>Payment Received!</h1>
+        <p>Your M-Pesa payment has been confirmed</p>
+    </div>
+    
+    <div class="content">
+        <h2>Hi {{ customer_name }},</h2>
+        <p>Great news! We have received your M-Pesa payment for Order #{{ order.id }}.</p>
+        
+        <div class="receipt-box">
+            <p style="margin: 0; color: #666; font-size: 0.9em;">M-Pesa Receipt Number</p>
+            <div class="receipt-number">{{ mpesa_receipt }}</div>
+            <p style="margin: 10px 0 0 0; color: #666; font-size: 0.85em;">
+                Save this for your records
+            </p>
+        </div>
+        
+        <div class="payment-details">
+            <h3 style="margin-top: 0;">Payment Details</h3>
+            
+            <div class="detail-row">
+                <span>Order Number:</span>
+                <strong>#{{ order.id }}</strong>
+            </div>
+            
+            <div class="detail-row">
+                <span>Amount Paid:</span>
+                <strong>KES {{ amount|floatformat:2 }}</strong>
+            </div>
+            
+            <div class="detail-row">
+                <span>Payment Method:</span>
+                <strong>M-Pesa Paybill</strong>
+            </div>
+            
+            <div class="detail-row">
+                <span>Transaction Date:</span>
+                <strong>{{ transaction_date|date:"F d, Y H:i" }}</strong>
+            </div>
+            
+            <div class="detail-row">
+                <span>Order Status:</span>
+                <strong style="color: #00A651;">Processing</strong>
+            </div>
+        </div>
+        
+        <div style="background: #e3f2fd; padding: 15px; border-radius: 5px; margin: 20px 0;">
+            <p style="margin: 0;"><strong>📦 What's Next?</strong></p>
+            <ul style="margin: 10px 0;">
+                <li>Your order is now being processed</li>
+                <li>We'll notify you when your items are shipped</li>
+                <li>You can track your order status anytime</li>
+            </ul>
+        </div>
+        
+        <div style="text-align: center; margin: 30px 0;">
+            <!-- Note: Replace with your actual domain -->
+            <a href="http://your-domain.com/order/{{ order.id }}/" class="button">
+                Track Your Order
+            </a>
+        </div>
+        
+        <p>Thank you for your purchase! If you have any questions, please don't hesitate to contact us.</p>
+        
+        <p style="margin-top: 30px;">
+            <strong>Best regards,</strong><br>
+            The TechHub Team
+        </p>
+    </div>
+    
+    <div class="footer">
+        <p><strong>TechHub</strong></p>
+        <p>Your trusted online tech store</p>
+        <p style="margin-top: 15px;">
+            📧 Email: support@techhub.com<br>
+            📱 Phone: +254 XXX XXX XXX
+        </p>
+        <p style="margin-top: 15px; font-size: 0.8em; color: #999;">
+            This is an automated email. Please do not reply to this message.
+        </p>
+    </div>
+</body>
+</html>

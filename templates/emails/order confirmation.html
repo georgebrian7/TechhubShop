@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+        .content {
+            background: #ffffff;
+            padding: 30px;
+            border: 1px solid #e0e0e0;
+        }
+        .order-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .order-items {
+            margin: 20px 0;
+        }
+        .item {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .item:last-child {
+            border-bottom: none;
+        }
+        .total {
+            background: #e8f5e9;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #00A651;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎉 Order Confirmed!</h1>
+        <p>Thank you for shopping with TechHub</p>
+    </div>
+    
+    <div class="content">
+        <h2>Hi {{ customer_name }},</h2>
+        <p>Your order has been successfully placed and is being processed!</p>
+        
+        <div class="order-info">
+            <h3>Order Details</h3>
+            <p><strong>Order Number:</strong> #{{ order.id }}</p>
+            <p><strong>Order Date:</strong> {{ order.created_at|date:"F d, Y H:i" }}</p>
+            <p><strong>Status:</strong> {{ order.get_status_display }}</p>
+        </div>
+        
+        <div class="order-items">
+            <h3>Items Ordered:</h3>
+            {% for item in order_items %}
+            <div class="item">
+                <div>
+                    <strong>{{ item.product.name }}</strong><br>
+                    <span style="color: #666;">Quantity: {{ item.quantity }}</span>
+                </div>
+                <div style="text-align: right;">
+                    <strong>KES {{ item.get_cost|floatformat:2 }}</strong><br>
+                    <span style="color: #666;">@ KES {{ item.price|floatformat:2 }} each</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="total">
+            Total Amount: <span style="float: right;">KES {{ total|floatformat:2 }}</span>
+        </div>
+        
+        <div style="text-align: center; margin: 30px 0;">
+            <p><strong>Next Step: Complete Your Payment</strong></p>
+            <p>Please complete your payment via M-Pesa to process your order.</p>
+            <!-- Note: Replace with your actual domain -->
+            <a href="http://your-domain.com/order/{{ order.id }}/" class="button">
+                View Order & Pay
+            </a>
+        </div>
+        
+        <div style="background: #fff3cd; padding: 15px; border-radius: 5px; margin: 20px 0;">
+            <p style="margin: 0;"><strong>⚠️ Important:</strong> Your order will be processed once payment is confirmed.</p>
+        </div>
+        
+        <p>If you have any questions about your order, please contact us.</p>
+        <p>Thank you for choosing TechHub!</p>
+    </div>
+    
+    <div class="footer">
+        <p><strong>TechHub</strong></p>
+        <p>Your trusted online tech store</p>
+        <p style="margin-top: 15px; font-size: 0.8em; color: #999;">
+            This is an automated email. Please do not reply to this message.
+        </p>
+    </div>
+</body>
+</html>

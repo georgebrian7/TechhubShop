@@ -19,6 +19,7 @@ from datetime import datetime
 # from .models import Mpesa_payment
 from application.models import Order, Payment
 import json
+from .emails import send_order_confirmation_email
 # Create your views here.
 def index(request):
     featured_products = Product.objects.filter(available=True)[:8]
@@ -225,7 +226,8 @@ def checkout(request):
             )
             
             cart_items.delete()
-            
+            send_order_confirmation_email(order)
+
             if payment_method == 'mpesa':
                 messages.success(request, 'Order created! Please complete payment via M-Pesa.')
                 return redirect('mpesa:payment_form', order_id=order.id)

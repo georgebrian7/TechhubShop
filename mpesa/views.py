@@ -19,7 +19,7 @@ from .utils import MpesaAPI
 from .models import Mpesa_payment
 from application.models import Order, Payment
 import json
-
+from application.emails import send_payment_received_email
 
 @login_required
 def initiate_payment(request, order_id):
@@ -153,7 +153,7 @@ def mpesa_callback(request):
             
             # Update order status and old Payment model
             payment.update_order_status()
-            
+            send_payment_received_email(payment.order, payment)
         else:
             payment.status = 'failed'
             payment.save()
