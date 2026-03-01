@@ -202,4 +202,4 @@ For support, email support@keshilimited.com or open an issue on GitHub.
 
 ---
 
-**Built with ❤️ by Keshi Limited**
+**Built with ❤️ by Brian Mecha**
