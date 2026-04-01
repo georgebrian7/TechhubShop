@@ -203,7 +203,22 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='Keshilimited <noreply@keshilimited.com>')
 
+MPESA_ENVIRONMENT = config('MPESA_ENVIRONMENT', default='sandbox')
 
+MPESA_CONFIG = {
+    'CONSUMER_KEY': config('MPESA_CONSUMER_KEY'),
+    'CONSUMER_SECRET': config('MPESA_CONSUMER_SECRET'),
+    'SHORT_CODE': config('MPESA_SHORT_CODE', default='9658796'),
+    'PASS_KEY': config('MPESA_PASS_KEY'),
+    'API_BASE_URL': 'https://sandbox.safaricom.co.ke',  # Sandbox
+    # For Production: 'https://api.safaricom.co.ke'
+}
+
+# Callback URLs - IMPORTANT: Use HTTPS and your Render domain
+MPESA_CALLBACK_URL = config(
+    'MPESA_CALLBACK_URL',
+    default='https://www.keshilimited.com/api/mpesa/callback/'
+)
 # EMAIL_BACKEND = config('EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend')
 # EMAIL_HOST = config('EMAIL_HOST', default='smtp.gmail.com')
 # EMAIL_PORT = config('EMAIL_PORT', default=587, cast=int)

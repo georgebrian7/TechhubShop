@@ -23,53 +23,38 @@ from application.emails import send_payment_received_email
 
 @login_required
 def initiate_payment(request, order_id):
-    """
-    Initiate M-Pesa payment for an order
-    Called after checkout when user chooses M-Pesa payment
-    """
     order = get_object_or_404(Order, id=order_id, user=request.user)
-    
-    # Check if order already has a successful payment
+
     if hasattr(order, 'payment') and order.payment.status == 'completed':
         messages.warning(request, 'This order has already been paid for.')
         return redirect('order_detail', order_id=order.id)
-    
+
     if request.method == 'POST':
         phone_number = request.POST.get('phone_number')
-        
-        # Validate phone number
+
         if not phone_number:
             messages.error(request, 'Please provide your M-Pesa phone number.')
             return redirect('mpesa:payment_form', order_id=order.id)
-        
-        # Format phone number
+
+        # ✅ Format phone number
         if phone_number.startswith('0'):
             phone_number = '254' + phone_number[1:]
         elif not phone_number.startswith('254'):
             phone_number = '254' + phone_number
-        
-        # Create UNIQUE account reference (max 12 chars) - Order ID based
-        # This ensures each order has its own unique account number
-        account_reference = f"ORD-{order.id}"
-        
-        # Verify account reference is unique and under 12 chars
-        if len(account_reference) > 12:
-            # If order ID is very large, truncate safely
-            account_reference = f"O{order.id}"[:12]
-        
-        
-        
+
+        # ✅ For Buy Goods — AccountReference is NOT important
+        account_reference = "BUYGOODS"
+
         try:
-            # Initiate STK push
             mpesa = MpesaAPI()
+
             response = mpesa.stk_push(
                 phone_number=phone_number,
-                amount=float(order.get_total_cost()),
-                account_reference=account_reference,  # UNIQUE per order
-                transaction_desc=f"Payment for Order #{order.id}"
+                amount=int(order.get_total_cost()),
+                account_reference=account_reference,
+                transaction_desc=f"Order {order.id}"
             )
-            
-            # Save M-Pesa payment record
+
             if response.get('ResponseCode') == '0':
                 mpesa_payment = Mpesa_payment.objects.create(
                     order=order,
@@ -77,22 +62,32 @@ def initiate_payment(request, order_id):
                     phone_number=phone_number,
                     amount=order.get_total_cost(),
                     account_reference=account_reference,
-                    transaction_desc=f"Payment for Order #{order.id}",
+                    transaction_desc=f"Order {order.id}",
                     checkout_request_id=response.get('CheckoutRequestID'),
                     merchant_request_id=response.get('MerchantRequestID'),
                     status='pending'
                 )
-                
-                messages.success(request, 'Payment request sent! Please check your phone and enter your M-Pesa PIN.')
-                return redirect('mpesa:payment_status', checkout_request_id=mpesa_payment.checkout_request_id)
+
+                messages.success(
+                    request,
+                    'STK Push sent. Enter M-Pesa PIN to complete payment.'
+                )
+
+                return redirect(
+                    'mpesa:payment_status',
+                    checkout_request_id=mpesa_payment.checkout_request_id
+                )
             else:
-                messages.error(request, f"Payment failed: {response.get('errorMessage', 'Unknown error')}")
+                messages.error(
+                    request,
+                    f"Payment failed: {response.get('errorMessage', 'Unknown error')}"
+                )
                 return redirect('mpesa:payment_form', order_id=order.id)
-                
+
         except Exception as e:
-            messages.error(request, f'Error initiating payment: {str(e)}')
+            messages.error(request, f'Error: {str(e)}')
             return redirect('mpesa:payment_form', order_id=order.id)
-    
+
     return redirect('mpesa:payment_form', order_id=order.id)
 
 
