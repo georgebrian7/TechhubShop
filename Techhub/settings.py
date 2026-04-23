@@ -205,6 +205,7 @@ DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='Keshilimited <noreply
 
 MPESA_ENVIRONMENT = config('MPESA_ENVIRONMENT', default='sandbox')
 
+MPESA_TILL_NUMBER = config('MPESA_TILL_NUMBER', default='174379')
 MPESA_CONFIG = {
     'CONSUMER_KEY': config('MPESA_CONSUMER_KEY'),
     'CONSUMER_SECRET': config('MPESA_CONSUMER_SECRET'),
