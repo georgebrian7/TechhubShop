@@ -56,6 +56,7 @@ def initiate_payment(request, order_id):
             )
 
             if response.get('ResponseCode') == '0':
+                print("FULL MPESA RESPONSE:", response)
                 mpesa_payment = Mpesa_payment.objects.create(
                     order=order,
                     user=request.user,
@@ -72,7 +73,7 @@ def initiate_payment(request, order_id):
                     request,
                     'STK Push sent. Enter M-Pesa PIN to complete payment.'
                 )
-
+                print("FULL MPESA RESPONSE:", response)
                 return redirect(
                     'mpesa:payment_status',
                     checkout_request_id=mpesa_payment.checkout_request_id
@@ -82,12 +83,14 @@ def initiate_payment(request, order_id):
                     request,
                     f"Payment failed: {response.get('errorMessage', 'Unknown error')}"
                 )
+                print("FULL MPESA RESPONSE:", response)
                 return redirect('mpesa:payment_form', order_id=order.id)
 
         except Exception as e:
             messages.error(request, f'Error: {str(e)}')
+            print("FULL MPESA RESPONSE:", response)
             return redirect('mpesa:payment_form', order_id=order.id)
-
+    print("FULL MPESA RESPONSE:", response)
     return redirect('mpesa:payment_form', order_id=order.id)
 
 
