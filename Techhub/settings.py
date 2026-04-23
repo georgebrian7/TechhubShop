@@ -210,7 +210,7 @@ MPESA_CONFIG = {
     'CONSUMER_KEY': config('MPESA_CONSUMER_KEY'),
     'CONSUMER_SECRET': config('MPESA_CONSUMER_SECRET'),
     'SHORT_CODE': config('MPESA_SHORT_CODE', default='9658796'),
-    'PASS_KEY': config('MPESA_PASS_KEY'),
+    'PASS_KEY': config('MPESA_PASSKEY'),
     'API_BASE_URL': 'https://sandbox.safaricom.co.ke',  # Sandbox
     # For Production: 'https://api.safaricom.co.ke'
 }
