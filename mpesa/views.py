@@ -74,10 +74,7 @@ def initiate_payment(request, order_id):
                     'STK Push sent. Enter M-Pesa PIN to complete payment.'
                 )
                 print("FULL MPESA RESPONSE:", response)
-                return redirect(
-                    'mpesa:payment_status',
-                    checkout_request_id=mpesa_payment.checkout_request_id
-                )
+                return redirect('mpesa:payment_form', order_id=order.id)
             else:
                 messages.error(
                     request,
