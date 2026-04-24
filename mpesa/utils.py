@@ -85,9 +85,10 @@ class MpesaAPI:
             # Format phone number
             if phone_number.startswith('+'):
                 phone_number = phone_number[1:]
-            if phone_number.startswith('0'):
+            if phone_number.startswith('0') and len(phone_number) == 10:
                 phone_number = '254' + phone_number[1:]
-            
+            if len(phone_number) == 9 and (phone_number.startswith('7') or phone_number.startswith('1')):
+                phone_number = '254' + phone_number
             # Validate phone number
             if not phone_number.startswith('254') or len(phone_number) != 12:
                 raise Exception(f"Invalid phone number format: {phone_number}")
